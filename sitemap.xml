@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/infosec/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/jack-writeup/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/tryhackme/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
+    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/series/</loc>
+  </url>
+  
+</urlset>

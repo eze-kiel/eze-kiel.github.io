@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>writeup on ezekiel&#39;s blog</title>
+    <link>https://blog.hugoblanc.com/tags/writeup/</link>
+    <description>Recent content in writeup on ezekiel&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 06 Jul 2020 22:58:18 +0200</lastBuildDate>
+    
+	<atom:link href="https://blog.hugoblanc.com/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Jack-Of-All-Trade // Write-up</title>
+      <link>https://blog.hugoblanc.com/posts/jack-writeup/</link>
+      <pubDate>Mon, 06 Jul 2020 22:58:18 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/jack-writeup/</guid>
+      <description>Cette room est sur Try Hack Me. Elle est dans la catégorie &amp;ldquo;Easy&amp;rdquo;.
+Synopsis de la room :
+ Jack is a man of a great many talents. The zoo has employed him to capture the penguins due to his years of penguin-wrangling experience, but all is not as it seems&amp;hellip; We must stop him! Can you see through his facade of a forgetful old toymaker and bring this lunatic down?</description>
+    </item>
+    
+  </channel>
+</rss>

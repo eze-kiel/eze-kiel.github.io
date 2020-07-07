@@ -54,7 +54,7 @@ Progress: 19113 / 20470 (93.37%)^C
 </code></pre><p>puis <a href="https://crackstation.net">CrackStation</a> pour essayer de le casser. Il me retourne le mot de passe correspondant au hash. Je vais pourvoir essayer ces identifiants sur le port 22.
 Ça fonctionne !</p>
 <h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
-<p>Une fois connecté, je <code>ls</code> le dossier courant afin de lire le flag <code>user.txt</code>.</p>
+<p>Une fois connecté, je <code>ls</code> le dossier courant afin de connaitre le nom du flag et de le lire :</p>
 <pre><code>$ cat user.txt 
 [edited]
 </code></pre><p>Afin de voir si je peux exécuter des commandes en tant que root, je tape <code>sudo -l</code> :</p>

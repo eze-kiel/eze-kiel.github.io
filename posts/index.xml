@@ -32,7 +32,7 @@ Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils so
 $ /bin/sed -e '' &quot;$LFILE&quot;
 </code></pre><p>Ici, nous plaçons le fichier à lire (<code>/root/root.txt</code>) dans une variable d&rsquo;environement <code>LFILE</code>.</p>
 <p>Ensuite on appelle <code>sed</code> avec le flag <code>-e</code> qui permet d&rsquo;exécuter un script. Sauf que nous ne lui donnons aucun script à exécuter, il retournera donc le fichier tel quel. Et voilà !</p>
-<p>Comme dit plus haut, une liste non-exhaustive de binaires vulnérables est disponible sur <a href="https://gtfobins.github.io/">GTFOBins</a>. Ce site est une perle pour l&rsquo;élévation de privilèges. À garder sous le coude donc.</p>
+<p>Comme dit plus haut, une liste non-exhaustive de binaires vulnérables est disponible sur <a href="https://gtfobins.github.io/">GTFOBins</a>. Ce site est une perle pour l&rsquo;élévation de privilèges. À garder sous le coude donc !</p>
 ]]></content>
         </item>
         

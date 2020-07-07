@@ -38,7 +38,7 @@ Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils so
 Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils sont lancés en tant que l&rsquo;user qui possède le fichier, et non en tant que celui qui lance le programme. Dans l&rsquo;idée, c&rsquo;est assez pratique. Sauf que ça présente un défaut majeur : la possibilité de pouvoir utiliser des programmes en tant que root si celui-ci est le propriétaire de ceux-ci.">
 <meta itemprop="datePublished" content="2020-07-07T13:47:51&#43;02:00" />
 <meta itemprop="dateModified" content="2020-07-07T13:47:51&#43;02:00" />
-<meta itemprop="wordCount" content="329">
+<meta itemprop="wordCount" content="330">
 <meta itemprop="image" content="https://blog.hugoblanc.com/"/>
 
 
@@ -162,7 +162,7 @@ Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils so
 $ /bin/sed -e '' &quot;$LFILE&quot;
 </code></pre><p>Ici, nous plaçons le fichier à lire (<code>/root/root.txt</code>) dans une variable d&rsquo;environement <code>LFILE</code>.</p>
 <p>Ensuite on appelle <code>sed</code> avec le flag <code>-e</code> qui permet d&rsquo;exécuter un script. Sauf que nous ne lui donnons aucun script à exécuter, il retournera donc le fichier tel quel. Et voilà !</p>
-<p>Comme dit plus haut, une liste non-exhaustive de binaires vulnérables est disponible sur <a href="https://gtfobins.github.io/">GTFOBins</a>. Ce site est une perle pour l&rsquo;élévation de privilèges. À garder sous le coude donc.</p>
+<p>Comme dit plus haut, une liste non-exhaustive de binaires vulnérables est disponible sur <a href="https://gtfobins.github.io/">GTFOBins</a>. Ce site est une perle pour l&rsquo;élévation de privilèges. À garder sous le coude donc !</p>
 
       </div>
     </article>
@@ -185,7 +185,7 @@ $ /bin/sed -e '' &quot;$LFILE&quot;
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        329 Words
+        330 Words
       </p>
 
       <p>

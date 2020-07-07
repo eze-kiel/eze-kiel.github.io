@@ -6,8 +6,104 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 07 Jul 2020 21:04:25 +0200</lastBuildDate>
+        <lastBuildDate>Wed, 08 Jul 2020 01:43:30 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | CTF Collection Vol.1</title>
+            <link>https://blog.hugoblanc.com/posts/ctf-collection-vol1/</link>
+            <pubDate>Wed, 08 Jul 2020 01:43:30 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/ctf-collection-vol1/</guid>
+            <description>Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&amp;rsquo;exercices dédiés aux débutants. Let&amp;rsquo;s go !
+Synopsis :
+ Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag.</description>
+            <content type="html"><![CDATA[<p>Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur <a href="https://tryhackme.org">Try Hack Me</a>.
+Cette box contient un certain nombre d&rsquo;exercices dédiés aux débutants. Let&rsquo;s go !</p>
+<p>Synopsis :</p>
+<blockquote>
+<p>Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag. :)</p>
+</blockquote>
+<h2 id="what-does-the-base-said">What does the base said?</h2>
+<p>Dans cet exo, il faut simplement décoder une chaine de caractère qui semble être encodée en base64.</p>
+<pre><code>$ echo &quot;VEhNe2p1NTdfZDNjMGQzXzdoM19iNDUzfQ==&quot; | base64 -d
+THM{[edited]}
+</code></pre><h2 id="meta-meta">Meta meta</h2>
+<p>Ici, il faut juste regarder les métadonnées de l&rsquo;image à télécharger, je ne vais pas plus détailler :)</p>
+<h2 id="mon-are-we-going-to-be-okay">Mon, are we going to be okay?</h2>
+<p>Petit challenge de stégano, on trouve le contenu de l&rsquo;image avec <code>steghide</code>:</p>
+<pre><code>$ steghide extract -sf Extinction.jpg 
+Entrez la passphrase: 
+Écriture des donnÉes extraites dans &quot;Final_message.txt&quot;.
+$ cat Final_message.txt 
+It going to be over soon. Sleep my child.
+
+THM{[edited]}
+</code></pre><p>(C&rsquo;est le chall le plus déprimant que j&rsquo;ai fait de ma vie&hellip; ).</p>
+<h2 id="ermmagick">Erm&hellip;&hellip;Magick</h2>
+<p>Cette tâche se résoud directement en regardant son code source sur le navigateur, pas besoin d&rsquo;en dire plus ;)</p>
+<h2 id="qrrrrr">QRrrrr</h2>
+<p>Ici, un simple QR code à télécharger et à scanner avec son téléphone.</p>
+<h2 id="reverse-it-or-read-it">Reverse it or read it?</h2>
+<p>Dans cet exercice, on récupère un fichier binaire appelé <code>hello.hello</code>. Il existe sous Linux une commande permettant d&rsquo;extraire les chaines de caractères lisibles d&rsquo;un binaire. Cette commande est <code>strings</code>. Ainsi, on peut faire :</p>
+<pre><code>$ strings hello.hello | grep THM
+THM{[edited]}
+</code></pre><h2 id="another-decoding-stuff">Another decoding stuff</h2>
+<p>Ici, nous avons seulement une chaine de caractère codée.
+Je la passe dans <code>hash-identifier</code>, mais aucun format de hash n&rsquo;est reconnu. C&rsquo;est probablement un codage sur une base différente du base64. Un petit tour sur <a href="https://gchq.github.io/CyberChef/">CyberChef</a> et on découvre que c&rsquo;est du base58.</p>
+<h2 id="left-or-right">Left or right</h2>
+<p>L&rsquo;énoncé nous donne <code>MAF{atbe_max_vtxltk}</code>. Ce n&rsquo;est probablement pas du ROT13.
+Je vais sur <a href="https://www.dcode.fr">dcode.fr</a> afin de trouver le décalage du code César. On trouve ainsi le flag.</p>
+<h2 id="make-a-comment">Make a comment</h2>
+<p>Aucun document ou string n&rsquo;est donné. Le chall s&rsquo;appellant Make a comment, je regarde le code source et&hellip; Oh bah tiens :)</p>
+<h2 id="can-you-fix-it">Can you fix it?</h2>
+<p>On voit en regardant le header du fichier .png à télécharccher que les 8 premiers octets ne sont pas les bons. Avec <code>hexeditor</code>, on peut les modifier pour qu&rsquo;ils correspondent à <code>89 50 4e 47 0d 0a 1a 0a</code>. L&rsquo;image est maintenant lisible est contient le flag.</p>
+<h2 id="read-it">Read it</h2>
+<blockquote>
+<p>Some hidden flag inside Tryhackme social account.</p>
+</blockquote>
+<p>Un exo d&rsquo;OSINT ? Chouette ! Il va falloir aller stalker les réseaux sociaux de TryHackMe !
+Le flag se trouve sur reddit assez facilement !</p>
+<h2 id="spin-my-head">Spin my head</h2>
+<p>Le format de la chaine de caratères donnée est du brainfuck. <a href="https://www.dcode.fr">dcode.fr</a> a tous les outils nécessaires pour la décoder et obtenir le flag.</p>
+<h2 id="an-exclusive">An exclusive!</h2>
+<p>Pour résoudre celui-là, il faut faire un XOR entre <code>44585d6b2368737c65252166234f20626d</code> et  <code>1010101010101010101010101010101010</code>. Je suis passé par <a href="https://wor.pw">xor.pw</a> car il permet d&rsquo;afficher la sortie en ASCII.</p>
+<h2 id="binary-walk">Binary Walk</h2>
+<p>Après avoir récupéré l&rsquo;image, on utilise <code>binwalk</code> pour voir si il y a du contenu caché à l&rsquo;intérieur :</p>
+<pre><code>$ binwalk hell.jpg 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JPEG image data, JFIF standard 1.02
+30            0x1E            TIFF image data, big-endian, offset of first image directory: 8
+265845        0x40E75         Zip archive data, at least v2.0 to extract, uncompressed size: 69, name: hello_there.txt
+266099        0x40F73         End of Zip archive, footer length: 22
+</code></pre><p>On voit que c&rsquo;est le cas, on peut alors utiliser le flag <code>--extract</code> pour extraire <code>hello_there.txt</code>, puis le lire :</p>
+<pre><code>$ cat _hell.jpg.extracted/hello_there.txt 
+Thank you for extracting me, you are the best!
+
+THM{[edited]}
+</code></pre><h2 id="darkness">Darkness</h2>
+<p>L&rsquo;aide du challenge conseille d&rsquo;utiliser <code>stegsolve</code>, outil que je n&rsquo;ai pas.
+Il est possible de le récupérer comme ça :</p>
+<pre><code>wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
+chmod +x stegsolve.jar
+</code></pre><p>puis de l&rsquo;utiliser comme ceci : <code>java -jar stegsolve.jar</code>.
+En jouant un peu avec les options, on voit le flag apparaitre.</p>
+<h2 id="a-sounding-qr">A sounding QR</h2>
+<p>Un QR à scanner donne un lien vers soundcloud. En écoutant le fichier, on comprends le flag. Il est possible de l&rsquo;enregistrer et de lécouter plus lentement ;)</p>
+<h2 id="dig-up-the-past">Dig up the past</h2>
+<p>Celui-là est sympa, il faut utiliser la Wayback Machine.</p>
+<h2 id="uncrackable-">Uncrackable !</h2>
+<p>On dirait du chiffrement par décalage; ayant déjà eu du code César, je pencheri cette fois-ci pour du chiffre de Vigenère.
+Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a> et le tour est joué.</p>
+<h2 id="small-bases">Small bases</h2>
+<p>Pour trouver le flag de cet exo, il faut convertir la string de la base décimale à l&rsquo;hexa, puis de l&rsquo;hexa à l&rsquo;ASCII</p>
+<h2 id="read-the-packet">Read the packet</h2>
+<p>Ici j&rsquo;ai ouevrt la capture avec <code>Wireshark</code>, et j&rsquo;ai cherché la string contant &lsquo;THM&rsquo;.</p>
+<p>Voilà la fin de cette room ! Elle aura été assez longue. Même si elle n&rsquo;a pas été aussi sympa qu&rsquo;un CTF plus classique, elle m&rsquo;a permit de revoir quelques bases et quelques outils que je n&rsquo;ai pas l&rsquo;habitude d&rsquo;utiliser.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | CC: Pen Testing</title>

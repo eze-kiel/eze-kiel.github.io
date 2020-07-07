@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 07 Jul 2020 21:04:25 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 01:43:30 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/tryhackme/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Write-up | CTF Collection Vol.1</title>
+      <link>https://blog.hugoblanc.com/posts/ctf-collection-vol1/</link>
+      <pubDate>Wed, 08 Jul 2020 01:43:30 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/ctf-collection-vol1/</guid>
+      <description>Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&amp;rsquo;exercices dédiés aux débutants. Let&amp;rsquo;s go !
+Synopsis :
+ Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag.</description>
+    </item>
     
     <item>
       <title>Write-up | CC: Pen Testing</title>

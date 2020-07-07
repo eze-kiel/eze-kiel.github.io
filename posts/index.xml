@@ -6,8 +6,35 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Mon, 06 Jul 2020 22:58:18 +0200</lastBuildDate>
+        <lastBuildDate>Tue, 07 Jul 2020 13:47:51 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>PrivEsc | Abuser du bit SUID</title>
+            <link>https://blog.hugoblanc.com/posts/privesc-bit-suid/</link>
+            <pubDate>Tue, 07 Jul 2020 13:47:51 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/privesc-bit-suid/</guid>
+            <description>Même si ce n&amp;rsquo;est pas très fréquent dans la vie courante, le bit SUID est un vecteur d&amp;rsquo;élévation de privilèges assez fréquent dans les CTF.
+Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils sont lancés en tant que l&amp;rsquo;user qui possède le fichier, et non en tant que celui qui lance le programme. Dans l&amp;rsquo;idée, c&amp;rsquo;est assez pratique. Sauf que ça présente un défaut majeur : la possibilité de pouvoir utiliser des programmes en tant que root si celui-ci est le propriétaire de ceux-ci.</description>
+            <content type="html"><![CDATA[<p>Même si ce n&rsquo;est pas très fréquent dans la vie courante, le bit SUID est un vecteur d&rsquo;élévation de privilèges assez fréquent dans les CTF.</p>
+<h2 id="bit-suid">Bit SUID</h2>
+<p>Lorsque des fichiers exécutables ont le bit SUID de configuré, ils sont lancés en tant que l&rsquo;user qui possède le fichier, et non en tant que celui qui lance le programme. Dans l&rsquo;idée, c&rsquo;est assez pratique. Sauf que ça présente un défaut majeur : la possibilité de pouvoir utiliser des programmes en tant que root si celui-ci est le propriétaire de ceux-ci.</p>
+<p>Afin de savoir quels fichiers ont le bit SUID de configuré, il y a la commande <code>find / -perm /4000 2&gt; /dev/null</code>.</p>
+<p>Cette commande cherche des fichiers à la racine ayant pour permission n&rsquo;importe lequel des bits 4000.</p>
+<p>Enfin (et c&rsquo;est question de goût), je redirige la sortie standard vers /dev/null, afin de ne voir que ce qui est intéresant pour moi.</p>
+<h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<p>Énormément de binaires permettent, si leur bit SUID est configuré, d&rsquo;exécuter des commandes en tant que root ou de lire un flag (dans le cas d&rsquo;un CTF). Il y a une liste assez importante avec des examples sur <a href="https://gtfobins.github.io/">GTFOBins</a>, mais ce n&rsquo;est pas parce qu&rsquo;un programme n&rsquo;y est pas qu&rsquo;il n&rsquo;est pas exploitable !</p>
+<p>Le cas typique que l&rsquo;on retourve en CTF, c&rsquo;est pour lire le dernier flag, traditionnellement à <code>/root/root.txt</code>.</p>
+<p>Prenons l&rsquo;exemple ou <code>/bin/sed</code> a le bit SUID de positionné.</p>
+<p>Pour lire le flag, il suffirait donc d&rsquo;exécuter les commandes suivantes :</p>
+<pre><code>$ LFILE=/root/root.txt
+$ /bin/sed -e '' &quot;$LFILE&quot;
+</code></pre><p>Ici, nous plaçons le fichier à lire (<code>/root/root.txt</code>) dans une variable d&rsquo;environement <code>LFILE</code>.</p>
+<p>Ensuite on appelle <code>sed</code> avec le flag <code>-e</code> qui permet d&rsquo;exécuter un script. Sauf que nous ne lui donnons aucun script à exécuter, il retournera donc le fichier tel quel. Et voilà !</p>
+<p>Comme dit plus haut, une liste non-exhaustive de binaires vulnérables est disponible sur <a href="https://gtfobins.github.io/">GTFOBins</a>. Ce site est une perle pour l&rsquo;élévation de privilèges. À garder sous le coude donc.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | Jack-Of-All-Trade</title>

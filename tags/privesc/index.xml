@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ezekiel&#39;s blog</title>
-    <link>https://blog.hugoblanc.com/</link>
-    <description>Recent content on ezekiel&#39;s blog</description>
+    <title>privesc on ezekiel&#39;s blog</title>
+    <link>https://blog.hugoblanc.com/tags/privesc/</link>
+    <description>Recent content in privesc on ezekiel&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 07 Jul 2020 13:47:51 +0200</lastBuildDate>
     
-	<atom:link href="https://blog.hugoblanc.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hugoblanc.com/tags/privesc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <guid>https://blog.hugoblanc.com/posts/privesc-bit-suid/</guid>
       <description>Même si ce n&amp;rsquo;est pas très fréquent dans la vie courante, le bit SUID est un vecteur d&amp;rsquo;élévation de privilèges assez fréquent dans les CTF.
 Bit SUID Lorsque des fichiers exécutables ont le bit SUID de configuré, ils sont lancés en tant que l&amp;rsquo;user qui possède le fichier, et non en tant que celui qui lance le programme. Dans l&amp;rsquo;idée, c&amp;rsquo;est assez pratique. Sauf que ça présente un défaut majeur : la possibilité de pouvoir utiliser des programmes en tant que root si celui-ci est le propriétaire de ceux-ci.</description>
-    </item>
-    
-    <item>
-      <title>Write-up | Jack-Of-All-Trade</title>
-      <link>https://blog.hugoblanc.com/posts/jack-writeup/</link>
-      <pubDate>Mon, 06 Jul 2020 22:58:18 +0200</pubDate>
-      
-      <guid>https://blog.hugoblanc.com/posts/jack-writeup/</guid>
-      <description>Cette room est sur Try Hack Me. Elle est dans la catégorie &amp;ldquo;Easy&amp;rdquo;.
-Synopsis de la room :
- Jack is a man of a great many talents. The zoo has employed him to capture the penguins due to his years of penguin-wrangling experience, but all is not as it seems&amp;hellip; We must stop him! Can you see through his facade of a forgetful old toymaker and bring this lunatic down?</description>
     </item>
     
   </channel>

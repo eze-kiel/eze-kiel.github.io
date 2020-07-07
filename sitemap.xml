@@ -4,16 +4,36 @@
   
   <url>
     <loc>https://blog.hugoblanc.com/</loc>
-    <lastmod>2020-07-07T13:47:51+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.hugoblanc.com/tags/linux/</loc>
-    <lastmod>2020-07-07T13:47:51+02:00</lastmod>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/posts/</loc>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/</loc>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/tryhackme/</loc>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/cc-pentesting-writeup/</loc>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
+    <lastmod>2020-07-07T21:04:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/linux/</loc>
     <lastmod>2020-07-07T13:47:51+02:00</lastmod>
   </url>
   
@@ -28,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hugoblanc.com/tags/</loc>
-    <lastmod>2020-07-07T13:47:51+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.hugoblanc.com/tags/tryhackme/</loc>
-    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.hugoblanc.com/posts/jack-writeup/</loc>
-    <lastmod>2020-07-06T22:58:18+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
     <lastmod>2020-07-06T22:58:18+02:00</lastmod>
   </url>
   

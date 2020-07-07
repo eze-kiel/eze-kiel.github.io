@@ -6,8 +6,67 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 07 Jul 2020 13:47:51 +0200</lastBuildDate>
+        <lastBuildDate>Tue, 07 Jul 2020 21:04:25 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | CC: Pen Testing</title>
+            <link>https://blog.hugoblanc.com/posts/cc-pentesting-writeup/</link>
+            <pubDate>Tue, 07 Jul 2020 21:04:25 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/cc-pentesting-writeup/</guid>
+            <description>Ce write-up couvrira l&amp;rsquo;examen final de la room CC: pen Testing.
+Reconnaissance Comme à l&amp;rsquo;habitude, un petit nmap pour commencer :
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 12:96:a6:1e:81:73:ae:17:4c:e1:7c:63:78:3c:71:1c (RSA) | 256 6d:9c:f2:07:11:d2:aa:19:99:90:bb:ec:6b:a1:53:77 (ECDSA) |_ 256 0e:a5:fa:ce:f2:ad:e6:fa:99:f3:92:5f:87:bb:ba:f4 (ED25519) 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Rien de bien nouveau ici : SSH sur le port 22 et serveur Apache sur le port 80.</description>
+            <content type="html"><![CDATA[<p>Ce write-up couvrira l&rsquo;examen final de la room CC: pen Testing.</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Comme à l&rsquo;habitude, un petit <code>nmap</code> pour commencer :</p>
+<pre><code>PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 12:96:a6:1e:81:73:ae:17:4c:e1:7c:63:78:3c:71:1c (RSA)
+|   256 6d:9c:f2:07:11:d2:aa:19:99:90:bb:ec:6b:a1:53:77 (ECDSA)
+|_  256 0e:a5:fa:ce:f2:ad:e6:fa:99:f3:92:5f:87:bb:ba:f4 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Rien de bien nouveau ici : SSH sur le port 22 et serveur Apache sur le port 80. J&rsquo;utilise ensuite <code>gobuster</code> pour enumérer le serveur web :</p>
+<pre><code>===============================================================
+2020/07/07 18:09:15 Starting gobuster
+===============================================================
+/.htpasswd (Status: 403)
+/.htaccess (Status: 403)
+/[edited] (Status: 301)
+/server-status (Status: 403)
+Progress: 19113 / 20470 (93.37%)^C
+===============================================================
+2020/07/07 18:12:40 Finished
+===============================================================
+</code></pre><p>Il y a donc un dossier caché. Je relance <code>gobuster</code> dessus pour essayer de trouver un fichier, bingo !</p>
+<h2 id="pénétration">Pénétration</h2>
+<p>La page contient des identifiants :</p>
+<pre><code>nyan:[edited]
+</code></pre><p>J&rsquo;utilise <code>hash-identifier</code> afin de savoir quel est le type de hash utilisé :</p>
+<pre><code>Possible Hashs:
+[+] SHA-1
+[+] MySQL5 - SHA-1(SHA-1($pass))
+</code></pre><p>puis <a href="https://crackstation.net">CrackStation</a> pour essayer de le casser. Il me retourne le mot de passe correspondant au hash. Je vais pourvoir essayer ces identifiants sur le port 22.
+Ça fonctionne !</p>
+<h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<p>Une fois connecté, je <code>ls</code> le dossier courant afin de lire le flag <code>user.txt</code>.</p>
+<pre><code>$ cat user.txt 
+[edited]
+</code></pre><p>Afin de voir si je peux exécuter des commandes en tant que root, je tape <code>sudo -l</code> :</p>
+<pre><code>User nyan may run the following commands on ubuntu:
+    (root) NOPASSWD: /bin/su
+</code></pre><p>Ça part bien :)</p>
+<p>Juste un petit <code>sudo su</code> et me voilà root !</p>
+<pre><code># cat /root/root.txt 
+[edited]
+</code></pre><p>Et voilà ! Une petite room sympa pour commencer les CTF !</p>
+]]></content>
+        </item>
         
         <item>
             <title>PrivEsc | Abuser du bit SUID</title>

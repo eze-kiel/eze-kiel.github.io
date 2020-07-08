@@ -4,31 +4,41 @@
   
   <url>
     <loc>https://blog.hugoblanc.com/</loc>
-    <lastmod>2020-07-08T14:50:53+02:00</lastmod>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/posts/</loc>
-    <lastmod>2020-07-08T14:50:53+02:00</lastmod>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/tags/</loc>
-    <lastmod>2020-07-08T14:50:53+02:00</lastmod>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/tags/tryhackme/</loc>
-    <lastmod>2020-07-08T14:50:53+02:00</lastmod>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.hugoblanc.com/posts/tomghost-writeup/</loc>
-    <lastmod>2020-07-08T14:50:53+02:00</lastmod>
+    <loc>https://blog.hugoblanc.com/posts/dav-writeup/</loc>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
+    <lastmod>2020-07-08T22:35:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/break-out-the-cage-writeup/</loc>
+    <lastmod>2020-07-08T18:02:12+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/tomghost-writeup/</loc>
     <lastmod>2020-07-08T14:50:53+02:00</lastmod>
   </url>
   
@@ -43,8 +53,28 @@
   </url>
   
   <url>
+    <loc>https://blog.hugoblanc.com/tags/infosec/</loc>
+    <lastmod>2020-07-07T14:53:01+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hugoblanc.com/tags/linux/</loc>
-    <lastmod>2020-07-07T13:47:51+02:00</lastmod>
+    <lastmod>2020-07-07T14:53:01+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/pentest/</loc>
+    <lastmod>2020-07-07T14:53:01+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/tips/</loc>
+    <lastmod>2020-07-07T14:53:01+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/ressources-utiles/</loc>
+    <lastmod>2020-07-07T14:53:01+02:00</lastmod>
   </url>
   
   <url>

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 08 Jul 2020 14:50:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 22:35:00 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>tryhackme</title>
       <link>https://blog.hugoblanc.com/tags/tryhackme/</link>
-      <pubDate>Wed, 08 Jul 2020 14:50:53 +0200</pubDate>
+      <pubDate>Wed, 08 Jul 2020 22:35:00 +0200</pubDate>
       
       <guid>https://blog.hugoblanc.com/tags/tryhackme/</guid>
       <description></description>
@@ -24,18 +24,45 @@
     <item>
       <title>writeup</title>
       <link>https://blog.hugoblanc.com/tags/writeup/</link>
-      <pubDate>Wed, 08 Jul 2020 14:50:53 +0200</pubDate>
+      <pubDate>Wed, 08 Jul 2020 22:35:00 +0200</pubDate>
       
       <guid>https://blog.hugoblanc.com/tags/writeup/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>infosec</title>
+      <link>https://blog.hugoblanc.com/tags/infosec/</link>
+      <pubDate>Tue, 07 Jul 2020 14:53:01 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/infosec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>linux</title>
       <link>https://blog.hugoblanc.com/tags/linux/</link>
-      <pubDate>Tue, 07 Jul 2020 13:47:51 +0200</pubDate>
+      <pubDate>Tue, 07 Jul 2020 14:53:01 +0200</pubDate>
       
       <guid>https://blog.hugoblanc.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pentest</title>
+      <link>https://blog.hugoblanc.com/tags/pentest/</link>
+      <pubDate>Tue, 07 Jul 2020 14:53:01 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/pentest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tips</title>
+      <link>https://blog.hugoblanc.com/tags/tips/</link>
+      <pubDate>Tue, 07 Jul 2020 14:53:01 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/tips/</guid>
       <description></description>
     </item>
     

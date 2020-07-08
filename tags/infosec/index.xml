@@ -7,20 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 06 Jul 2020 22:58:18 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2020 14:53:01 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/infosec/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Jack-Of-All-Trade // Write-up</title>
-      <link>https://blog.hugoblanc.com/posts/jack-writeup/</link>
-      <pubDate>Mon, 06 Jul 2020 22:58:18 +0200</pubDate>
+      <title>Tips | Ressources utiles</title>
+      <link>https://blog.hugoblanc.com/posts/ressources-utiles/</link>
+      <pubDate>Tue, 07 Jul 2020 14:53:01 +0200</pubDate>
       
-      <guid>https://blog.hugoblanc.com/posts/jack-writeup/</guid>
-      <description>Cette room est sur Try Hack Me. Elle est dans la catégorie &amp;ldquo;Easy&amp;rdquo;.
-Synopsis de la room :
- Jack is a man of a great many talents. The zoo has employed him to capture the penguins due to his years of penguin-wrangling experience, but all is not as it seems&amp;hellip; We must stop him! Can you see through his facade of a forgetful old toymaker and bring this lunatic down?</description>
+      <guid>https://blog.hugoblanc.com/posts/ressources-utiles/</guid>
+      <description>Je vais faire dans ce post une liste des ressources que j&amp;rsquo;utilise souvent lors des CTF ou dans des projets de dev, et qui font gagner un temps précieux. Il sera mis à jour assez régulièrement.
+Crypto &amp;amp; co CrackStation - Casser des hash en ligne. Bien évidemment il ne trouve pas tout, mais c&amp;rsquo;est un bon début pour trouver du &amp;lsquo;password&amp;rsquo; hashé en md5.
+CyberChef - Plateforme en ligne qui permet de coder/décoder des hash ou des strings chiffrées.</description>
     </item>
     
   </channel>

@@ -7,10 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 08 Jul 2020 14:50:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 22:35:00 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Write-up | Dav</title>
+      <link>https://blog.hugoblanc.com/posts/dav-writeup/</link>
+      <pubDate>Wed, 08 Jul 2020 22:35:00 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/dav-writeup/</guid>
+      <description>Ce write-up sera dédié à la room Dav, sur Try Hack Me.
+Reconnaissance Je commence par un scan de ports avec nmap :
+$ nmap -T4 -A 10.10.239.64 -oN scans/ports.txt Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-08 19:04 CEST Nmap scan report for 10.10.239.64 Host is up (0.065s latency). Not shown: 999 closed ports PORT STATE SERVICE VERSION 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Apache2 Ubuntu Default Page: It works Il semblerait n&amp;rsquo;y avoir qu&amp;rsquo;un serveur Apache sur le port 80.</description>
+    </item>
+    
+    <item>
+      <title>Write-up | Break Out the Cage</title>
+      <link>https://blog.hugoblanc.com/posts/break-out-the-cage-writeup/</link>
+      <pubDate>Wed, 08 Jul 2020 18:02:12 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/break-out-the-cage-writeup/</guid>
+      <description>C&amp;rsquo;est parti pour la room Break Out The Cage sur Try Hack Me.
+Synopsis :
+ Help Cage bring back his acting career and investigate the nefarious goings on of his agent!
+ Reconnaissance Premier scan des ports avec le script vuln :
+$ nmap -sV -sC --script vuln 10.10.80.82 -oN scans/ports.txt ... PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 |_clamav-exec: ERROR: Script execution failed (use -d to debug) |_sslv2-drown: 22/tcp open ssh OpenSSH 7.</description>
+    </item>
     
     <item>
       <title>Write-up | Tomghost</title>

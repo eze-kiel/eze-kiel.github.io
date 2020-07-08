@@ -104,9 +104,9 @@ gpg: clef B92CD1F280AD82C2 : clef secrète importée
 $ gpg --decrypt backup.pgp
 ...
       « anonforce &lt;melodias@anonforce.nsa&gt; »
-root:$6$07nYFaYf$F4VMaegmz7dKjsTukBLh6cP01iMmL7CiQDt1ycIm6a.bsOIBp0DwXVb9XI2EtULXJzBtaMZMNd2tV4uob5RVM0:18120:0:99999:7:::
+root:$6$07nYFaYf$F4VMaegmz7dKjsTukBLh6cP01iMmL7C[edited]m6a.bsOIBp0DwXVb9XI2EtULXJzBtaMZMNd2tV4uob5RVM0:18120:0:99999:7:::
 ...
-melodias:$1$xDhc6S6G$IQHUW5ZtMkBQ5pUMjEQtL1:18120:0:99999:7:::
+melodias:$1$xDhc6S6G$IQHUW5ZtM[edited]EQtL1:18120:0:99999:7:::
 ...
 </code></pre><p>Nous avons donc le <code>shadow</code> de la machine ! Avec le fichier <code>passwd</code> récupéré avant, il est possible de bruteforcer le password root !</p>
 <pre><code>$ sudo unshadow passwd shadow.txt &gt; out.txt

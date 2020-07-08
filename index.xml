@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 08 Jul 2020 01:43:30 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 14:50:53 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Write-up | Tomghost</title>
+      <link>https://blog.hugoblanc.com/posts/tomghost-writeup/</link>
+      <pubDate>Wed, 08 Jul 2020 14:50:53 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/tomghost-writeup/</guid>
+      <description>Aujourd&amp;rsquo;hui, je m&amp;rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1.</description>
+    </item>
     
     <item>
       <title>Write-up | CTF Collection Vol.1</title>

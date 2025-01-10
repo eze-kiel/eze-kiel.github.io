@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture | syscall.cafe ⎇</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: left;
+            max-width: 1400px;
+            /* Increased from 1200px */
+            margin: 0 auto 60px auto;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 2.4em;
+            /* Increased from 2.2em */
+            font-weight: 500;
+            /* margin-bottom: 40px; */
+            letter-spacing: -0.5px;
+        }
+
+        .back {
+            margin-bottom: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 15px;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.05em;
+            /* Increased from 0.95em */
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .tab:hover {
+            color: #1a1a1a;
+        }
+
+        .tab.active {
+            color: #1a1a1a;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1a1a1a;
+        }
+
+        .content-section {
+            display: none;
+            max-width: 1400px;
+            /* Increased from 1200px */
+            margin: 0 auto;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .year-section {
+            margin-bottom: 60px;
+        }
+
+        .year-header {
+            color: #1a1a1a;
+            font-size: 1.5em;
+            /* Increased from 1.3em */
+            font-weight: 500;
+            margin: 0 0 25px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            /* Increased from 150px */
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .media-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+        }
+
+        .media-cover {
+            width: 100%;
+            height: 250px;
+            /* Increased from 210px */
+            object-fit: cover;
+            cursor: pointer;
+            display: block;
+        }
+
+        .media-info {
+            padding: 15px;
+            /* Increased from 12px */
+        }
+
+        .media-title {
+            font-size: 1em;
+            /* Increased from 0.9em */
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .media-author {
+            font-size: 0.9em;
+            /* Increased from 0.8em */
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .media-rating {
+            color: #ffd700;
+            font-size: 0.9em;
+            /* Increased from 0.8em */
+            margin-bottom: 4px;
+        }
+
+        .media-date {
+            font-size: 0.85em;
+            /* Increased from 0.75em */
+            color: #999;
+            font-weight: 400;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+                font-family: 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            }
+
+            header {
+                margin-bottom: 40px;
+            }
+
+            h1 {
+                font-size: 2em;
+                /* Increased from 1.8em */
+                margin-bottom: 30px;
+            }
+
+            .tabs {
+                gap: 15px;
+            }
+
+            .media-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                /* Increased from 120px */
+                gap: 20px;
+            }
+
+            .media-cover {
+                height: 195px;
+                /* Increased from 165px */
+            }
+
+            .year-header {
+                font-size: 1.3em;
+                /* Increased from 1.2em */
+                margin-bottom: 20px;
+            }
+
+            .media-info {
+                padding: 12px;
+                /* Increased from 10px */
+            }
+        }
+
+        .star {
+            font-size: 1em;
+            position: relative;
+            width: 1em;
+            display: inline-block;
+        }
+
+        .media-rating {
+            color: #ffd700;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .star {
+            color: #ffd700;
+        }
+
+        .star.far {
+            opacity: 0.9;
+        }
+
+        .favorite-heart {
+            color: #ff4d6d;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Stuff I've watched or read</h1>
+        <p class="back"><a href="https://syscall.cafe" style="text-decoration: none; color: cornflowerblue;">< back to main website</a></p>
+        <div class="tabs">
+            <button class="tab active" data-tab="books">📚 Books</button>
+            <button class="tab" data-tab="movies">📽 Movies</button>
+            <button class="tab" data-tab="series">🎞 Series</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="books-section" class="content-section active"></section>
+        <section id="movies-section" class="content-section"></section>
+        <section id="series-section" class="content-section"></section>
+    </main>
+
+    <script src="media-data.js"></script>
+    <script>
+        // Function to get the appropriate action verb based on media type
+        function getActionVerb(mediaType) {
+            switch (mediaType) {
+                case 'book':
+                    return 'Read';
+                case 'movie':
+                case 'serie':
+                    return 'Watched';
+                default:
+                    return 'Consumed';
+            }
+        }
+
+        // Function to format the date in English
+        function formatDate(dateString) {
+            const options = {
+                month: 'long',
+                day: 'numeric'
+            };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Fonction mise à jour pour gérer les demi-étoiles
+        function createStarRating(rating, isFavorite) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+
+            // Étoiles pleines
+            for (let i = 1; i <= fullStars; i++) {
+                stars += '<i class="fas fa-star star"></i>';
+            }
+
+            // Demi-étoile
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt star"></i>';
+            }
+
+            // Étoiles vides restantes
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 1; i <= emptyStars; i++) {
+                stars += '<i class="far fa-star star"></i>';
+            }
+
+            // Ajout du cœur pour les favoris
+            if (isFavorite) {
+                stars += '<i class="fas fa-heart favorite-heart"></i>';
+            }
+
+            return stars;
+        }
+
+        // Function to group media by year
+        function groupMediaByYear(mediaItems) {
+            const groupedMedia = {};
+            mediaItems.forEach(item => {
+                const year = new Date(item.readDate).getFullYear();
+                if (!groupedMedia[year]) {
+                    groupedMedia[year] = [];
+                }
+                groupedMedia[year].push(item);
+            });
+
+            // Sort media within each year - changed to ascending order by date
+            Object.keys(groupedMedia).forEach(year => {
+                groupedMedia[year].sort((a, b) =>
+                    new Date(a.readDate) - new Date(b.readDate)
+                );
+            });
+
+            return groupedMedia;
+        }
+
+        // Function to generate media grid (mise à jour)
+        function generateMediaSection(mediaType) {
+            const container = document.getElementById(`${mediaType}-section`);
+            container.innerHTML = '';
+
+            const mediaKind = mediaType.slice(0, -1);
+            const filteredMedia = mediaLibrary.filter(item => item.kind === mediaKind);
+            const groupedMedia = groupMediaByYear(filteredMedia);
+
+            const years = Object.keys(groupedMedia).sort((a, b) => b - a);
+
+            years.forEach(year => {
+                const yearSection = document.createElement('section');
+                yearSection.className = 'year-section';
+
+                yearSection.innerHTML = `
+                <h2 class="year-header">${year}</h2>
+                <div class="media-grid">
+                    ${groupedMedia[year].map(item => `
+                        <div class="media-card">
+                            <a href="${item.link}" target="_blank">
+                                <img src="${item.cover}" alt="${item.title}" class="media-cover">
+                            </a>
+                            <div class="media-info">
+                                <div class="media-title">${item.title}</div>
+                                <div class="media-author">${item.author}</div>
+                                <div class="rating-container">
+                                    ${createStarRating(item.rating, item.favorite)}
+                                </div>
+                                <div class="media-date">${getActionVerb(item.kind)} on ${formatDate(item.readDate)}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+                container.appendChild(yearSection);
+            });
+        }
+
+        // Tab switching functionality
+        function initTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and sections
+                    tabs.forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Add active class to clicked tab and corresponding section
+                    tab.classList.add('active');
+                    const targetSection = document.getElementById(`${tab.dataset.tab}-section`);
+                    targetSection.classList.add('active');
+                });
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            initTabs();
+            generateMediaSection('books');
+            generateMediaSection('movies');
+            generateMediaSection('series');
+        });
+    </script>
+</body>
+
+</html>

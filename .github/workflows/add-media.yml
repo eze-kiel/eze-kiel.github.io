@@ -104,6 +104,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add media-data.js
-          git commit -m "feat(gha): add new media entry - ${{ inputs.title }}"
+          git commit -m "feat: add new media entry - ${{ inputs.title }}"
           git push origin main

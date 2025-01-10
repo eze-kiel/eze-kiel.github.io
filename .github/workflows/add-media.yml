@@ -49,10 +49,13 @@ on:
 jobs:
   add-entry:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -65,8 +68,10 @@ jobs:
           script: |
             const fs = require('fs');
             
+            // Read the current file
             const content = fs.readFileSync('media-data.js', 'utf8');
             
+            // Create new entry
             const newEntry = {
               title: '${{ inputs.title }}',
               author: '${{ inputs.author }}',
@@ -77,11 +82,13 @@ jobs:
               kind: '${{ inputs.kind }}'
             };
             
+            // Add link only if provided
             const link = '${{ inputs.link }}'.trim();
             if (link) {
               newEntry.link = link;
             }
             
+            // Convert entry to string format
             const entryString = JSON.stringify(newEntry, null, 8)
               .replace(/"([^"]+)":/g, '$1:') // Remove quotes from property names
               .replace(/"/g, "'"); // Replace double quotes with single quotes
@@ -97,8 +104,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
           git add media-data.js
           git commit -m "feat(gha): add new media entry - ${{ inputs.title }}"
           git push origin main

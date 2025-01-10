@@ -1,0 +1,104 @@
+name: Add Media Entry
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Media title'
+        required: true
+      author:
+        description: 'Author/Director'
+        required: true
+      cover:
+        description: 'Cover image URL'
+        required: true
+      rating:
+        description: 'Rating (1-5, can use .5)'
+        required: true
+        type: choice
+        options:
+          - "1"
+          - "1.5"
+          - "2"
+          - "2.5"
+          - "3"
+          - "3.5"
+          - "4"
+          - "4.5"
+          - "5"
+      favorite:
+        description: 'Is this a favorite?'
+        required: true
+        type: boolean
+        default: false
+      link:
+        description: 'Goodreads/IMDB link (optional)'
+        required: false
+      readDate:
+        description: 'Completion date (YYYY-MM-DD)'
+        required: true
+      kind:
+        description: 'Type of media'
+        required: true
+        type: choice
+        options:
+          - book
+          - movie
+          - serie
+
+jobs:
+  add-entry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Add Media Entry
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            const content = fs.readFileSync('media-data.js', 'utf8');
+            
+            const newEntry = {
+              title: '${{ inputs.title }}',
+              author: '${{ inputs.author }}',
+              cover: '${{ inputs.cover }}',
+              rating: parseFloat('${{ inputs.rating }}'),
+              favorite: ${{ inputs.favorite }},
+              readDate: '${{ inputs.readDate }}',
+              kind: '${{ inputs.kind }}'
+            };
+            
+            const link = '${{ inputs.link }}'.trim();
+            if (link) {
+              newEntry.link = link;
+            }
+            
+            const entryString = JSON.stringify(newEntry, null, 8)
+              .replace(/"([^"]+)":/g, '$1:') // Remove quotes from property names
+              .replace(/"/g, "'"); // Replace double quotes with single quotes
+            
+            // Insert the new entry after the opening bracket
+            const updatedContent = content.replace(
+              /const mediaLibrary = \[/,
+              `const mediaLibrary = [\n    ${entryString},`
+            );
+            
+            // Write back to file
+            fs.writeFileSync('media-data.js', updatedContent);
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add media-data.js
+          git commit -m "feat(gha): add new media entry - ${{ inputs.title }}"
+          git push origin main

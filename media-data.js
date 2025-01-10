@@ -1,4 +1,14 @@
 const mediaLibrary = [
+    {
+        title: 'Lost (S1-2)',
+        author: 'J. J. Abrams',
+        cover: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fTJtenFfz9ZoH97R0fBvun6KR8v.jpg',
+        rating: 3,
+        favorite: false,
+        readDate: '2024-09-01',
+        kind: 'serie',
+        link: 'https://www.themoviedb.org/tv/4607-lost'
+},
     // BOOKS \\
     {
         title: "This Is How They Tell Me the World Ends",

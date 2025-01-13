@@ -198,6 +198,15 @@ const mediaLibrary = [
         kind: "serie"
     },
     {
+        title: "Fiasco (S1)",
+        author: "Igor Gotesman",
+        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mxzF3PMICswCoPxHmkQVYV7XRkU.jpg",
+        rating: 4,
+        link: "https://www.themoviedb.org/tv/221120-fiasco",
+        readDate: "2024-04-30",
+        kind: "serie"
+    },
+    {
         title: "The Bear (S1-3)",
         author: "Christopher Storer",
         cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3MVHF64rlvH1eofKefIoazXwOK0.jpg",

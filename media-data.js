@@ -2,7 +2,7 @@ const mediaLibrary = [
     {
         title: 'Lost (S1-2)',
         author: 'J. J. Abrams',
-        cover: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fTJtenFfz9ZoH97R0fBvun6KR8v.jpg',
+        cover: 'assets/series/lost.jpg',
         rating: 3,
         favorite: false,
         readDate: '2024-09-01',
@@ -13,7 +13,7 @@ const mediaLibrary = [
     {
         title: "This Is How They Tell Me the World Ends",
         author: "Nicole Perlroth",
-        cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1610927353i/49247043.jpg",
+        cover: "assets/books/this-is-how-they-tell-me.jpg",
         rating: 5,
         favorite: true,
         link: "https://www.goodreads.com/book/show/49247043-this-is-how-they-tell-me-the-world-ends",
@@ -23,7 +23,7 @@ const mediaLibrary = [
     {
         title: "La Horde du Contre-Vent",
         author: "Alain Damasio",
-        cover: "https://m.media-amazon.com/images/I/81xxBCSH9eL._AC_UF1000,1000_QL80_.jpg",
+        cover: "assets/books/la-horde-du-contrevent.jpg",
         rating: 5,
         favorite: true,
         link: "https://www.goodreads.com/book/show/1397743.La_Horde_du_Contrevent",
@@ -33,7 +33,7 @@ const mediaLibrary = [
     {
         title: "Walden",
         author: "Henry David Thoreau",
-        cover: "https://m.media-amazon.com/images/I/41Wl3lTr+uL._AC_UF1000,1000_QL80_.jpg",
+        cover: "assets/books/walden.jpg",
         rating: 4,
         link: "https://www.goodreads.com/book/show/16902.Walden",
         readDate: "2024-03-20",
@@ -42,7 +42,7 @@ const mediaLibrary = [
     {
         title: "Fondation",
         author: "Isaac Asimov",
-        cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1171839380i/122363.jpg",
+        cover: "assets/books/fondation.jpg",
         rating: 3,
         link: "https://www.goodreads.com/book/show/122363.Fondation",
         readDate: "2024-07-20",
@@ -51,17 +51,18 @@ const mediaLibrary = [
     {
         title: "Ravage",
         author: "René Barjavel",
-        cover: "https://m.media-amazon.com/images/I/81--VV+ZXrL.jpg",
+        cover: "assets/books/ravage.jpg",
         rating: 4,
-        link: "https://www.goodreads.com/book/show/106751.Ravage?ref=nav_sb_ss_1_21",
+        link: "https://www.goodreads.com/book/show/106751.Ravage",
         readDate: "2024-09-20",
         kind: "book"
     },
     {
         title: "Le Combat Ordinaire",
         author: "Manu Larcenet",
-        cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1338190149i/9335032.jpg",
+        cover: "assets/books/le-combat-ordinaire.jpg",
         rating: 5,
+        favorite: true,
         link: "https://www.goodreads.com/book/show/9335032-le-combat-ordinaire",
         readDate: "2024-10-20",
         kind: "book"
@@ -69,7 +70,7 @@ const mediaLibrary = [
     {
         title: "2001: L'Odyssée de l'espace",
         author: "Arthur C. Clarke",
-        cover: "https://static.fnac-static.com/multimedia/Images/FR/NR/56/5c/d4/13917270/1507-1/tsp20221111071950/2001-L-Odyee-de-l-espace.jpg",
+        cover: "assets/books/2001-l-odysee-de-l-espace.jpg",
         rating: 5,
         link: "https://www.goodreads.com/book/show/1453765.2001",
         readDate: "2024-11-20",
@@ -79,8 +80,8 @@ const mediaLibrary = [
     // MOVIES \\
     {
         title: "Million Dollar Baby",
-        author: "Client Eastwood",
-        cover: "https://a.ltrbxd.com/resized/film-poster/5/1/9/7/9/51979-million-dollar-baby-0-1000-0-1500-crop.jpg?v=0003198e90",
+        author: "Clint Eastwood",
+        cover: "assets/movies/million-dollar-baby.jpg",
         rating: 5,
         favorite: true,
         link: "http://www.imdb.com/title/tt0405159/",
@@ -90,7 +91,7 @@ const mediaLibrary = [
     {
         title: "Gone Baby Gone",
         author: "Ben Affleck",
-        cover: "https://a.ltrbxd.com/resized/sm/upload/xm/5m/yt/zm/zE200jBb0VmFhyNGH7uL2vB6vYd-0-1000-0-1500-crop.jpg?v=9824ab0f36",
+        cover: "assets/movies/gone-baby-gone.jpg",
         rating: 5,
         link: "http://www.imdb.com/title/tt0452623/",
         readDate: "2024-01-17",
@@ -99,7 +100,7 @@ const mediaLibrary = [
     {
         title: "Bullet Train",
         author: "David Leitch",
-        cover: "https://a.ltrbxd.com/resized/film-poster/6/4/1/9/6/1/641961-bullet-train-0-1000-0-1500-crop.jpg?v=9245faa1ba",
+        cover: "assets/movies/bullet-train.jpg",
         rating: 4,
         link: "http://www.imdb.com/title/tt12593682/",
         readDate: "2024-01-19",
@@ -108,7 +109,7 @@ const mediaLibrary = [
     {
         title: "I Don't Feel at Home in This World Anymore",
         author: "Macon Blair",
-        cover: "https://a.ltrbxd.com/resized/sm/upload/yj/n6/fj/uz/ipgGuBqTxja4KiSwiBn3pMRvV2a-0-1000-0-1500-crop.jpg?v=2e71ff6d03",
+        cover: "assets/movies/i-dont-feel-at-home-anymore.jpg",
         rating: 3.5,
         link: "http://www.imdb.com/title/tt5710514/",
         readDate: "2024-01-23",
@@ -117,7 +118,7 @@ const mediaLibrary = [
     {
         title: "Army of One",
         author: "Larry Charles",
-        cover: "https://a.ltrbxd.com/resized/film-poster/2/6/5/7/4/8/265748-army-of-one-0-1000-0-1500-crop.jpg?v=e8282fdc31",
+        cover: "assets/movies/army-of-one.jpg",
         rating: 1.5,
         link: "http://www.imdb.com/title/tt4382824/",
         readDate: "2024-01-23",
@@ -126,7 +127,7 @@ const mediaLibrary = [
     {
         title: "Kill Bill: Vol. 1",
         author: "Quentin Tarantino",
-        cover: "https://a.ltrbxd.com/resized/sm/upload/sw/w2/ep/v4/9O50TVszkz0dcP5g6Ej33UhR7vw-0-1000-0-1500-crop.jpg?v=5a65f5202f",
+        cover: "assets/movies/kill-bill-vol-1.jpg",
         rating: 4.5,
         link: "http://www.imdb.com/title/tt0266697/",
         readDate: "2024-01-27",
@@ -135,7 +136,7 @@ const mediaLibrary = [
     {
         title: "Kill Bill: Vol. 2",
         author: "Quentin Tarantino",
-        cover: "https://a.ltrbxd.com/resized/sm/upload/ka/7q/dh/8m/bxbX4sHZHcy81dnNs4VAVs7HXDL-0-1000-0-1500-crop.jpg?v=52e9a07730",
+        cover: "assets/movies/kill-bill-vol-2.jpg",
         rating: 4,
         link: "http://www.imdb.com/title/tt0378194/",
         readDate: "2024-01-28",
@@ -144,7 +145,7 @@ const mediaLibrary = [
     {
         title: "Reservoir Dogs",
         author: "Quentin Tarantino",
-        cover: "https://a.ltrbxd.com/resized/sm/upload/u0/4o/op/yx/g7spS2Y4SZoQoC6Hn7zoqEqdYqR-0-1000-0-1500-crop.jpg?v=6d1aaa720c",
+        cover: "assets/movies/reservoir-dogs.jpg",
         rating: 4,
         link: "http://www.imdb.com/title/tt0105236/",
         readDate: "2024-01-28",
@@ -153,7 +154,7 @@ const mediaLibrary = [
     {
         title: "They Cloned Tyrone",
         author: "Juel Taylor",
-        cover: "https://a.ltrbxd.com/resized/film-poster/6/5/8/9/0/6/658906-they-cloned-tyrone-0-1000-0-1500-crop.jpg?v=afe533ab4e",
+        cover: "assets/movies/they-cloned-tyrone.jpg",
         rating: 4,
         link: "https://www.imdb.com/title/tt9873892/",
         readDate: "2024-02-12",
@@ -162,7 +163,7 @@ const mediaLibrary = [
     {
         title: "Longlegs",
         author: "Osgood Perkins",
-        cover: "https://a.ltrbxd.com/resized/film-poster/1/1/1/0/0/5/9/1110059-longlegs-0-1000-0-1500-crop.jpg?v=9d77241a8c",
+        cover: "assets/movies/longlegs.jpg",
         rating: 2,
         link: "http://www.imdb.com/title/tt23468450/",
         readDate: "2024-09-01",
@@ -171,7 +172,7 @@ const mediaLibrary = [
     {
         title: "Everything Everywhere All at Once",
         author: "Daniel Scheinert, Daniel Kwan",
-        cover: "https://a.ltrbxd.com/resized/film-poster/4/7/4/4/7/4/474474-everything-everywhere-all-at-once-0-1000-0-1500-crop.jpg?v=281f1a041e",
+        cover: "assets/movies/everything-everywhere-all-at-once.jpg",
         rating: 4,
         link: "http://www.imdb.com/title/tt6710474/",
         readDate: "2024-10-01",
@@ -180,7 +181,7 @@ const mediaLibrary = [
     {
         title: "John Wick",
         author: "Chad Stahelski",
-        cover: "https://a.ltrbxd.com/resized/film-poster/1/7/2/0/7/6/172076-john-wick-0-1000-0-1500-crop.jpg?v=e3c8c69b11",
+        cover: "assets/movies/john-wick.jpg",
         rating: 4.5,
         link: "http://www.imdb.com/title/tt2911666/",
         readDate: "2024-11-01",
@@ -191,7 +192,7 @@ const mediaLibrary = [
     {
         title: "Severance (S1)",
         author: "Dan Erickson",
-        cover: "https://m.media-amazon.com/images/I/61Ff6obgKYL._AC_UF894,1000_QL80_.jpg",
+        cover: "assets/series/severance.jpg",
         rating: 4.5,
         link: "https://www.themoviedb.org/tv/95396-severance",
         readDate: "2024-01-01",
@@ -200,7 +201,7 @@ const mediaLibrary = [
     {
         title: "Fiasco (S1)",
         author: "Igor Gotesman",
-        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mxzF3PMICswCoPxHmkQVYV7XRkU.jpg",
+        cover: "assets/series/fiasco.jpg",
         rating: 4,
         link: "https://www.themoviedb.org/tv/221120-fiasco",
         readDate: "2024-04-30",
@@ -209,7 +210,7 @@ const mediaLibrary = [
     {
         title: "The Bear (S1-3)",
         author: "Christopher Storer",
-        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3MVHF64rlvH1eofKefIoazXwOK0.jpg",
+        cover: "assets/series/the-bear.jpg",
         rating: 4,
         link: "https://www.themoviedb.org/tv/136315-the-bear",
         readDate: "2024-06-01",
@@ -218,7 +219,7 @@ const mediaLibrary = [
     {
         title: "Slow Horses (S1-2)",
         author: "James Hawew, Jeremy Lovering",
-        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dnpatlJrEPiDSn5fzgzvxtiSnMo.jpg",
+        cover: "assets/series/slow-horses.jpg",
         rating: 4,
         link: "https://www.themoviedb.org/tv/95480-slow-horses",
         readDate: "2024-11-01",
@@ -227,7 +228,7 @@ const mediaLibrary = [
     {
         title: "Kaos (S1)",
         author: "Charlie Covell",
-        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dDBTUSl3tRsOeKC1jZugBSFHy9I.jpg",
+        cover: "assets/series/kaos.jpg",
         rating: 3.5,
         link: "https://www.themoviedb.org/tv/102621-kaos",
         readDate: "2024-11-01",
@@ -236,7 +237,7 @@ const mediaLibrary = [
     {
         title: "Family Business (S1-3)",
         author: "Igor Gotesman",
-        cover: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xj8rrY53f5RtrhoI2Zliz3DPU31.jpg",
+        cover: "assets/series/family-business.jpg",
         rating: 3.5,
         link: "https://www.themoviedb.org/tv/89785-family-business",
         readDate: "2024-12-01",
@@ -245,49 +246,49 @@ const mediaLibrary = [
     // PODCASTS \\
     {
         title: "Floodcast",
-        cover: "https://media.senscritique.com/media/000018585245/source_big/Flood_Cast.jpg",
+        cover: "assets/podcasts/floodcast.jpg",
         rating: 5,
         link: "https://podcasts.apple.com/us/podcast/floodcast/id1019768302",
         kind: "podcast"
     },
     {
         title: "16 Sunsets",
-        cover: "https://sixteensunsets.com/wp-content/uploads/2024/10/poster.jpg",
+        cover: "assets/podcasts/16-sunsets.jpg",
         rating: 4,
         link: "https://sixteensunsets.com/show/",
         kind: "podcast"
     },
     {
         title: "Course épique",
-        cover: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/89/93/ba/8993babe-6358-ae9e-6c81-f4bb064fdcf8/mza_7477917858366455406.jpg/1200x1200bf-60.jpg",
+        cover: "assets/podcasts/course-epique.jpg",
         rating: 4,
         link: "https://courseepique.fr/",
         kind: "podcast"
     },
     {
         title: "Darknet Diaries",
-        cover: "https://i.scdn.co/image/ab6765630000ba8ad27c58dc12f1c25fb933dd86",
+        cover: "assets/podcasts/darknet-diaries.jpeg",
         rating: 4.5,
         link: "https://darknetdiaries.com/",
         kind: "podcast"
     },
     {
         title: "Affaires sensibles",
-        cover: "https://www.radiofrance.fr/s3/cruiser-production/2023/04/7b50cf5f-f5bd-4dc4-8b1d-b08666768dcf/400x400_sc_affaires-sensibles.webp",
+        cover: "assets/podcasts/affaires-sensibles.webp",
         rating: 4,
         link: "https://www.radiofrance.fr/franceinter/podcasts/affaires-sensibles",
         kind: "podcast"
     },
     {
         title: "Le code a changé",
-        cover: "https://www.radiofrance.fr/s3/cruiser-production/2021/04/60fa03fe-453a-4c2b-aaf0-07ceaf5e16c3/400x400_fi_carre_le-code-a-change.webp",
+        cover: "assets/podcasts/le-code-a-change.webp",
         rating: 4,
         link: "https://www.radiofrance.fr/franceinter/podcasts/le-code-a-change",
         kind: "podcast"
     },
     {
         title: "Click Here",
-        cover: "https://cms.therecord.media/uploads/Click_Here_x_PRX_bfd8609b6a.png",
+        cover: "assets/podcasts/click-here.png",
         rating: 3.5,
         link: "https://therecord.media/podcast",
         kind: "podcast"

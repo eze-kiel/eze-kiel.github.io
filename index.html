@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culture Club | syscall.cafe ⎇</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E⎇%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E⎇%3C/text%3E%3C/svg%3E">
 
     <style>
         * {
@@ -248,11 +249,14 @@
 <body>
     <header>
         <h1>Stuff I've watched or read</h1>
-        <p class="back"><a href="https://syscall.cafe" style="text-decoration: none; color: cornflowerblue;">< back to main website</a></p>
+        <p class="back"><a href="https://syscall.cafe" style="text-decoration: none; color: cornflowerblue;">
+                < back to main website</a>
+        </p>
         <div class="tabs">
             <button class="tab active" data-tab="books">📚 Books</button>
             <button class="tab" data-tab="movies">📽 Movies</button>
             <button class="tab" data-tab="series">🎞 Series</button>
+            <button class="tab" data-tab="podcasts">🎧 Podcasts</button>
         </div>
     </header>
 
@@ -260,6 +264,7 @@
         <section id="books-section" class="content-section active"></section>
         <section id="movies-section" class="content-section"></section>
         <section id="series-section" class="content-section"></section>
+        <section id="podcasts-section" class="content-section"></section>
     </main>
 
     <script src="media-data.js"></script>
@@ -270,8 +275,10 @@
                 case 'book':
                     return 'Read';
                 case 'movie':
-                case 'serie':
+                case 'series':
                     return 'Watched';
+                case 'podcast':
+                    return 'Listened';
                 default:
                     return 'Consumed';
             }
@@ -338,8 +345,42 @@
             return groupedMedia;
         }
 
+        function generatePodcastSection() {
+            const container = document.getElementById('podcasts-section');
+            container.innerHTML = '';
+
+            const podcasts = mediaLibrary
+                .filter(item => item.kind === 'podcast')
+                .sort((a, b) => a.title.localeCompare(b.title));;
+
+            container.innerHTML = `
+            <div class="media-grid">
+                ${podcasts.map(item => `
+                    <div class="media-card">
+                        <a href="${item.link}" target="_blank">
+                            <img src="${item.cover}" alt="${item.title}" class="media-cover">
+                        </a>
+                        <div class="media-info">
+                            <div class="media-title">${item.title}</div>
+                            <div class="media-rating">
+                                ${createStarRating(item.rating, item.favorite)}
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        }
+
         // Function to generate media grid (mise à jour)
         function generateMediaSection(mediaType) {
+            // Special handling for podcasts
+            if (mediaType === 'podcasts') {
+                generatePodcastSection();
+                return;
+            }
+
+            // Existing logic for other media types
             const container = document.getElementById(`${mediaType}-section`);
             container.innerHTML = '';
 
@@ -364,7 +405,7 @@
                             <div class="media-info">
                                 <div class="media-title">${item.title}</div>
                                 <div class="media-author">${item.author}</div>
-                                <div class="rating-container">
+                                <div class="media-rating">
                                     ${createStarRating(item.rating, item.favorite)}
                                 </div>
                                 <div class="media-date">${getActionVerb(item.kind)} on ${formatDate(item.readDate)}</div>
@@ -403,6 +444,7 @@
             generateMediaSection('books');
             generateMediaSection('movies');
             generateMediaSection('series');
+            generateMediaSection('podcasts');
         });
     </script>
 </body>

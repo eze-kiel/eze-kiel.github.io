@@ -242,4 +242,54 @@ const mediaLibrary = [
         readDate: "2024-12-01",
         kind: "serie"
     },
+    // PODCASTS \\
+    {
+        title: "Floodcast",
+        cover: "https://media.senscritique.com/media/000018585245/source_big/Flood_Cast.jpg",
+        rating: 5,
+        link: "https://podcasts.apple.com/us/podcast/floodcast/id1019768302",
+        kind: "podcast"
+    },
+    {
+        title: "16 Sunsets",
+        cover: "https://sixteensunsets.com/wp-content/uploads/2024/10/poster.jpg",
+        rating: 4,
+        link: "https://sixteensunsets.com/show/",
+        kind: "podcast"
+    },
+    {
+        title: "Course épique",
+        cover: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/89/93/ba/8993babe-6358-ae9e-6c81-f4bb064fdcf8/mza_7477917858366455406.jpg/1200x1200bf-60.jpg",
+        rating: 4,
+        link: "https://courseepique.fr/",
+        kind: "podcast"
+    },
+    {
+        title: "Darknet Diaries",
+        cover: "https://i.scdn.co/image/ab6765630000ba8ad27c58dc12f1c25fb933dd86",
+        rating: 4.5,
+        link: "https://darknetdiaries.com/",
+        kind: "podcast"
+    },
+    {
+        title: "Affaires sensibles",
+        cover: "https://www.radiofrance.fr/s3/cruiser-production/2023/04/7b50cf5f-f5bd-4dc4-8b1d-b08666768dcf/400x400_sc_affaires-sensibles.webp",
+        rating: 4,
+        link: "https://www.radiofrance.fr/franceinter/podcasts/affaires-sensibles",
+        kind: "podcast"
+    },
+    {
+        title: "Le code a changé",
+        cover: "https://www.radiofrance.fr/s3/cruiser-production/2021/04/60fa03fe-453a-4c2b-aaf0-07ceaf5e16c3/400x400_fi_carre_le-code-a-change.webp",
+        rating: 4,
+        link: "https://www.radiofrance.fr/franceinter/podcasts/le-code-a-change",
+        kind: "podcast"
+    },
+    {
+        title: "Click Here",
+        cover: "https://cms.therecord.media/uploads/Click_Here_x_PRX_bfd8609b6a.png",
+        rating: 3.5,
+        link: "https://therecord.media/podcast",
+        kind: "podcast"
+    },
 ];

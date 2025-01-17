@@ -8,7 +8,7 @@ on:
         required: true
       author:
         description: 'Author/Director'
-        required: true
+        required: false
       cover:
         description: 'Cover image URL'
         required: true
@@ -36,7 +36,7 @@ on:
         required: false
       readDate:
         description: 'Completion date (YYYY-MM-DD)'
-        required: true
+        required: false
       kind:
         description: 'Type of media'
         required: true
@@ -45,6 +45,7 @@ on:
           - book
           - movie
           - serie
+          - podcast
 
 jobs:
   add-entry:

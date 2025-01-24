@@ -298,7 +298,7 @@ const mediaLibrary = [
     {
         title: "Click Here",
         cover: "assets/podcasts/click-here.png",
-        rating: 3.5,
+        rating: 3,
         link: "https://therecord.media/podcast",
         kind: "podcast"
     },

@@ -187,6 +187,15 @@ const mediaLibrary = [
         readDate: "2024-11-01",
         kind: "movie"
     },
+    {
+        title: "Civil War",
+        author: "Alex Garland",
+        cover: "assets/movies/civil-war.jpg",
+        rating: 4.5,
+        link: "https://www.themoviedb.org/movie/929590-civil-war",
+        readDate: "2025-01-24",
+        kind: "movie"
+    },
 
     // SERIES \\
     {

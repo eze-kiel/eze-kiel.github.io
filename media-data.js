@@ -196,6 +196,15 @@ const mediaLibrary = [
         readDate: "2025-01-24",
         kind: "movie"
     },
+    {
+        title: "En attendant les robots",
+        author: "Natan Castay",
+        cover: "assets/movies/en-attendant-les-robots.jpg",
+        rating: 3,
+        link: "https://www.themoviedb.org/movie/1108417-en-attendant-les-robots",
+        readDate: "2025-01-24",
+        kind: "movie"
+    },
 
     // SERIES \\
     {

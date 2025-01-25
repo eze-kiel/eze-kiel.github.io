@@ -205,6 +205,15 @@ const mediaLibrary = [
         readDate: "2025-01-24",
         kind: "movie"
     },
+    {
+        title: "Parasite",
+        author: "Bong Joon-ho",
+        cover: "assets/movies/parasite.jpg",
+        rating: 4,
+        link: "https://www.themoviedb.org/movie/496243",
+        readDate: "2025-01-25",
+        kind: "movie"
+    },
 
     // SERIES \\
     {

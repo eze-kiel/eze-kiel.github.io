@@ -2,7 +2,7 @@ const mediaLibrary = [
     {
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
-        cover: 'https://www.themoviedb.org/t/p/w1280/haqfplSRnIwO8ha5tKOxwnG1sxP.jpg',
+        cover: 'https://www.themoviedb.org/t/p/w1280/xW5VofPowwcWcRcJtXGHm4xUh19.jpg',
         rating: 2.5,
         favorite: false,
         readDate: '2025-01-26',

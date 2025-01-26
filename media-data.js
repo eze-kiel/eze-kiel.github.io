@@ -1,5 +1,15 @@
 const mediaLibrary = [
     {
+        title: 'Pas de vagues',
+        author: 'Teddy Lussi-Modeste',
+        cover: 'https://www.themoviedb.org/t/p/w1280/haqfplSRnIwO8ha5tKOxwnG1sxP.jpg',
+        rating: 2.5,
+        favorite: false,
+        readDate: '2025-01-26',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/1000862-pas-de-vagues'
+},
+    {
         title: 'Lost (S1-2)',
         author: 'J. J. Abrams',
         cover: 'assets/series/lost.jpg',

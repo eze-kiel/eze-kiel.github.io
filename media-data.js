@@ -2,7 +2,7 @@ const mediaLibrary = [
     {
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
-        cover: 'https://www.themoviedb.org/t/p/w1280/xW5VofPowwcWcRcJtXGHm4xUh19.jpg',
+        cover: 'assets/movies/pas-de-vagues.jpg',
         rating: 2.5,
         favorite: false,
         readDate: '2025-01-26',
@@ -13,7 +13,7 @@ const mediaLibrary = [
         title: 'I Believe I Can Fly',
         author: 'Sébastien Montaz-Rosset',
         cover: 'assets/movies/i-believe-i-can-fly.jpg',
-        rating: 3,
+        rating: 3.5,
         favorite: false,
         readDate: '2025-01-28',
         kind: 'movie',

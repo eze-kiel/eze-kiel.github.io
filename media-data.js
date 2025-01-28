@@ -3,12 +3,22 @@ const mediaLibrary = [
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
         cover: 'https://www.themoviedb.org/t/p/w1280/xW5VofPowwcWcRcJtXGHm4xUh19.jpg',
-        rating: 3,
+        rating: 2.5,
         favorite: false,
         readDate: '2025-01-26',
         kind: 'movie',
         link: 'https://www.themoviedb.org/movie/1000862-pas-de-vagues'
-},
+    },
+    {
+        title: 'I Believe I Can Fly',
+        author: 'Sébastien Montaz-Rosset',
+        cover: 'assets/movies/i-believe-i-can-fly.jpg',
+        rating: 3,
+        favorite: false,
+        readDate: '2025-01-28',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/79965-i-believe-i-can-fly'
+    },
     {
         title: 'Lost (S1-2)',
         author: 'J. J. Abrams',

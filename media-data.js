@@ -13,7 +13,7 @@ const mediaLibrary = [
         title: 'I Believe I Can Fly',
         author: 'Sébastien Montaz-Rosset',
         cover: 'assets/movies/i-believe-i-can-fly.jpg',
-        rating: 3.5,
+        rating: 3,
         favorite: false,
         readDate: '2025-01-28',
         kind: 'movie',

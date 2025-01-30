@@ -96,7 +96,17 @@ const mediaLibrary = [
         readDate: "2024-11-20",
         kind: "book"
     },
-    
+    {
+        title: "Menaces sur le réseau",
+        author: "Michal Zalewski",
+        cover: "assets/books/menaces-sur-le-reseau.jpg",
+        rating: 4.5,
+        favorite: true,
+        link: "https://www.goodreads.com/book/show/12652707-menaces-sur-le-r-seau",
+        readDate: "2025-01-30",
+        kind: "book"
+    },
+
     // MOVIES \\
     {
         title: "Million Dollar Baby",

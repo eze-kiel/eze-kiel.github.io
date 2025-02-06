@@ -8,7 +8,7 @@ const mediaLibrary = [
         readDate: '2025-02-05',
         kind: 'book',
         link: 'https://www.goodreads.com/book/show/865069'
-},
+    },
     {
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
@@ -38,7 +38,7 @@ const mediaLibrary = [
         readDate: '2024-09-01',
         kind: 'serie',
         link: 'https://www.themoviedb.org/tv/4607-lost'
-},
+    },
     // BOOKS \\
     {
         title: "This Is How They Tell Me the World Ends",
@@ -115,6 +115,16 @@ const mediaLibrary = [
         link: "https://www.goodreads.com/book/show/12652707-menaces-sur-le-r-seau",
         readDate: "2025-01-30",
         kind: "book"
+    },
+    {
+        title: 'Du côté de chez Swann',
+        author: 'Marcel Proust ',
+        cover: 'https://m.media-amazon.com/images/I/81znE5REkUL._AC_UF1000,1000_QL80_.jpg',
+        rating: 2,
+        favorite: false,
+        readDate: '2025-02-05',
+        kind: 'book',
+        link: 'https://www.goodreads.com/book/show/865069'
     },
 
     // MOVIES \\
@@ -252,6 +262,15 @@ const mediaLibrary = [
         rating: 4,
         link: "https://www.themoviedb.org/movie/496243",
         readDate: "2025-01-25",
+        kind: "movie"
+    },
+    {
+        title: "Opération Lune",
+        author: "William Karel",
+        cover: "assets/movies/operation-lune.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/movie/2740-operation-lune",
+        readDate: "2025-02-05",
         kind: "movie"
     },
 

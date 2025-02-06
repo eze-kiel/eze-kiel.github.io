@@ -1,15 +1,5 @@
 const mediaLibrary = [
     {
-        title: 'Du côté de chez Swann',
-        author: 'Marcel Proust ',
-        cover: 'https://m.media-amazon.com/images/I/81znE5REkUL._AC_UF1000,1000_QL80_.jpg',
-        rating: 2,
-        favorite: false,
-        readDate: '2025-02-05',
-        kind: 'book',
-        link: 'https://www.goodreads.com/book/show/865069'
-    },
-    {
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
         cover: 'assets/movies/pas-de-vagues.jpg',
@@ -119,7 +109,7 @@ const mediaLibrary = [
     {
         title: 'Du côté de chez Swann',
         author: 'Marcel Proust ',
-        cover: 'https://m.media-amazon.com/images/I/81znE5REkUL._AC_UF1000,1000_QL80_.jpg',
+        cover: 'assets/books/du-cote-de-chez-swann.jpg',
         rating: 2,
         favorite: false,
         readDate: '2025-02-05',

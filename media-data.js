@@ -264,6 +264,16 @@ const mediaLibrary = [
         kind: "movie"
     },
 
+    {
+        title: "The Covenant",
+        author: "Guy Ritchie",
+        cover: "assets/movies/the-covenant.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/movie/882569-guy-ritchie-s-the-covenant",
+        readDate: "2025-02-06",
+        kind: "movie"
+    },
+
     // SERIES \\
     {
         title: "Severance (S1)",

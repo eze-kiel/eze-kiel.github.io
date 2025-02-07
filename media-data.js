@@ -3,7 +3,7 @@ const mediaLibrary = [
         title: 'Le Clan',
         author: 'Éric Fraticelli',
         cover: 'https://www.themoviedb.org/t/p/w1280/mGrK0abxaghXBIyLosmBscD9Wb7.jpg',
-        rating: 2.5,
+        rating: 2,
         favorite: false,
         readDate: '2025-02-07',
         kind: 'movie',

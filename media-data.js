@@ -1,5 +1,15 @@
 const mediaLibrary = [
     {
+        title: 'Le Clan',
+        author: 'Éric Fraticelli',
+        cover: 'https://www.themoviedb.org/t/p/w1280/mGrK0abxaghXBIyLosmBscD9Wb7.jpg',
+        rating: 2.5,
+        favorite: false,
+        readDate: '2025-02-07',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/1000094-le-clan'
+},
+    {
         title: 'Pas de vagues',
         author: 'Teddy Lussi-Modeste',
         cover: 'assets/movies/pas-de-vagues.jpg',

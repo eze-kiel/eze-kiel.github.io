@@ -393,7 +393,7 @@ const mediaLibrary = [
     {
         title: "Les Pieds sur Terre",
         cover: "assets/podcasts/les-pieds-sur-terre.webp",
-        rating: 4,
+        rating: 4.5,
         link: "https://www.radiofrance.fr/franceculture/podcasts/les-pieds-sur-terre",
         kind: "podcast"
     },

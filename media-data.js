@@ -274,7 +274,6 @@ const mediaLibrary = [
         readDate: "2025-02-05",
         kind: "movie"
     },
-
     {
         title: "The Covenant",
         author: "Guy Ritchie",
@@ -284,7 +283,16 @@ const mediaLibrary = [
         readDate: "2025-02-06",
         kind: "movie"
     },
-
+    {
+        title: "Night and Day",
+        author: "James Mangold",
+        cover: "assets/movies/knight-and-day.jpg",
+        rating: 4,
+        link: "https://www.themoviedb.org/movie/37834-knight-and-day",
+        readDate: "2025-02-09",
+        kind: "movie"
+    },
+    // END MOVIES //
     // SERIES \\
     {
         title: "Severance (S1)",

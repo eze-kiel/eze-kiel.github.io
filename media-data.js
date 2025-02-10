@@ -1,35 +1,5 @@
 const mediaLibrary = [
     {
-        title: 'Le Clan',
-        author: 'Éric Fraticelli',
-        cover: 'https://www.themoviedb.org/t/p/w1280/mGrK0abxaghXBIyLosmBscD9Wb7.jpg',
-        rating: 2,
-        favorite: false,
-        readDate: '2025-02-07',
-        kind: 'movie',
-        link: 'https://www.themoviedb.org/movie/1000094-le-clan'
-},
-    {
-        title: 'Pas de vagues',
-        author: 'Teddy Lussi-Modeste',
-        cover: 'assets/movies/pas-de-vagues.jpg',
-        rating: 2.5,
-        favorite: false,
-        readDate: '2025-01-26',
-        kind: 'movie',
-        link: 'https://www.themoviedb.org/movie/1000862-pas-de-vagues'
-    },
-    {
-        title: 'I Believe I Can Fly',
-        author: 'Sébastien Montaz-Rosset',
-        cover: 'assets/movies/i-believe-i-can-fly.jpg',
-        rating: 3,
-        favorite: false,
-        readDate: '2025-01-28',
-        kind: 'movie',
-        link: 'https://www.themoviedb.org/movie/79965-i-believe-i-can-fly'
-    },
-    {
         title: 'Lost (S1-2)',
         author: 'J. J. Abrams',
         cover: 'assets/series/lost.jpg',
@@ -282,6 +252,36 @@ const mediaLibrary = [
         link: "https://www.themoviedb.org/movie/882569-guy-ritchie-s-the-covenant",
         readDate: "2025-02-06",
         kind: "movie"
+    },
+    {
+        title: 'Le Clan',
+        author: 'Éric Fraticelli',
+        cover: "assets/movies/le-clan.jpg",
+        rating: 2,
+        favorite: false,
+        readDate: '2025-02-07',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/1000094-le-clan'
+    },
+    {
+        title: 'Pas de vagues',
+        author: 'Teddy Lussi-Modeste',
+        cover: 'assets/movies/pas-de-vagues.jpg',
+        rating: 2.5,
+        favorite: false,
+        readDate: '2025-01-26',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/1000862-pas-de-vagues'
+    },
+    {
+        title: 'I Believe I Can Fly',
+        author: 'Sébastien Montaz-Rosset',
+        cover: 'assets/movies/i-believe-i-can-fly.jpg',
+        rating: 3,
+        favorite: false,
+        readDate: '2025-01-28',
+        kind: 'movie',
+        link: 'https://www.themoviedb.org/movie/79965-i-believe-i-can-fly'
     },
     {
         title: "Night and Day",

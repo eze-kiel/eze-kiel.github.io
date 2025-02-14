@@ -292,6 +292,15 @@ const mediaLibrary = [
         readDate: "2025-02-09",
         kind: "movie"
     },
+    {
+        title: "Pacing The Pacific",
+        author: "Caleb Hawkins",
+        cover: "assets/movies/pacing-the-pacific.jpg",
+        rating: 4.5,
+        link: "https://www.themoviedb.org/movie/1264373-pacing-the-pacific",
+        readDate: "2025-02-14",
+        kind: "movie"
+    },
     // END MOVIES //
     // SERIES \\
     {

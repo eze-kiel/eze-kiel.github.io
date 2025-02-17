@@ -369,7 +369,7 @@ const mediaLibrary = [
     {
         title: "Bref (S1-2)",
         author: "Kyan Khojandi, Bruno Muschio",
-        cover: "assets/movies/bref.jpg",
+        cover: "assets/series/bref.jpg",
         rating: 4.5,
         link: "https://www.themoviedb.org/tv/60715-bref",
         readDate: "2025-02-16",

@@ -373,7 +373,7 @@ const mediaLibrary = [
         rating: 4.5,
         link: "https://www.themoviedb.org/tv/60715-bref",
         readDate: "2025-02-16",
-        kind: "setie"
+        kind: "serie"
     },
     // PODCASTS \\
     {

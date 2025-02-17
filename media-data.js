@@ -301,6 +301,15 @@ const mediaLibrary = [
         readDate: "2025-02-14",
         kind: "movie"
     },
+    {
+        title: "Solace",
+        author: "Tom Gibbons",
+        cover: "assets/movies/solace.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/movie/912106-solace",
+        readDate: "2025-02-15",
+        kind: "movie"
+    },
     // END MOVIES //
     // SERIES \\
     {
@@ -356,6 +365,15 @@ const mediaLibrary = [
         link: "https://www.themoviedb.org/tv/89785-family-business",
         readDate: "2024-12-01",
         kind: "serie"
+    },
+    {
+        title: "Bref (S1-2)",
+        author: "Kyan Khojandi, Bruno Muschio",
+        cover: "assets/movies/bref.jpg",
+        rating: 4.5,
+        link: "https://www.themoviedb.org/tv/60715-bref",
+        readDate: "2025-02-16",
+        kind: "setie"
     },
     // PODCASTS \\
     {

@@ -310,6 +310,15 @@ const mediaLibrary = [
         readDate: "2025-02-15",
         kind: "movie"
     },
+    {
+        title: "Into the (Un)knowm",
+        author: "Nick Danielsen",
+        cover: "assets/movies/into-the-un-known.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/movie/1371501-into-the-un-known",
+        readDate: "2025-02-20",
+        kind: "movie"
+    },
     // END MOVIES //
     // SERIES \\
     {

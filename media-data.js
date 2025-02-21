@@ -311,12 +311,21 @@ const mediaLibrary = [
         kind: "movie"
     },
     {
-        title: "Into the (Un)knowm",
+        title: "Into the (Un)known",
         author: "Nick Danielsen",
         cover: "assets/movies/into-the-un-known.jpg",
         rating: 3.5,
         link: "https://www.themoviedb.org/movie/1371501-into-the-un-known",
         readDate: "2025-02-20",
+        kind: "movie"
+    },
+    {
+        title: "O'Brother",
+        author: "Ethan and Joe Cohen",
+        cover: "assets/movies/o-brother.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/movie/134-o-brother-where-art-thou",
+        readDate: "2025-02-21",
         kind: "movie"
     },
     // END MOVIES //

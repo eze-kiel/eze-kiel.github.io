@@ -88,7 +88,7 @@ const mediaLibrary = [
     },
     {
         title: 'Du côté de chez Swann',
-        author: 'Marcel Proust ',
+        author: 'Marcel Proust',
         cover: 'assets/books/du-cote-de-chez-swann.jpg',
         rating: 2,
         favorite: false,
@@ -96,7 +96,16 @@ const mediaLibrary = [
         kind: 'book',
         link: 'https://www.goodreads.com/book/show/865069'
     },
-
+    {
+        title: 'De la guerre comme politique étrangère des États-Unis',
+        author: 'Noam Chomsky',
+        cover: 'assets/books/de-la-guerre-comme-politique.jpg',
+        rating: 4,
+        favorite: false,
+        readDate: '2025-03-04',
+        kind: 'book',
+        link: 'https://www.goodreads.com/book/show/2416260.De_la_guerre_comme_politique_trang_re_des_Etats_Unis'
+    },
     // MOVIES \\
     {
         title: "Million Dollar Baby",
@@ -328,6 +337,15 @@ const mediaLibrary = [
         readDate: "2025-02-21",
         kind: "movie"
     },
+    // {
+    //     title: "A Serious Man",
+    //     author: "Ethan and Joe Cohen",
+    //     cover: "assets/movies/a-serious-man.jpg",
+    //     rating: 1,
+    //     link: "https://www.themoviedb.org/movie/12573-a-serious-man",
+    //     readDate: "2025-02-25",
+    //     kind: "movie"
+    // },
     // END MOVIES //
     // SERIES \\
     {

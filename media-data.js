@@ -101,7 +101,7 @@ const mediaLibrary = [
         author: 'Noam Chomsky',
         cover: 'assets/books/de-la-guerre-comme-politique.jpg',
         rating: 4,
-        favorite: false,
+        favorite: true,
         readDate: '2025-03-04',
         kind: 'book',
         link: 'https://www.goodreads.com/book/show/2416260.De_la_guerre_comme_politique_trang_re_des_Etats_Unis'

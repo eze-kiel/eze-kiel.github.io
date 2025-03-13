@@ -337,15 +337,15 @@ const mediaLibrary = [
         readDate: "2025-02-21",
         kind: "movie"
     },
-    // {
-    //     title: "A Serious Man",
-    //     author: "Ethan and Joe Cohen",
-    //     cover: "assets/movies/a-serious-man.jpg",
-    //     rating: 1,
-    //     link: "https://www.themoviedb.org/movie/12573-a-serious-man",
-    //     readDate: "2025-02-25",
-    //     kind: "movie"
-    // },
+    {
+        title: "A Serious Man",
+        author: "Ethan and Joe Cohen",
+        cover: "assets/movies/a-serious-man.jpg",
+        rating: 3,
+        link: "https://www.themoviedb.org/movie/12573-a-serious-man",
+        readDate: "2025-03-13",
+        kind: "movie"
+    },
     // END MOVIES //
     // SERIES \\
     {

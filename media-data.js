@@ -346,6 +346,16 @@ const mediaLibrary = [
         readDate: "2025-03-13",
         kind: "movie"
     },
+    {
+        title: "Snatch",
+        author: "Guy Ritchie",
+        cover: "assets/movies/snatch.jpg",
+        rating: 5,
+        favorite: true,
+        link: "https://www.themoviedb.org/movie/107-snatch",
+        readDate: "2025-03-13",
+        kind: "movie"
+    },
     // END MOVIES //
     // SERIES \\
     {

@@ -356,7 +356,17 @@ const mediaLibrary = [
         readDate: "2025-03-13",
         kind: "movie"
     },
-    // END MOVIES //
+    {
+        title: "Les Chèvres du Pentagone",
+        author: "Grant Heslov",
+        cover: "assets/movies/les-chevres-du-pentagone.jpg",
+        rating: 3,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/10313-the-men-who-stare-at-goats",
+        readDate: "2025-03-16",
+        kind: "movie"
+    },
+    // END OF MOVIES //
     // SERIES \\
     {
         title: "Severance (S1)",
@@ -421,6 +431,17 @@ const mediaLibrary = [
         readDate: "2025-02-16",
         kind: "serie"
     },
+    {
+        title: "Silicon fucking Valley",
+        author: "Pierre Schneidermann, Baptiste Giudicelli",
+        cover: "assets/series/silicon-fucking-valley.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/tv/277372-silicon-fucking-valley",
+        readDate: "2025-03-15",
+        kind: "serie"
+    },
+    // END OF SERIES \\
     // PODCASTS \\
     {
         title: "Floodcast",

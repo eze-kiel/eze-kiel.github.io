@@ -366,6 +366,16 @@ const mediaLibrary = [
         readDate: "2025-03-16",
         kind: "movie"
     },
+    {
+        title: "Her",
+        author: "Spike Jonze",
+        cover: "assets/movies/her.jpg",
+        rating: 3.5,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/152601-her",
+        readDate: "2025-03-19",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

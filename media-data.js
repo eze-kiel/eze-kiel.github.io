@@ -394,6 +394,16 @@ const mediaLibrary = [
         readDate: "2025-03-19",
         kind: "movie"
     },
+    {
+        title: "Lee Miller",
+        author: "Ellen Kuras",
+        cover: "assets/movies/her.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/832964-lee",
+        readDate: "2025-03-20",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +10,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
     </style>
-
-
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: "Alegreya", 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             font-weight: 400;
@@ -28,14 +24,12 @@
             padding: 40px 20px;
             line-height: 1.6;
         }
-
         header {
             text-align: left;
             max-width: 1400px;
             /* Increased from 1200px */
             margin: 0 auto 60px auto;
         }
-
         h1 {
             color: #1a1a1a;
             font-size: 2.4em;
@@ -44,18 +38,15 @@
             /* margin-bottom: 40px; */
             letter-spacing: -0.5px;
         }
-
         .back {
             margin-bottom: 40px;
         }
-
         .tabs {
             display: flex;
             gap: 20px;
             border-bottom: 1px solid #e1e1e1;
             padding-bottom: 15px;
         }
-
         .tab {
             font-family: "Alegreya", 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: none;
@@ -69,15 +60,12 @@
             position: relative;
             transition: color 0.2s ease;
         }
-
         .tab:hover {
             color: #1a1a1a;
         }
-
         .tab.active {
             color: #1a1a1a;
         }
-
         .tab.active::after {
             content: '';
             position: absolute;
@@ -87,22 +75,18 @@
             height: 2px;
             background-color: #1a1a1a;
         }
-
         .content-section {
             display: none;
             max-width: 1400px;
             /* Increased from 1200px */
             margin: 0 auto;
         }
-
         .content-section.active {
             display: block;
         }
-
         .year-section {
             margin-bottom: 60px;
         }
-
         .year-header {
             color: #1a1a1a;
             font-size: 1.5em;
@@ -111,7 +95,6 @@
             margin: 0 0 25px 0;
             letter-spacing: -0.3px;
         }
-
         .media-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -119,7 +102,6 @@
             gap: 25px;
             margin-bottom: 40px;
         }
-
         .media-card {
             background: white;
             border-radius: 4px;
@@ -127,12 +109,10 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
         }
-
         .media-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
         }
-
         .media-cover {
             width: 100%;
             height: 250px;
@@ -141,12 +121,10 @@
             cursor: pointer;
             display: block;
         }
-
         .media-info {
             padding: 15px;
             /* Increased from 12px */
         }
-
         .media-title {
             font-size: 1em;
             /* Increased from 0.9em */
@@ -155,7 +133,6 @@
             color: #1a1a1a;
             line-height: 1.4;
         }
-
         .media-author {
             font-size: 0.9em;
             /* Increased from 0.8em */
@@ -163,71 +140,59 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
-
         .media-rating {
             color: #ffd700;
             font-size: 0.9em;
             /* Increased from 0.8em */
             margin-bottom: 4px;
         }
-
         .media-date {
             font-size: 0.85em;
             /* Increased from 0.75em */
             color: #999;
             font-weight: 400;
         }
-
         @media (max-width: 600px) {
             body {
                 padding: 20px 15px;
                 font-family: "Alegreya", 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             }
-
             header {
                 margin-bottom: 40px;
             }
-
             h1 {
                 font-size: 2em;
                 /* Increased from 1.8em */
                 margin-bottom: 30px;
             }
-
             .tabs {
                 gap: 15px;
             }
-
             .media-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 /* Increased from 120px */
                 gap: 20px;
             }
-
             .media-cover {
                 height: 195px;
                 /* Increased from 165px */
             }
-
             .year-header {
                 font-size: 1.3em;
                 /* Increased from 1.2em */
                 margin-bottom: 20px;
             }
-
             .media-info {
                 padding: 12px;
                 /* Increased from 10px */
             }
         }
-
         .star {
             font-size: 1em;
             position: relative;
             width: 1em;
             display: inline-block;
         }
-
         .media-rating {
             color: #ffd700;
             font-size: 0.9em;
@@ -236,22 +201,59 @@
             align-items: center;
             gap: 4px;
         }
-
         .star {
             color: #ffd700;
         }
-
         .star.far {
             opacity: 0.9;
         }
-
         .favorite-heart {
             color: #ff4d6d;
             margin-left: 4px;
         }
+        /* CSS for repeat icon */
+        .repeat-icon {
+            color: #4CAF50; /* Green color */
+            margin-left: 4px;
+            font-size: 0.9em;
+        }
+        
+        /* Tooltip styling */
+        .icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 0.8em;
+            
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* Fade in */
+            opacity: 0;
+            transition: opacity 0.3s;
+            
+            /* Prevent wrapping */
+            white-space: nowrap;
+        }
+        
+        .icon-wrapper:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
-
 <body>
     <header>
         <h1>Culture Club ☕</h1>
@@ -266,14 +268,12 @@
             <button class="tab" data-tab="podcasts">🎧 Podcasts</button>
         </div>
     </header>
-
     <main>
         <section id="books-section" class="content-section active"></section>
         <section id="movies-section" class="content-section"></section>
         <section id="series-section" class="content-section"></section>
         <section id="podcasts-section" class="content-section"></section>
     </main>
-
     <script src="media-data.js"></script>
     <script>
         // Function to get the appropriate action verb based on media type
@@ -301,33 +301,55 @@
             return date.toLocaleDateString('en-US', options);
         }
 
-        // Fonction mise à jour pour gérer les demi-étoiles
-        function createStarRating(rating, isFavorite) {
+        // Updated function to handle half stars, reRead icon with tooltip
+        function createStarRating(rating, isFavorite, isReRead, mediaKind) {
             let stars = '';
             const fullStars = Math.floor(rating);
             const hasHalfStar = rating % 1 !== 0;
-
+            
             // Étoiles pleines
             for (let i = 1; i <= fullStars; i++) {
                 stars += '<i class="fas fa-star star"></i>';
             }
-
+            
             // Demi-étoile
             if (hasHalfStar) {
                 stars += '<i class="fas fa-star-half-alt star"></i>';
             }
-
+            
             // Étoiles vides restantes
             const emptyStars = 5 - Math.ceil(rating);
             for (let i = 1; i <= emptyStars; i++) {
                 stars += '<i class="far fa-star star"></i>';
             }
-
+            
             // Ajout du cœur pour les favoris
             if (isFavorite) {
-                stars += '<i class="fas fa-heart favorite-heart"></i>';
+                let tooltipText = 'Favorite';
+                // stars += '<i class="fas fa-heart favorite-heart"></i>';
+                stars += `<span class="icon-wrapper">
+                            <i class="fas fa-heart favorite-heart"></i>
+                            <span class="tooltip">${tooltipText}</span>
+                          </span>`;
             }
-
+            
+            // Ajout de l'icône de répétition pour les relectures/revisionnages avec tooltip
+            if (isReRead) {
+                let tooltipText = 'Re-consumed';
+                if (mediaKind === 'book') {
+                    tooltipText = 'Re-read';
+                } else if (mediaKind === 'movie' || mediaKind === 'serie') {
+                    tooltipText = 'Re-watched';
+                } else if (mediaKind === 'podcast') {
+                    tooltipText = 'Re-listened';
+                }
+                
+                stars += `<span class="icon-wrapper">
+                            <i class="fas fa-sync-alt repeat-icon"></i>
+                            <span class="tooltip">${tooltipText}</span>
+                          </span>`;
+            }
+            
             return stars;
         }
 
@@ -341,25 +363,25 @@
                 }
                 groupedMedia[year].push(item);
             });
-
+            
             // Sort media within each year - changed to ascending order by date
             Object.keys(groupedMedia).forEach(year => {
                 groupedMedia[year].sort((a, b) =>
                     new Date(a.readDate) - new Date(b.readDate)
                 );
             });
-
+            
             return groupedMedia;
         }
 
         function generatePodcastSection() {
             const container = document.getElementById('podcasts-section');
             container.innerHTML = '';
-
+            
             const podcasts = mediaLibrary
                 .filter(item => item.kind === 'podcast')
-                .sort((a, b) => a.title.localeCompare(b.title));;
-
+                .sort((a, b) => a.title.localeCompare(b.title));
+                
             container.innerHTML = `
             <div class="media-grid">
                 ${podcasts.map(item => `
@@ -370,7 +392,7 @@
                         <div class="media-info">
                             <div class="media-title">${item.title}</div>
                             <div class="media-rating">
-                                ${createStarRating(item.rating, item.favorite)}
+                                ${createStarRating(item.rating, item.favorite, item.reRead, 'podcast')}
                             </div>
                         </div>
                     </div>
@@ -379,28 +401,26 @@
         `;
         }
 
-        // Function to generate media grid (mise à jour)
+        // Function to generate media grid (updated)
         function generateMediaSection(mediaType) {
             // Special handling for podcasts
             if (mediaType === 'podcasts') {
                 generatePodcastSection();
                 return;
             }
-
+            
             // Existing logic for other media types
             const container = document.getElementById(`${mediaType}-section`);
             container.innerHTML = '';
-
+            
             const mediaKind = mediaType.slice(0, -1);
             const filteredMedia = mediaLibrary.filter(item => item.kind === mediaKind);
             const groupedMedia = groupMediaByYear(filteredMedia);
-
             const years = Object.keys(groupedMedia).sort((a, b) => b - a);
-
+            
             years.forEach(year => {
                 const yearSection = document.createElement('section');
                 yearSection.className = 'year-section';
-
                 yearSection.innerHTML = `
                 <h2 class="year-header">${year}</h2>
                 <div class="media-grid">
@@ -413,7 +433,7 @@
                                 <div class="media-title">${item.title}</div>
                                 <div class="media-author">${item.author}</div>
                                 <div class="media-rating">
-                                    ${createStarRating(item.rating, item.favorite)}
+                                    ${createStarRating(item.rating, item.favorite, item.reRead, item.kind)}
                                 </div>
                                 <div class="media-date">${getActionVerb(item.kind)} on ${formatDate(item.readDate)}</div>
                             </div>
@@ -421,7 +441,6 @@
                     `).join('')}
                 </div>
             `;
-
                 container.appendChild(yearSection);
             });
         }
@@ -429,15 +448,14 @@
         function switchToTab(tabName) {
             const tabs = document.querySelectorAll('.tab');
             const targetTab = Array.from(tabs).find(tab => tab.dataset.tab === tabName);
-
             if (!targetTab) return;
-
+            
             // Remove active class from all tabs and sections
             tabs.forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
-
+            
             // Add active class to clicked tab and corresponding section
             targetTab.classList.add('active');
             const targetSection = document.getElementById(`${tabName}-section`);
@@ -463,7 +481,7 @@
                     window.location.hash = tabName; // This will trigger handleHashChange
                 });
             });
-
+            
             // Handle initial hash and hash changes
             window.addEventListener('hashchange', handleHashChange);
             handleHashChange(); // Handle initial hash
@@ -479,5 +497,4 @@
         });
     </script>
 </body>
-
 </html>

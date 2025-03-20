@@ -35,6 +35,7 @@ const mediaLibrary = [
         author: "Henry David Thoreau",
         cover: "assets/books/walden.jpg",
         rating: 4,
+        reRead: true,
         link: "https://www.goodreads.com/book/show/16902.Walden",
         readDate: "2024-03-20",
         kind: "book"
@@ -82,6 +83,7 @@ const mediaLibrary = [
         cover: "assets/books/menaces-sur-le-reseau.jpg",
         rating: 4.5,
         favorite: true,
+        reRead: true,
         link: "https://www.goodreads.com/book/show/12652707-menaces-sur-le-r-seau",
         readDate: "2025-01-30",
         kind: "book"
@@ -169,6 +171,7 @@ const mediaLibrary = [
         author: "Quentin Tarantino",
         cover: "assets/movies/kill-bill-vol-1.jpg",
         rating: 4.5,
+        reRead: true,
         link: "http://www.imdb.com/title/tt0266697/",
         readDate: "2024-01-27",
         kind: "movie"
@@ -178,6 +181,7 @@ const mediaLibrary = [
         author: "Quentin Tarantino",
         cover: "assets/movies/kill-bill-vol-2.jpg",
         rating: 4,
+        reRead: true,
         link: "http://www.imdb.com/title/tt0378194/",
         readDate: "2024-01-28",
         kind: "movie"
@@ -187,6 +191,7 @@ const mediaLibrary = [
         author: "Quentin Tarantino",
         cover: "assets/movies/reservoir-dogs.jpg",
         rating: 4,
+        reRead: true,
         link: "http://www.imdb.com/title/tt0105236/",
         readDate: "2024-01-28",
         kind: "movie"
@@ -223,6 +228,7 @@ const mediaLibrary = [
         author: "Chad Stahelski",
         cover: "assets/movies/john-wick.jpg",
         rating: 4.5,
+        reRead: true,
         link: "http://www.imdb.com/title/tt2911666/",
         readDate: "2024-11-01",
         kind: "movie"
@@ -362,6 +368,7 @@ const mediaLibrary = [
         author: "Guy Ritchie",
         cover: "assets/movies/snatch.jpg",
         rating: 5,
+        reRead: true,
         favorite: true,
         link: "https://www.themoviedb.org/movie/107-snatch",
         readDate: "2025-03-13",

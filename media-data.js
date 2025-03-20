@@ -106,6 +106,17 @@ const mediaLibrary = [
         kind: 'book',
         link: 'https://www.goodreads.com/book/show/2416260.De_la_guerre_comme_politique_trang_re_des_Etats_Unis'
     },
+    {
+        title: 'War and Punishment',
+        author: 'Mikhail Zygar',
+        cover: 'assets/books/war-and-punishment.jpg',
+        rating: 2.5,
+        favorite: false,
+        readDate: '2025-03-20',
+        kind: 'book',
+        link: 'https://www.goodreads.com/book/show/63923934-war-and-punishment'
+    },
+    // END OF BOOKS
     // MOVIES \\
     {
         title: "Million Dollar Baby",

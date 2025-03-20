@@ -397,7 +397,7 @@ const mediaLibrary = [
     {
         title: "Lee Miller",
         author: "Ellen Kuras",
-        cover: "assets/movies/her.jpg",
+        cover: "assets/movies/lee-miller.jpg",
         rating: 4,
         favorite: false,
         link: "https://www.themoviedb.org/movie/832964-lee",

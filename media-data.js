@@ -414,6 +414,16 @@ const mediaLibrary = [
         readDate: "2025-03-24",
         kind: "movie"
     },
+    {
+        title: "King of Moab",
+        author: "Tylor Wolter",
+        cover: "assets/movies/king-of-moab.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/1452955-king-of-moab",
+        readDate: "2025-03-25",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

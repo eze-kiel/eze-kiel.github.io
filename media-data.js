@@ -404,6 +404,16 @@ const mediaLibrary = [
         readDate: "2025-03-20",
         kind: "movie"
     },
+    {
+        title: "Cloverfield",
+        author: "Matt Reeves",
+        cover: "assets/movies/cloverfield.jpg",
+        rating: 1.5,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/7191-cloverfield",
+        readDate: "2025-03-24",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

@@ -424,6 +424,16 @@ const mediaLibrary = [
         readDate: "2025-03-25",
         kind: "movie"
     },
+    {
+        title: "Lost in Translation",
+        author: "Sofia Coppola",
+        cover: "assets/movies/lost-in-translation.jpg",
+        rating: 5,
+        favorite: true,
+        link: "https://www.themoviedb.org/movie/153-lost-in-translation",
+        readDate: "2025-03-26",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

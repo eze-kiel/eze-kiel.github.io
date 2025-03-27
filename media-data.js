@@ -347,7 +347,7 @@ const mediaLibrary = [
     },
     {
         title: "O'Brother",
-        author: "Ethan and Joe Coen",
+        author: "Ethan et Joe Coen",
         cover: "assets/movies/o-brother.jpg",
         rating: 3.5,
         link: "https://www.themoviedb.org/movie/134-o-brother-where-art-thou",
@@ -356,7 +356,7 @@ const mediaLibrary = [
     },
     {
         title: "A Serious Man",
-        author: "Ethan and Joe Coen",
+        author: "Ethan et Joe Coen",
         cover: "assets/movies/a-serious-man.jpg",
         rating: 3,
         link: "https://www.themoviedb.org/movie/12573-a-serious-man",

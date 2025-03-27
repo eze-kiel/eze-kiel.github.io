@@ -434,6 +434,16 @@ const mediaLibrary = [
         readDate: "2025-03-26",
         kind: "movie"
     },
+    {
+        title: "Fighter",
+        author: "David O. Russell",
+        cover: "assets/movies/fighter.jpg",
+        rating: 3,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/45317-the-fighter",
+        readDate: "2025-03-27",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

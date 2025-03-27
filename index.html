@@ -257,14 +257,14 @@
 <body>
     <header>
         <h1>Culture Club ☕</h1>
-        <h3>Things I watched, read or listened.</h3>
-        <p class="back"><a href="https://syscall.cafe" style="text-decoration: none; color: cornflowerblue;">
-                < back to main website</a>
+        <h3>Les choses que j'ai vues, lues ou écoutées.</h3>
+        <p class="back"><a href="https://hugoblanc.com" style="text-decoration: none; color: cornflowerblue;">
+                < retour au site principal</a>
         </p>
         <div class="tabs">
-            <button class="tab active" data-tab="books">📚 Books</button>
-            <button class="tab" data-tab="movies">📽 Movies</button>
-            <button class="tab" data-tab="series">🎞 Series</button>
+            <button class="tab active" data-tab="books">📚 Livres</button>
+            <button class="tab" data-tab="movies">📽 Films</button>
+            <button class="tab" data-tab="series">🎞 Séries</button>
             <button class="tab" data-tab="podcasts">🎧 Podcasts</button>
         </div>
     </header>
@@ -280,14 +280,14 @@
         function getActionVerb(mediaType) {
             switch (mediaType) {
                 case 'book':
-                    return 'Read';
+                    return 'Lu';
                 case 'movie':
                 case 'serie':
-                    return 'Watched';
+                    return 'Vu';
                 case 'podcast':
-                    return 'Listened';
+                    return 'Écouté';
                 default:
-                    return 'Consumed';
+                    return 'Consommé';
             }
         }
 
@@ -298,7 +298,7 @@
                 day: 'numeric'
             };
             const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', options);
+            return date.toLocaleDateString('fr-FR', options);
         }
 
         // Updated function to handle half stars, reRead icon with tooltip
@@ -325,7 +325,7 @@
             
             // Ajout du cœur pour les favoris
             if (isFavorite) {
-                let tooltipText = 'Favorite';
+                let tooltipText = 'Favori';
                 // stars += '<i class="fas fa-heart favorite-heart"></i>';
                 stars += `<span class="icon-wrapper">
                             <i class="fas fa-heart favorite-heart"></i>
@@ -333,15 +333,14 @@
                           </span>`;
             }
             
-            // Ajout de l'icône de répétition pour les relectures/revisionnages avec tooltip
             if (isReRead) {
-                let tooltipText = 'Re-consumed';
+                let tooltipText = 'Re-consommé';
                 if (mediaKind === 'book') {
-                    tooltipText = 'Re-read';
+                    tooltipText = 'Re-lu';
                 } else if (mediaKind === 'movie' || mediaKind === 'serie') {
-                    tooltipText = 'Re-watched';
+                    tooltipText = 'Re-vu';
                 } else if (mediaKind === 'podcast') {
-                    tooltipText = 'Re-listened';
+                    tooltipText = 'Ré-écouté';
                 }
                 
                 stars += `<span class="icon-wrapper">
@@ -435,7 +434,7 @@
                                 <div class="media-rating">
                                     ${createStarRating(item.rating, item.favorite, item.reRead, item.kind)}
                                 </div>
-                                <div class="media-date">${getActionVerb(item.kind)} on ${formatDate(item.readDate)}</div>
+                                <div class="media-date">${getActionVerb(item.kind)} le ${formatDate(item.readDate)}</div>
                             </div>
                         </div>
                     `).join('')}

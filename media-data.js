@@ -513,10 +513,20 @@ const mediaLibrary = [
         title: "Silicon fucking Valley",
         author: "Pierre Schneidermann, Baptiste Giudicelli",
         cover: "assets/series/silicon-fucking-valley.jpg",
-        rating: 4,
+        rating: 3.5,
         favorite: false,
         link: "https://www.themoviedb.org/tv/277372-silicon-fucking-valley",
         readDate: "2025-03-15",
+        kind: "serie"
+    },
+    {
+        title: "The Pacific",
+        author: "Bruce C. McKennai",
+        cover: "assets/series/the-pacific.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/tv/16997-the-pacific",
+        readDate: "2025-03-29",
         kind: "serie"
     },
     // END OF SERIES \\

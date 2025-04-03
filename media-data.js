@@ -529,6 +529,15 @@ const mediaLibrary = [
         readDate: "2025-03-29",
         kind: "serie"
     },
+    {
+        title: "Severance (S1-2)",
+        author: "Dan Erickson",
+        cover: "assets/series/severance.jpg",
+        rating: 4,
+        link: "https://www.themoviedb.org/tv/95396-severance",
+        readDate: "2024-04-03",
+        kind: "serie"
+    },
     // END OF SERIES \\
     // PODCASTS \\
     {

@@ -535,7 +535,7 @@ const mediaLibrary = [
         cover: "assets/series/severance.jpg",
         rating: 4,
         link: "https://www.themoviedb.org/tv/95396-severance",
-        readDate: "2024-04-03",
+        readDate: "2025-04-03",
         kind: "serie"
     },
     // END OF SERIES \\

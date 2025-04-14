@@ -118,6 +118,16 @@ const mediaLibrary = [
         kind: 'book',
         link: 'https://www.goodreads.com/book/show/63923934-war-and-punishment'
     },
+    {
+        title: 'Flatland',
+        author: 'Edwin Abott²',
+        cover: 'assets/books/flatland.jpg',
+        rating: 3.5,
+        favorite: false,
+        readDate: '2025-04-14',
+        kind: 'book',
+        link: 'https://www.goodreads.com/book/show/433567.Flatland'
+    },
     // END OF BOOKS
     // MOVIES \\
     {

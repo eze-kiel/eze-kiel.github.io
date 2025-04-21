@@ -454,6 +454,16 @@ const mediaLibrary = [
         readDate: "2025-03-27",
         kind: "movie"
     },
+    {
+        title: "Riverboom",
+        author: "Claude Baechtold",
+        cover: "assets/movies/riverboom.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/1175235-riverboom",
+        readDate: "2025-04-21",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

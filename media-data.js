@@ -464,6 +464,16 @@ const mediaLibrary = [
         readDate: "2025-04-21",
         kind: "movie"
     },
+    {
+        title: "The Interview",
+        author: "Seth Rogen, Evan Goldberg",
+        cover: "assets/movies/the-interview.jpg",
+        rating: 3,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/228967-the-interview",
+        readDate: "2025-04-25",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

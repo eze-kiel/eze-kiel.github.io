@@ -558,6 +558,15 @@ const mediaLibrary = [
         readDate: "2025-04-03",
         kind: "serie"
     },
+    {
+        title: "Eastbound & Down (S1)",
+        author: "Ben Best, Jody Hill, Danny McBride",
+        cover: "assets/series/eastbound-and-down.jpg",
+        rating: 3.5,
+        link: "https://www.themoviedb.org/tv/8624-eastbound-down",
+        readDate: "2025-04-23",
+        kind: "serie"
+    },
     // END OF SERIES \\
     // PODCASTS \\
     {

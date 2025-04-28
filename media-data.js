@@ -474,6 +474,16 @@ const mediaLibrary = [
         readDate: "2025-04-25",
         kind: "movie"
     },
+    {
+        title: "Coup de foudre à Notting Hill",
+        author: "Roger Michell",
+        cover: "assets/movies/notting-hill.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/509-notting-hill",
+        readDate: "2025-04-28",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

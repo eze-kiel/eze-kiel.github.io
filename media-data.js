@@ -484,6 +484,16 @@ const mediaLibrary = [
         readDate: "2025-04-28",
         kind: "movie"
     },
+    {
+        title: "Kodachrome",
+        author: "Mark Raso",
+        cover: "assets/movies/kodachrome.jpg",
+        rating: 3,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/419635-kodachrome",
+        readDate: "2025-04-30",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

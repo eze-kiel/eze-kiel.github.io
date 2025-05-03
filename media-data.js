@@ -494,6 +494,16 @@ const mediaLibrary = [
         readDate: "2025-04-30",
         kind: "movie"
     },
+    {
+        title: "Ennemi d'État",
+        author: "Tony Scott",
+        cover: "assets/movies/ennemi-d-etat.jpg",
+        rating: 2,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/9798-enemy-of-the-state",
+        readDate: "2025-05-03",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

@@ -504,6 +504,16 @@ const mediaLibrary = [
         readDate: "2025-05-03",
         kind: "movie"
     },
+    {
+        title: "Le Prestige",
+        author: "Christopher Nolan",
+        cover: "assets/movies/le-prestige.jpg",
+        rating: 4,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/1124-the-prestige",
+        readDate: "2025-05-03",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {

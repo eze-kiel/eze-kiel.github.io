@@ -514,6 +514,16 @@ const mediaLibrary = [
         readDate: "2025-05-03",
         kind: "movie"
     },
+    {
+        title: "The Settlers",
+        author: "Louis Theroux",
+        cover: "assets/movies/the-settlers.jpg",
+        rating: 4.5,
+        favorite: false,
+        link: "https://www.themoviedb.org/movie/1466013-louis-theroux-the-settlers",
+        readDate: "2025-06-03",
+        kind: "movie"
+    },
     // END OF MOVIES //
     // SERIES \\
     {
